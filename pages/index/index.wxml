@@ -1,30 +1,30 @@
-<!--index.wxml-->
-<!-- <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 在分支上修改 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<home wx:if="{{PageCur=='home'}}"></home>
+<menu wx:if="{{PageCur=='menu'}}"></menu>
+<nutrition wx:if="{{PageCur=='nutrition'}}"></nutrition>
+<user wx:if="{{PageCur=='user'}}"></user>
+<view class="cu-bar tabbar bg-white shadow foot">
+  <view class="action" bindtap="NavChange" data-cur="home">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/home{{PageCur=='home'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='home'?'text-cyan':'text-gray'}}">首页</view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="action" bindtap="NavChange" data-cur="menu">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/menu{{PageCur=='menu'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='menu'?'text-cyan':'text-gray'}}">菜单</view>
   </view>
-</view> -->
-<cu-custom bgColor="bg-gradual-blue">
-  <view slot="content">ColorUI 空白模板</view>
-</cu-custom>
-<view class="margin-xl padding-xl bg-white radius shadow shadow-lg">
-  <view class="flex justify-center">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='cu-btn round bg-green shadow'> 获取头像昵称 </button>
-    <block wx:else>
-      <view class='text-center'>
-        <view class="cu-avatar xl round solids" style="background-image:url({{userInfo.avatarUrl}})"></view>
-        <view class="padding">{{userInfo.nickName}}</view>
-      </view>
-    </block>
+  <view class="action" bindtap="NavChange" data-cur="nutrition">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/nutrition{{PageCur=='nutrition'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='nutrition'?'text-cyan':'text-gray'}}">营养</view>
   </view>
-</view>
-<view class="text-center margin-top">
-  <text class="text-grey text-xl">{{motto}}</text>
+  <view class="action" bindtap="NavChange" data-cur="user">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/user{{PageCur=='user'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='user'?'text-cyan':'text-gray'}}">我的</view>
+  </view>
 </view>
