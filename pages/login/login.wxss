@@ -1,1 +1,108 @@
 /* pages/login/login.wxss */
+
+page {
+  height: 100%;
+  background-size: 100%;
+  background-image: url("https://img-blog.csdn.net/20180727144314722?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NvbmdPa29L/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70");
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*登录图片*/
+
+.login-icon {
+  flex: none;
+  margin: 0 auto;
+  margin-top: 200rpx;
+}
+
+.login-image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 110rpx;
+  opacity: 0.6;
+}
+
+/*表单内容*/
+
+.login-form {
+  margin-top: 90px;
+  flex: auto;
+  height: 100%;
+}
+
+/*输入框*/
+
+[class*="-loginInputView"] {
+  width: 90%;
+  height: 90rpx;
+  margin: 0 auto;
+  border-radius: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.margin-60 {
+  margin-top: 60rpx;
+}
+
+.margin-20 {
+  margin-top: 20rpx;
+}
+
+.margin-left-20{
+  margin-left:20rpx;
+}
+
+.icon-view {
+  margin-left: 50rpx;
+  border-right: 1px solid #d3d3d3;
+  padding-right: 20rpx;
+}
+
+.icon-view-image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+/*按钮*/
+
+.loginBtn {
+  color: #fff;
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 50rpx;
+  margin-top: 100rpx;
+  /* background-color: #22dd92; */
+}
+
+.loginBtn-hover{
+  transform: translate(1rpx, 1rpx);
+}
+
+/*忘记密码和立即注册*/
+
+.registerAndForget {
+  color: #d3d3d3;
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  /* border:1px solid #ccc; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navigator-hover-class {
+  color: #22dd92;
+}

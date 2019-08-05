@@ -1,11 +1,45 @@
 // pages/login/login.js
+
+//获取工具类
+const utils = require('../../utils/util.js');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    disabled:false
+  },
 
+  /**
+   * 登录事件
+   */
+  loginSubmit:function(e){
+    wx.showLoading({
+      title: '登录中...',
+    })
+    console.log(e);
+    var account = e.detail.value.account;
+    var password = e.detail.value.password;
+    this.setData({
+      disabled:true
+    });
+    if(account == '' || account == null){
+
+    }else if(password == '' || password == null){
+
+    }else{
+
+    }
+    var data = {
+
+    }
+    utils.loginRequest(data).then(res => {
+
+    },err => {
+
+    })
   },
 
   /**
