@@ -1,7 +1,3 @@
-/* pages/home/home/home.wxss */
-.title-padding {
-  padding: 100rpx 0 0 50rpx;
-}
 .container {
   height: 300rpx;
   width: 300rpx;
@@ -10,14 +6,6 @@
 ec-canvas {
   width: 100%;
   height: 100%;
-}
-.more-icon-container{
-  font-size: 28rpx;
-  padding: 0rpx 5rpx;
-  height: 26rpx;
-}
-.text-xxxl {
-	font-size: 60rpx;
 }
 .nav-list {
   display: flex;
@@ -29,7 +17,6 @@ ec-canvas {
   color: #1a1a1a;
   padding: 15rpx;
   border-radius: 12rpx;
-  width: 45%;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -86,18 +73,7 @@ ec-canvas {
   text-align: center;
   line-height: 60rpx;
 }
-.swiper-image{
-  width:100%;
-  height:100%;
-  background-size:cover; 
-  font-size: 36rpx;
-}
-.swiper-name {
-  line-height:200rpx;
-  text-align:center;
-  color: #fff;
-  font-weight: 700;
-}
-.menu-container {
-  margin-bottom: 120rpx;
+
+.progress-container {
+  padding: 20rpx 80rpx;
 }

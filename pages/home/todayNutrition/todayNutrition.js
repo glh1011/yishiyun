@@ -1,5 +1,4 @@
 import * as echarts from '../../../ec-canvas/echarts';
-import {banner} from '../../../images/base64/banner.js';
 
 function initChart(canvas, width, height) {
   const chart = echarts.init(canvas, null, {
@@ -14,21 +13,35 @@ function initChart(canvas, width, height) {
     graphic: [{//环形图中间添加文字
       type: 'text',//通过不同top值可以设置上下显示
       left: 'center',
+      top: '28%',
+      style: {
+        text: "已摄入",
+        textAlign: 'center',
+        fill: '#333',//文字的颜色
+        width: 30,
+        height: 30,
+        fontSize: 13,
+        color: "#1a1a1a",
+      }
+    },{//环形图中间添加文字
+      type: 'text',//通过不同top值可以设置上下显示
+      left: 'center',
       top: '40%',
       style: {
-        text: "80%",
+        text: "897",
         textAlign: 'center',
         fill: '#000',//文字的颜色
         width: 30,
         height: 30,
         fontSize: 23,
         color: "#1a1a1a",
-    }}, {
+      }
+    }, {
       type: 'text',
       left: 'center',
       top: '60%',
       style: {
-        text: '查看详情',
+        text: '建议摄入1390',
         textAlign: 'center',
         fill: '#999',
         width: 30,
@@ -38,7 +51,7 @@ function initChart(canvas, width, height) {
     }],
     series: [{
       type: 'pie',
-      radius: ['63%', '75%'],
+      radius: ['90%', '100%'],
       itemStyle: {
         normal: {
           label: {
@@ -60,30 +73,25 @@ function initChart(canvas, width, height) {
   return chart;
 }
 
-Component({
-  options: {
-    addGlobalClass: true,
-  },
+Page({
   data: {
-    banner: banner,
-    cardCur: 0,
     ec: {
     }
   },
-  methods:{
-    echartInit(e) {
-      initChart(e.detail.canvas, e.detail.width, e.detail.height);
-    },
-    cardSwiper(e) {
-      this.setData({
-        cardCur: e.detail.current
-      })
-    },
-    // toTodayNutrition: function (e) {
-    //   console.log("dianjishijian");
-    //   wx.navigateTo({
-    //     url: '../../pages/home/todayNutrition/todayNutrition',
-    //   })
-    // },
-  }
+
+  onLoad: function (options) {
+
+  },
+
+  onReady: function () {
+
+  },
+
+  onShow: function () {
+
+  },
+
+  echartInit(e) {
+    initChart(e.detail.canvas, e.detail.width, e.detail.height);
+  },
 })
