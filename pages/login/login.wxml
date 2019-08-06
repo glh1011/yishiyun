@@ -26,7 +26,7 @@
       </view>
       <!--登录按钮-->
       <view class="loginBtnView">
-        <button class="loginBtn bg-gradual-green" hover-class="loginBtn-hover" form-type="submit" disabled='{{disabled}}'>立即登录</button>
+        <button class="loginBtn" hover-class="loginBtn-hover" form-type="submit" disabled='{{disabled}}'>立即登录</button>
       </view>
       <!--注册和忘记密码-->
       <view class="registerAndForget">

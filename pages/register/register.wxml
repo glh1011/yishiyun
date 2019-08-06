@@ -1,12 +1,12 @@
 <!--pages/register/register.wxml-->
-<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+<cu-custom bgColor="bg-cyan" isBack="{{true}}">
   <view slot="backText">返回</view>
   <view slot="content">注册</view>
 </cu-custom>
 <view class="container">
   <view class="bg-white padding">
     <view class="cu-steps">
-      <view class="cu-item {{index>num?'':'text-green'}}" wx:for="{{numList}}" wx:key>
+      <view class="cu-item {{index>num?'':'text-cyan'}}" wx:for="{{numList}}" wx:key>
         <text class="num {{index==2?'err':''}}" data-index="{{index + 1}}"></text> {{item.name}}
       </view>
     </view>
@@ -44,7 +44,7 @@
           <input bindinput="handleVerificationCode" placeholder="请输入短信验证码"></input>
         </view>
         <view class="getMessageView">
-          <button class="getMsnBtn bg-gradual-green" hover-class="registerBtn-hover" bindtap='doGetCode' disabled='{{disabled}}'>{{text}}</button>
+          <button class="getMsnBtn bg-cyan" hover-class="registerBtn-hover" bindtap='doGetCode' disabled='{{disabled}}'>{{text}}</button>
         </view>
       </view>
       <!--密码-->
@@ -66,7 +66,7 @@
         </view>
       </view>
       <view class="registerBtnView">
-        <button class="registerBtn bg-gradual-green" hover-class="registerBtn-hover" form-type="submit" disabled='{{registerBtnDisabled}}'>立即注册</button>
+        <button class="registerBtn bg-cyan" hover-class="registerBtn-hover" form-type="submit" disabled='{{registerBtnDisabled}}'>立即注册</button>
       </view>
     </form>
   </view>
