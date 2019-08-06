@@ -50,6 +50,7 @@ page {
 	--gradualPurple: linear-gradient(45deg, #9000ff, #5e00ff);
 	--gradualPink: linear-gradient(45deg, #ec008c, #6739b6);
 	--gradualBlue: linear-gradient(45deg, #0081ff, #1cbbb4);
+  --gradualCyan: linear-gradient(45deg, #1cbbb4, #28B8A1);
 	/* 阴影透明色 */
 	--ShadowSize: 6rpx 6rpx 8rpx;
 	--redShadow: rgba(204, 69, 59, 0.2);
@@ -2617,22 +2618,23 @@ swiper.round-dot .wx-swiper-dot.wx-swiper-dot-active {
 }
 
 .card-swiper {
-	height: 420rpx !important;
+	height: 200rpx !important;
 }
 
 .card-swiper swiper-item {
-	width: 610rpx !important;
-	left: 70rpx;
+	width: 340rpx !important;
+  left: 30rpx;
+  right: 0;
 	box-sizing: border-box;
-	padding: 40rpx 0rpx 70rpx;
-	overflow: initial;
+	padding: 0 0rpx 0rpx;
+	overflow-x: hidden;
 }
 
 .card-swiper swiper-item .swiper-item {
 	width: 100%;
 	display: block;
 	height: 100%;
-	border-radius: 10rpx;
+	border-radius: 18rpx;
 	transform: scale(0.9);
 	transition: all 0.2s ease-in 0s;
 	overflow: hidden;
@@ -3604,6 +3606,11 @@ scroll-view.cu-steps .cu-item {
 
 .bg-gradual-blue {
 	background-image: var(--gradualBlue);
+	color: var(--white);
+}
+
+.bg-gradual-cyan {
+	background-image: var(--gradualCyan);
 	color: var(--white);
 }
 

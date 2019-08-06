@@ -2,7 +2,9 @@
   "pages": [
     "pages/login/login",
     "pages/register/register",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/home/home/home",
+    "pages/home/todayNutrition/todayNutrition"
   ],
   "window": {
     "backgroundTextStyle": "light",

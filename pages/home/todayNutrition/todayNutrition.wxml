@@ -1,0 +1,88 @@
+<cu-custom bgColor="bg-gradual-cyan" isBack="{{true}}">
+  <view slot="backText">返回</view><view slot="content">今日营养</view>
+</cu-custom>
+<scroll-view scroll-y class="scrollPage">
+  <view class="flex padding justify-center">
+    <view class="radius text-lg">2019年08月05日</view>
+  </view>
+
+  <view class="flex justify-center">
+    <view class="radius fl padding-sm">
+      <view class='nav-list'>
+        <view class="nav-li">
+          <view class="nav-title">餐费</view>
+          <view class="nav-name1">123</view>
+        </view>
+      </view>
+    </view>
+    <view class="container">
+      <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+    </view>
+    <view class="radius fr padding-sm">
+      <view class='nav-list'>
+        <view class="nav-li">
+          <view class="nav-title">餐重</view>
+          <view class="nav-name1">493</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="grid col-2 margin-bottom text-center">
+    <view class="progress-container padding-top">
+      <view>碳水化合物</view>
+      <view>0/244g</view>
+      <view class="cu-progress round margin-top xs">
+        <view style="width:61.8%;background-color:#8BC34A"></view>
+      </view>
+    </view>
+    <view class="progress-container">
+      <view>纤维素</view>
+      <view>0/59g</view>
+      <view class="cu-progress round margin-top xs">
+        <view style="width:61.8%;background-color:#FF9800"></view>
+      </view>
+    </view>
+    <view class="progress-container">
+      <view>蛋白质</view>
+      <view>0/66g</view>
+      <view class="cu-progress round margin-top xs">
+        <view style="width:61.8%;background-color:#E787F4"></view>
+      </view>
+    </view>
+    <view class="progress-container">
+      <view>脂肪</view>
+      <view>0/59g</view>
+      <view class="cu-progress round margin-top xs">
+        <view style="width:61.8%;background-color:#3799FB"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-card case">
+  <view class="cu-item shadow bg-white" style="margin:0 60rpx 60rpx">
+    <view class="grid col-3 margin-bottom margin-top text-center">
+      <view class="padding solid-bottom">名称</view>
+      <view class="padding solid-bottom">摄入量</view>
+      <view class="padding solid-bottom">推荐</view>
+      <view class="padding solid-bottom">膳食纤维</view>
+      <view class="padding solid-bottom"><text class="cuIcon-check lg text-cyan"></text>1.8克</view>
+      <view class="padding solid-bottom">25.0克</view>
+      <view class="padding solid-bottom">钠</view>
+      <view class="padding solid-bottom"><text class="cuIcon-top lg text-red"></text>0.24克</view>
+      <view class="padding solid-bottom">1.5克</view>
+      <view class="padding solid-bottom">钙</view>
+      <view class="padding solid-bottom"><text class="cuIcon-refresharrow lg text-orange"></text>0.24克</view>
+      <view class="padding solid-bottom">1.5克</view>
+      <view class="padding solid-bottom">铁</view>
+      <view class="padding solid-bottom">0.24克</view>
+      <view class="padding solid-bottom">1.5克</view>
+      <view class="padding solid-bottom">钾</view>
+      <view class="padding solid-bottom">0.24克</view>
+      <view class="padding solid-bottom">1.5克</view>
+    </view>
+     
+   
+  </view>
+</view>
+</scroll-view>
