@@ -1,0 +1,169 @@
+<cu-custom bgColor="bg-gradual-cyan" isBack="{{true}}">
+  <view slot="backText">返回</view><view slot="content">消费记录</view>
+</cu-custom>
+<scroll-view scroll-x class="bg-white nav">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{0==TabCur?'text-cyan cur':''}}" bindtap="tabSelect" data-id="0">
+      日
+    </view>
+    <view class="cu-item flex-sub {{1==TabCur?'text-cyan cur':''}}" bindtap="tabSelect" data-id="1">
+      月
+    </view>
+  </view>
+</scroll-view>
+<scroll-view style="height:calc(100vh - {{CustomBar}}px - 94rpx);position:relative;margin-top:1rpx" scroll-y class="scrollPage">
+  <view wx:if="{{0==TabCur}}">
+    <view class="text-xl title-padding">
+      <text class="textblack text-bold">当日消费</text>
+      <view class="calendar-container">
+        <picker mode="date" value="{{date}}" end="{{today}}" bindchange="bindDateChange">
+          <view class="picker">
+            {{date}}
+            <text>| </text>
+            <text class="cuIcon-calendar"></text>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="cu-card case">
+      <view class="cu-item shadow bg-white" style="margin:5rpx 60rpx">
+        <view class="cu-list menu-avatar">
+
+          <view class="cu-item">
+            <image class="cu-avatar radius lg" src="../../../images/dish4.jpg"></image>
+            <view class="content">
+              <view class="text-grey">绿豆汤</view>
+              <view class="text-gray text-sm flex">
+                <text class="text-cut margin-right-xs">
+                  <text>200克</text>
+                </text>
+              </view>
+            </view>
+            <view class="action">
+              <view class="text-grey text-xs">47千卡</view>
+              <view class="cu-tag round bg-white sm">3.00元</view>
+            </view>
+          </view>
+
+          <view class="cu-item">
+            <image class="cu-avatar radius lg" src="../../../images/dish4.jpg"></image>
+            <view class="content">
+              <view class="text-grey">绿豆汤</view>
+              <view class="text-gray text-sm flex">
+                <text class="text-cut margin-right-xs">
+                    <text>200克</text>
+                </text>
+              </view>
+            </view>
+            <view class="action">
+              <view class="text-grey text-xs">47千卡</view>
+              <view class="cu-tag round bg-white sm">3.00元</view>
+            </view>
+          </view>
+        
+          <view class="cu-item">
+            <image class="cu-avatar radius lg" src="../../../images/dish4.jpg"></image>
+            <view class="content">
+              <view class="text-grey">绿豆汤</view>
+              <view class="text-gray text-sm flex">
+                <text class="text-cut margin-right-xs">
+                    <text>200克</text>
+                </text>
+              </view>
+            </view>
+            <view class="action">
+              <view class="text-grey text-xs">47千卡</view>
+              <view class="cu-tag round bg-white sm">3.00元</view>
+            </view>
+          </view>
+
+          <view class="cu-item">
+            <image class="cu-avatar radius lg" src="../../../images/dish4.jpg"></image>
+            <view class="content">
+              <view class="text-grey">绿豆汤</view>
+              <view class="text-gray text-sm flex">
+                <text class="text-cut margin-right-xs">
+                    <text>200克</text>
+                </text>
+              </view>
+            </view>
+            <view class="action">
+              <view class="text-grey text-xs">47千卡</view>
+              <view class="cu-tag round bg-white sm">3.00元</view>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </view>
+
+    <view class="text-xl title-padding">
+      <text class="textblack text-bold">支出类别</text>
+    </view>
+    <view class="cu-card case shadow">
+      <view class="cu-item shadow bg-white" style="margin:5rpx 60rpx 50rpx">
+        <view class="flex justify-center">
+          <view class="container">
+            <image wx:if="{{echartImgSrc!==''}}" mode="widthFix" src="{{echartImgSrc}}"></image>
+            <ec-canvas id="mychart-dom-pie1" wx:if="{{echartImgSrc===''}}" canvas-id="mychart-pie-category1" ec="{{ec}}" bind:init="dayPurchaseEchartInit"></ec-canvas>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view wx:if="{{1==TabCur}}">
+
+    <view class="text-xl title-padding">
+      <text class="textblack text-bold">当月支出</text>
+      <view class="calendar-container">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{curMonthsArray}}">
+          <view class="picker">
+            {{curYear}}年{{curMonthsArray[index]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="cu-card case shadow">
+      <view class="cu-item shadow bg-white" style="margin:5rpx 60rpx">
+        <view class="flex justify-center">
+          <view class="container">
+            
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="text-xl title-padding">
+      <text class="textblack text-bold">支出类别</text>
+    </view>
+
+    <view class="cu-card case shadow">
+      <view class="cu-item shadow bg-white" style="margin:5rpx 60rpx">
+        <view class="flex justify-center">
+          <view class="container">
+            
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="text-xl title-padding">
+      <text class="textblack text-bold">月支出对比</text>
+    </view>
+
+    <view class="cu-card case shadow">
+      <view class="cu-item shadow bg-white" style="margin:5rpx 60rpx 50rpx">
+        <view class="flex justify-center">
+          <view class="container">
+            
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</scroll-view>

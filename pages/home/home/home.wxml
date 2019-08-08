@@ -8,10 +8,9 @@
   </view>
   <view class="flex">
     <view class="flex-sub padding-left">
-      <navigator class="container" open-type="navigate" hover-class='none' url="../../pages/home/todayNutrition/todayNutrition">
-      <!-- <view class="container" bindtap="toTodayNutrition"> -->
-        <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
-      </navigator>
+      <view class="container">
+        <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie-home" ec="{{ec}}" bind:init="echartInit"></ec-canvas>
+      </view>
     </view>
     <view class="flex-twice">
       <view class='nav-list'>
@@ -40,24 +39,24 @@
       <text class="cuIcon-titles text-cyan"></text>轮播图轮播图
     </view>
   </view>
-  <swiper class="card-swiper" bindchange="cardSwiper">
+  <swiper class="card-swiper" next-margin="140rpx" circular="{{true}}">
     <swiper-item class="swiper-item">
-      <view class="swiper-item">
+      <navigator class="swiper-item" url="/pages/home/purchaseHistory/purchaseHistory" hover-class="none">
         <view style="background-image:url({{banner.banner4_url}});" class='swiper-image'>
           <view class="swiper-name">消费记录 
               <text class="cuIcon-pay text-white"></text>
           </view>
         </view>
-      </view>
+      </navigator>
     </swiper-item>
     <swiper-item class="swiper-item">
-      <view class="swiper-item">
+      <navigator class="swiper-item" hover-class='none' url="../../pages/home/todayNutrition/todayNutrition">
         <view style="background-image:url({{banner.banner2_url}});" class='swiper-image'>
           <view class="swiper-name">营养分析 
               <text class="cuIcon-similar text-white"></text>
           </view>
         </view>
-      </view>
+      </navigator>
     </swiper-item>
     <swiper-item class="swiper-item">
       <view class="swiper-item">
@@ -70,7 +69,7 @@
     </swiper-item>
   </swiper>
 
-  <view class="cu-bar bg-white">
+  <navigator class="cu-bar bg-white" url="/pages/home/diningRecord/diningRecord" hover-class="none">
     <view class="action">
       <text class="cuIcon-titles text-cyan"></text>最近一次就餐记录
     </view>
@@ -79,10 +78,10 @@
         <view class="cuIcon-more text-white xxl"></view>
       </view>
     </view>
-  </view>
+  </navigator>
   <view class="cu-list menu-avatar">
     <view class="cu-item arrow">
-      <view class="cu-avatar radius lg" style="background-image:url(../../../images/dish4.jpg);"></view>
+      <image class="cu-avatar radius lg" src="../../../images/dish4.jpg"></image>
       <view class="content">
         <view class="text-grey">绿豆汤</view>
         <view class="text-gray text-sm flex">
@@ -97,7 +96,7 @@
       </view>
     </view>
     <view class="cu-item arrow">
-      <view class="cu-avatar radius lg" style="background-image:url(../../../images/dish4.jpg);"></view>
+      <image class="cu-avatar radius lg" src="../../../images/dish4.jpg"></image>
       <view class="content">
         <view class="text-grey">绿豆汤</view>
         <view class="text-gray text-sm flex">

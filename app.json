@@ -2,7 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/home/home/home",
-    "pages/home/todayNutrition/todayNutrition"
+    "pages/home/todayNutrition/todayNutrition",
+    "pages/home/diningRecord/diningRecord",
+    "pages/user/myself/myself",
+    "pages/user/renewCard/renewCard",
+    "pages/home/purchaseHistory/purchaseHistory"
   ],
   "window": {
     "backgroundTextStyle": "light",

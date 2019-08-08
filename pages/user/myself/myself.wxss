@@ -1,0 +1,35 @@
+.userinfo {
+  background-color: #28B8A1;
+  width: 100%;
+  height: 300rpx;
+  color: #fff;
+}
+ 
+.userinfo-avatar {
+  overflow:hidden;
+  display: inline-block;
+  width: 120rpx;
+  height: 120rpx;
+  margin: 90rpx 30rpx 90rpx 80rpx;
+  border-radius: 50%;
+  border: 4rpx solid #fff;
+  box-shadow: 3rpx 3rpx 10rpx rgba(0, 0, 0, 0.2);
+}
+
+.userinfo-name {
+  line-height: 300rpx;
+  overflow:hidden;
+  display: inline-block;
+  font-size: 36rpx;
+}
+.right-icon{
+  overflow:hidden;
+  position: relative;
+  font-size: 40rpx !important;
+  line-height: 300rpx;
+  float: right;
+  right: 60rpx;
+}
+.item-right-icon{
+  float: right;
+}
