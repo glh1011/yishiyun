@@ -48,13 +48,47 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 5,
 			"list": [
 				{
 					"id": 0,
 					"name": "今日营养",
 					"pathName": "pages/home/todayNutrition/todayNutrition",
 					"query": "今日营养",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "就餐记录",
+					"pathName": "pages/home/diningRecord/diningRecord",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/user/myself/myself",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消费记录",
+					"pathName": "pages/home/purchaseHistory/purchaseHistory",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "注册",
+					"pathName": "pages/register/register",
 					"scene": null
 				}
 			]

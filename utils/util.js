@@ -1,5 +1,5 @@
-
 const API_BASE_URL = 'https://mlquan.picp.vip/';
+import * as echarts from '../ec-canvas/echarts';
 
 const formatTime = date => {
   const year = date.getFullYear()
@@ -9,7 +9,8 @@ const formatTime = date => {
   const minute = date.getMinutes()
   const second = date.getSeconds()
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  // return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  return formatNumber(year)+"-"+formatNumber(month)+"-"+formatNumber(day);
 }
 
 const formatNumber = n => {
@@ -38,8 +39,33 @@ const sendRequest = (url, method, data = {}, header = {}) => {
   })
 }
 
+const initChart = (canvas, width, height, option, element) => {
+  const chart = echarts.init(canvas, null, {
+    width: width,
+    height: height
+  });
+  canvas.setChart(chart);
+  chart.setOption(option);
+  if(element){
+    return new Promise((resolve, reject) => {
+      chart.on('finished', () => {
+        element.canvasToTempFilePath({
+          success: res => {
+            resolve(res);
+          },
+          fail: res => {
+            reject(res);
+          }
+        })
+      })
+    })
+  }
+  // return chart;
+}
+
 module.exports = {
   formatTime: formatTime,
+  initChart: initChart,
   //wx.request的二次封装
   sendRequest: sendRequest,
   //通过手机号查找用户是否存在

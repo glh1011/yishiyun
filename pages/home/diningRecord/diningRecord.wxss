@@ -1,0 +1,18 @@
+.title-padding {
+  padding: 50rpx 70rpx 50rpx 100rpx;
+}
+.calendar-container {
+  float: right;
+  background-color: #EEEEEE;
+  color: #3B3B3B;
+  font-size: 26rpx;
+  line-height: 36rpx;
+  padding: 5rpx 10rpx;
+  border-radius: 10rpx;
+}
+.dinning-title-padding {
+  padding: 30rpx 0 20rpx 40rpx;
+}
+.no-margin-top {
+  margin-top: 0!important;
+}

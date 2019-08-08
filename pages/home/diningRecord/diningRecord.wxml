@@ -1,0 +1,118 @@
+<cu-custom bgColor="bg-gradual-cyan" isBack="{{true}}">
+  <view slot="backText">返回</view><view slot="content">就餐记录</view>
+</cu-custom>
+
+<scroll-view scroll-y class="scrollPage">
+  <view class="text-xl title-padding">
+    <text class="textblack text-bold">当日就餐</text>
+    <view class="calendar-container">
+        <picker mode="date" value="{{date}}" end="{{today}}" bindchange="bindDateChange">
+          <view class="picker">
+            {{date}}
+            <text>| </text>
+            <text class="cuIcon-calendar"></text>
+          </view>
+        </picker>
+      </view>
+  </view>
+  <view class="cu-card case">
+    <view class="cu-item shadow bg-white" style="margin:5rpx 60rpx 60rpx">
+      
+      <view class="cu-list menu-avatar solid-bottom">
+        <view class="text-lg dinning-title-padding">
+          <text class="textblack text-bold">早餐</text>
+        </view>
+        <view class="cu-item">
+          <image class="cu-avatar radius lg" src="../../../images/dish4.jpg"></image>
+          <view class="content">
+            <view class="text-grey">绿豆汤</view>
+            <view class="text-gray text-sm flex">
+              <text class="text-cut margin-right-xs">
+                <text>200克</text>
+              </text>
+            </view>
+          </view>
+          <view class="action">
+            <view class="text-grey text-xs">47千卡</view>
+            <view class="cu-tag round bg-white sm">3.00元</view>
+          </view>
+        </view>
+        <view class="cu-item">
+          <image class="cu-avatar radius lg" src="../../../images/dish4.jpg"></image>
+          <view class="content">
+            <view class="text-grey">绿豆汤</view>
+            <view class="text-gray text-sm flex">
+              <text class="text-cut margin-right-xs">
+                  <text>200克</text>
+              </text>
+            </view>
+          </view>
+          <view class="action">
+            <view class="text-grey text-xs">47千卡</view>
+            <view class="cu-tag round bg-white sm">3.00元</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="cu-list menu-avatar solid-bottom no-margin-top">
+        <view class="text-lg dinning-title-padding">
+          <text class="textblack text-bold">午餐</text>
+        </view>
+        <view class="cu-item">
+          <image class="cu-avatar radius lg" src="../../../images/dish4.jpg"></image>
+          <view class="content">
+            <view class="text-grey">绿豆汤</view>
+            <view class="text-gray text-sm flex">
+              <text class="text-cut margin-right-xs">
+                  <text>200克</text>
+              </text>
+            </view>
+          </view>
+          <view class="action">
+            <view class="text-grey text-xs">47千卡</view>
+            <view class="cu-tag round bg-white sm">3.00元</view>
+          </view>
+        </view>
+        <view class="cu-item">
+          <image class="cu-avatar radius lg" src="../../../images/dish4.jpg"></image>
+          <view class="content">
+            <view class="text-grey">绿豆汤</view>
+            <view class="text-gray text-sm flex">
+              <text class="text-cut margin-right-xs">
+                  <text>200克</text>
+              </text>
+            </view>
+          </view>
+          <view class="action">
+            <view class="text-grey text-xs">47千卡</view>
+            <view class="cu-tag round bg-white sm">3.00元</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="cu-list menu-avatar solid-bottom no-margin-top">
+        <view class="text-lg dinning-title-padding">
+          <text class="textblack text-bold">晚餐</text>
+        </view>
+        <view class="cu-item">
+          <image class="cu-avatar radius lg" src="../../../images/dish4.jpg"></image>
+          <view class="content">
+            <view class="text-grey">绿豆汤</view>
+            <view class="text-gray text-sm flex">
+              <text class="text-cut margin-right-xs">
+                  <text>200克</text>
+              </text>
+            </view>
+          </view>
+          <view class="action">
+            <view class="text-grey text-xs">47千卡</view>
+            <view class="cu-tag round bg-white sm">3.00元</view>
+          </view>
+        </view>
+      </view>
+
+
+    </view>
+  </view>
+
+</scroll-view>
