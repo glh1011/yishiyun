@@ -15,72 +15,144 @@
   <view class="register-form" hidden="{{num==0 ? '' : true}}">
     <form class="form" bindsubmit="registerSubmit">
       <!--手机号-->
-      <view class="phone-registerInputView margin-60 shadow bg-white">
+      <view class="phone-registerInputView margin-60 bg-white">
         <view class="icon-view">
-          <image class="icon-view-image" src="../../images/phone.png"></image>
+          <image class="icon-view-image" src="../../images/newphone.png"></image>
         </view>
-        <view class="margin-left-20">
-          <input bindinput="handleInputPhone" placeholder="请输入手机号"></input>
-        </view>
+        <input bindinput="handleInputPhone" placeholder="请输入手机号" placeholder-class="placeholderStyle"></input>
       </view>
       <!--验证码-->
-      <view class="check-registerInputView margin-20 shadow bg-white">
+      <view class="check-registerInputView margin-20 bg-white">
         <view class="icon-view">
-          <image class="icon-view-image" src="../../images/protect.png"></image>
+          <image class="icon-view-image" src="../../images/newprotect.png"></image>
         </view>
-        <view class="margin-left-20">
-          <input bindinput="handleCheckCode" placeholder="请输入验证码"></input>
-        </view>
+        <input bindinput="handleCheckCode" placeholder="请输入验证码" placeholder-class="placeholderStyle"></input>
         <view bindtap="onRefreshMcaptcha">
-          <canvas style="width:180rpx;height:80rpx;text-align:center;z-index:9999;margin-right:20rpx;" canvas-id="canvas"></canvas>
+          <canvas style="width:180rpx;height:80rpx;text-align:center;z-index:9999;" canvas-id="canvas"></canvas>
         </view>
       </view>
       <!--短信验证码-->
-      <view class="message-registerInputView margin-20 shadow bg-white">
+      <view class="message-registerInputView margin-20 bg-white">
         <view class="icon-view">
-          <image class="icon-view-image" src="../../images/message.png"></image>
+          <image class="icon-view-image" src="../../images/newmessage.png"></image>
         </view>
-        <view class="margin-left-20">
-          <input bindinput="handleVerificationCode" placeholder="请输入短信验证码"></input>
-        </view>
+        <input bindinput="handleVerificationCode" placeholder="请输入短信验证码" placeholder-class="placeholderStyle"></input>
         <view class="getMessageView">
           <button class="getMsnBtn bg-cyan" hover-class="registerBtn-hover" bindtap='doGetCode' disabled='{{disabled}}'>{{text}}</button>
         </view>
       </view>
       <!--密码-->
-      <view class="password-registerInputView margin-20 shadow bg-white">
+      <view class="password-registerInputView margin-20 bg-white">
         <view class="icon-view">
-          <image class="icon-view-image" src="../../images/password1.png"></image>
+          <image class="icon-view-image" src="../../images/newpassword.png"></image>
         </view>
-        <view class="margin-left-20">
-          <input bindinput="handleNewChanges" placeholder="请设置登录密码" password="true"></input>
-        </view>
+        <input bindinput="handleNewChanges" placeholder="请设置登录密码" password="true" placeholder-class="placeholderStyle"></input>
       </view>
       <!--密码确认-->
-      <view class="checkpassword-registerInputView margin-20 shadow bg-white">
+      <view class="checkpassword-registerInputView margin-20 bg-white">
         <view class="icon-view">
-          <image class="icon-view-image" src="../../images/showpassword .png"></image>
+          <image class="icon-view-image" src="../../images/neweye.png"></image>
         </view>
-        <view class="margin-left-20">
-          <input bindinput="handleNewChangesAgain" placeholder="请确认登录密码" password="true"></input>
-        </view>
+        <input bindinput="handleNewChangesAgain" placeholder="请确认登录密码" password="true" placeholder-class="placeholderStyle"></input>
       </view>
       <view class="registerBtnView">
-        <button class="registerBtn bg-cyan" hover-class="registerBtn-hover" form-type="submit" disabled='{{registerBtnDisabled}}'>立即注册</button>
+        <button class="register-Btn bg-cyan" hover-class="registerBtn-hover" form-type="submit" disabled='{{registerBtnDisabled}}'>立即注册</button>
       </view>
     </form>
   </view>
   <!--完善信息表单-->
   <view class="information-form" hidden="{{num==1 ? '' : true}}">
     <form class="form" bindsubmit="informationSubmit">
-      <text>information</text>
-      <button bindtap="numSteps">保存信息</button>
+      <!--昵称-->
+      <view class="nickName-informationInputView margin-60 bg-white">
+        <view class="icon-view">
+          <image class="icon-view-image" src="../../images/nickname.png"></image>
+        </view>
+        <input placeholder="请输入昵称" placeholder-class="placeholderStyle"></input>
+      </view>
+      <!--性别-->
+      <view class="gender-informationInputView margin-20 bg-white">
+        <view class="icon-view">
+          <image class="icon-view-image" src="../../images/gender.png"></image>
+        </view>
+        <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+          <view class="picker">
+            {{index?picker[index]:'请选择性别'}}
+          </view>
+        </picker>
+      </view>
+      <!--出生日期-->
+      <view class="birth-informationInputView margin-20 bg-white">
+        <view class="icon-view">
+          <image class="icon-view-image" src="../../images/birthday.png"></image>
+        </view>
+        <picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
+          <view class="picker">
+            {{date}}
+          </view>
+        </picker>
+      </view>
+      <!--身高-->
+      <view class="height-informationInputView margin-20 bg-white">
+        <view class="icon-view">
+          <image class="icon-view-image" src="../../images/height.png"></image>
+        </view>
+        <input placeholder="请输入您的身高" placeholder-class="placeholderStyle"></input>
+        <text class="kgicon">cm</text>
+      </view>
+      <!--体重-->
+      <view class="weight-informationInputView margin-20 bg-white">
+        <view class="icon-view">
+          <image class="icon-view-image" src="../../images/weight.png"></image>
+        </view>
+        <input placeholder="请输入您的体重" placeholder-class="placeholderStyle"></input>
+        <text class="kgicon">kg</text>
+      </view>
+      <!--运动量-->
+      <view class="sports-informationInputView margin-20 bg-white">
+        <view class="icon-view">
+          <image class="icon-view-image" src="../../images/runlog.png"></image>
+        </view>
+        <picker bindchange="SportPickerChange" value="{{sportindex}}" range="{{sportpicker}}">
+          <view class="picker">
+            {{sportindex?sportpicker[sportindex]:'选择您的运动量'}}
+          </view>
+        </picker>
+      </view>
+      <!--资料保存-->
+      <view class="saveBtnView">
+        <button class="save-Btn bg-cyan" hover-class="saveBtn-hover" form-type="submit" disabled='{{saveBtnDisabled}}'>保存</button>
+      </view>
     </form>
   </view>
   <!--绑定卡号表单-->
   <view class="bindic-form" hidden="{{num==2 ? '' : true}}">
     <form class="form" bindsubmit="informationSubmit">
-      <text>bindic</text>
+      <!--卡号-->
+      <view class="icInputView margin-60 bg-white">
+        <view class="icon-view">
+          <image class="icon-view-image" src="../../images/card.png"></image>
+        </view>
+        <input bindinput="handleInputIC" placeholder="请输入绑定卡号" placeholder-class="placeholderStyle"></input>
+      </view>
+      <!--姓名-->
+      <view class="icInputView margin-20 bg-white">
+        <view class="icon-view">
+          <image class="icon-view-image" src="../../images/nickname.png"></image>
+        </view>
+        <input bindinput="handleCheckCode" placeholder="请输入真实姓名" placeholder-class="placeholderStyle"></input>
+        <view bindtap="onRefreshMcaptcha">
+          <canvas style="width:180rpx;height:80rpx;text-align:center;z-index:9999;" canvas-id="canvas"></canvas>
+        </view>
+      </view>
+      <!--开始使用-->
+      <view class="beginBtnView">
+        <button class="begin-Btn bg-cyan" hover-class="beginBtn-hover" form-type="submit" disabled='{{beginBtnDisabled}}'>开始使用</button>
+      </view>
+      <view class="checkboxView">
+        <checkbox class="round cyan"></checkbox>
+        <text>我已阅读并同意使用服务协议</text>
+      </view>
     </form>
   </view>
 </view>

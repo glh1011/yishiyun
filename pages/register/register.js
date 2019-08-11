@@ -14,6 +14,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    picker: ['男', '女'],
+    sportpicker:['坐式生活方式：极少运动','轻微活动：日常活动','中等强度健身：每周3-4次','大强度健身：每周4次以上','专业运动员：每周6次以上运动'],
+    index: null,
+    sportindex:null,
     numList: [{
       name: '注册账户'
     }, {
@@ -21,7 +25,8 @@ Page({
     }, {
       name: '绑定餐卡'
     }],
-    num: 0,
+    num: 2,
+    date: '请选择生日',
     text: '获取验证码',
     currentTime: 61, //倒计时
     registerBtnDisabled: false, //立即注册按钮是否禁用
@@ -32,6 +37,26 @@ Page({
     code: '',
     NewChanges: '', //获取输入的登录密码
     NewChangesAgain: '' //获取再次输入的密码
+  },
+
+  SportPickerChange(e){
+    console.log(e);
+    this.setData({
+      sportindex: e.detail.value
+    })
+  },
+
+  PickerChange(e) {
+    console.log(e);
+    this.setData({
+      index: e.detail.value
+    })
+  },
+
+  DateChange(e) {
+    this.setData({
+      date: e.detail.value
+    })
   },
   /**
    * 获取手机号

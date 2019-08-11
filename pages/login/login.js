@@ -26,7 +26,7 @@ Page({
       disabled:true
     });
     if(account == '' || account == null){
-
+      
     }else if(password == '' || password == null){
 
     }else{
