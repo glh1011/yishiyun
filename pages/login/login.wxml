@@ -1,38 +1,38 @@
 <!--pages/login/login.wxml-->
+<import src="../../components/toast.wxml"/>
+<!-- is="toast" 匹配组件中的toast提示  如果用dialog的话这就是dialog -->
+<template is="toast" data="{{ ...$wux.toast }}"/>
 <view class="container">
   <!--logo-->
   <view class="login-icon">
-    <image class="login-image" src="../../images/logo.png"></image>
+    <image class="login-image"></image>
   </view>
   <view class="login-form">
-    <form class="form" bindsubmit="loginSubmit">
+    <!-- <form class="form" bindsubmit="loginSubmit"> -->
       <!--账户-->
-      <view class="account-loginInputView margin-60 shadow bg-white">
+      <view class="account-loginInputView margin-60 bg-white">
         <view class="icon-view">
-          <image class="icon-view-image" src="../../images/user.png"></image>
+          <image class="icon-view-image" src="../../images/username.png"></image>
         </view>
-        <view class="margin-left-20">
-          <input name="account" placeholder="请输入账号"></input>
-        </view>
+        <input bindinput="handleInputAccount" name="account" placeholder="请输入账号" placeholder-class="placeholderStyle"></input>
       </view>
       <!--密码-->
-      <view class="password-loginInputView margin-20 shadow bg-white">
+      <view class="password-loginInputView margin-20 bg-white">
         <view class="icon-view">
           <image class="icon-view-image" src="../../images/password.png"></image>
         </view>
-        <view class="margin-left-20">
-          <input name="password" placeholder="请输入密码"></input>
-        </view>
+        <input bindinput="handleInputPassword" password="true" name="password" placeholder="请输入密码" placeholder-class="placeholderStyle"></input>
       </view>
       <!--登录按钮-->
       <view class="loginBtnView">
-        <button class="loginBtn" hover-class="loginBtn-hover" form-type="submit" disabled='{{disabled}}'>立即登录</button>
+        <!-- <button class="loginBtn" hover-class="loginBtn-hover" form-type="submit" disabled='{{disabled}}'>立即登录</button> -->
+        <button class="loginBtn" hover-class="loginBtn-hover" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">立即登录</button>
       </view>
       <!--注册和忘记密码-->
       <view class="registerAndForget">
         <navigator class="forgetPassword" hover-class="navigator-hover-class">忘记密码</navigator>
         <navigator class="register" hover-class="navigator-hover-class" url="../register/register">立即注册</navigator>
       </view>
-    </form>
+    <!-- </form> -->
   </view>
 </view>

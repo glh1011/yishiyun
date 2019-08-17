@@ -1,51 +1,140 @@
 /* pages/register/register.wxss */
-page{
+
+page {
   background-color: #fff;
 }
 
-.container{
+.container {
   height: 100%;
   display: flex;
   flex-direction: column;
   padding: 0;
   box-sizing: border-box;
 }
+
 /*表单*/
-[class*="-form"]{
-  flex:auto;
+
+[class*="-form"] {
+  flex: auto;
   height: 100%;
-  width:90%;
-  margin:0 auto;
-  border-top:1px solid #d3d3d3;
+  width: 90%;
+  margin: 0 auto;
+  border-top: 1px solid #d3d3d3;
 }
 
-/*输入框*/
-
-[class*="-registerInputView"] {
-  width: 90%;
+/*绑定卡号*/
+[class*="icInputView"]{
+  width: 100%;
   height: 100rpx;
   margin: 0 auto;
-  border-radius: 50rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+[class*="icInputView"] input{
+  flex: 1;
+  font-size: 30rpx;
+  color: #555;
+  padding:0 20rpx;
+}
+
+/*注册输入框*/
+
+[class*="-registerInputView"] {
+  width: 100%;
+  height: 100rpx;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+[class*="-registerInputView"] input {
+  flex: 1;
+  font-size: 30rpx;
+  color: #555;
+  padding:0 20rpx;
+}
+
+.placeholderStyle{
+  color:#D6D6D6;
+}
+
+.kgicon{
+  font-size: 30rpx;
+  color:#fff;
+  background-color: #1cbbb4;
+  width:80rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+}
+
+/*完善信息输入框*/
+
+[class*="-informationInputView"] {
+  width: 100%;
+  height: 100rpx;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+[class*="-informationInputView"] input {
+  flex: 1;
+  font-size: 30rpx;
+  color: #555;
+  padding:0 20rpx;
+}
+
+[class*="-informationInputView"] picker {
+  flex: 1;
+  padding-right: 40rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+[class*="-informationInputView"] picker .picker{
+  line-height: 100rpx;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 100%;
+	text-align: left;
+  padding:0 20rpx;
+  font-size: 30rpx;
+  color: #555;
+}
+
+[class*="-informationInputView"] .title {
+  padding-right: 20rpx;
+  font-size: 35rpx;
+  height: 80rpx;
+  line-height: 80rpx;
 }
 
 .margin-60 {
-  margin-top: 60rpx;
+  margin-top: 30rpx;
 }
 
 .margin-20 {
-  margin-top: 20rpx;
+  margin-top: 15rpx;
 }
 
-.margin-left-20{
-  margin-left:20rpx;
+.margin-left-20 {
+  margin-left: 20rpx;
 }
 
 .icon-view {
-  margin-left: 50rpx;
-  border-right: 1px solid #d3d3d3;
+  margin-left: 10rpx;
+  /* border-right: 1px solid #d3d3d3; */
   padding-right: 20rpx;
 }
 
@@ -55,24 +144,46 @@ page{
 }
 
 /*获取验证码按钮*/
-.getMsnBtn{
+
+.getMsnBtn {
   color: #fff;
-  width:180rpx;
+  width: 180rpx;
   height: 60rpx;
   line-height: 60rpx;
   font-size: 25rpx;
   border-radius: 10rpx;
-  margin-right:20rpx;
+  margin-right: 20rpx;
 }
+
 /*注册按钮*/
-.registerBtn{
+
+[class*="-Btn"] {
   color: #fff;
-  width: 90%;
+  width: 100%;
   height: 80rpx;
   line-height: 80rpx;
   border-radius: 50rpx;
-  margin-top: 100rpx;
+  margin-top: 80rpx;
+  font-weight: bold;
 }
-.registerBtn-hover{
+
+[class*="Btn-hover"] {
   transform: translate(1rpx, 1rpx);
 }
+
+/*底部复选框*/
+.checkboxView{
+  width:80%;
+  height:80rpx;
+  margin:0 auto;
+  margin-top:20rpx;
+  text-align: center;
+}
+
+.checkboxView text{
+  margin-left:20rpx;
+  text-align: center;
+  color:rgb(173, 169, 169);
+}
+
+

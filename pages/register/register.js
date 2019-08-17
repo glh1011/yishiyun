@@ -14,6 +14,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    picker: ['男', '女'],
+    sportpicker: ['坐式生活方式：极少运动', '轻微活动：日常活动', '中等强度健身：每周3-4次', '大强度健身：每周4次以上', '专业运动员：每周6次以上运动'],
+    index: null,
+    sportindex: null,
     numList: [{
       name: '注册账户'
     }, {
@@ -22,6 +26,7 @@ Page({
       name: '绑定餐卡'
     }],
     num: 0,
+    date: '请选择生日',
     text: '获取验证码',
     currentTime: 61, //倒计时
     registerBtnDisabled: false, //立即注册按钮是否禁用
@@ -29,9 +34,29 @@ Page({
     phone: '', //获取到的手机栏中的值
     CheckCode: '', //获取到验证码
     Code: '', //输入的短信验证码，
-    code: '',
     NewChanges: '', //获取输入的登录密码
-    NewChangesAgain: '' //获取再次输入的密码
+    NewChangesAgain: '', //获取再次输入的密码
+    checkAgree: 0 //默认没有同意服务协议
+  },
+
+  SportPickerChange(e) {
+    console.log(e);
+    this.setData({
+      sportindex: e.detail.value
+    })
+  },
+
+  PickerChange(e) {
+    console.log(e);
+    this.setData({
+      index: e.detail.value
+    })
+  },
+
+  DateChange(e) {
+    this.setData({
+      date: e.detail.value
+    })
   },
   /**
    * 获取手机号
@@ -137,6 +162,21 @@ Page({
   },
 
   /**
+   * 同意协议事件
+   */
+  agreeCheckbox: function(e) {
+    if (e.detail.value = '') {
+      this.setData({
+        checkAgree: 0
+      })
+    } else {
+      this.setData({
+        checkAgree: 1
+      })
+    }
+  },
+
+  /**
    * 获得验证码按钮事件
    */
   doGetCode: function() {
@@ -167,7 +207,7 @@ Page({
           zhenzisms.client.sendCode(function(res) {
             console.log(res.data);
             //当手机号正确的时候提示用户短信验证码已经发送
-            that.showToastWindow('短信验证码已发送');
+            utils.showToastWindow('短信验证码已发送');
             //设置一分钟的倒计时
             that.data.interval = that.timer();
           }, phone, '验证码为:{code}', '1', 60 * 5, 6);
@@ -180,21 +220,10 @@ Page({
     }
   },
   /**
-   * 提示框函数
-   */
-  showToastWindow: function(title, icon = null, image = null) {
-    wx.showToast({
-      title: title,
-      icon: icon,
-      image: image,
-      duration: 2000
-    })
-  },
-  /**
    * 提示框+按钮不可用函数
    */
   buttonDisabled: function(title) {
-    this.showToastWindow(title);
+    utils.showToastWindow(title);
     this.setData({
       disabled: false
     })
@@ -222,7 +251,73 @@ Page({
       }
     }, 1000);
   },
+  /**
+   * 绑定卡号事件
+   */
+  bindIcSubmit: function(e) {
+    console.log(e);
+    var that = this;
+    var isCheck = that.data.checkAgree;
+    var _telephoneNumber = that.data.phone;
+    var _icNumber = e.detail.value.icnumber;
+    var _realName = e.detail.value.realname;
+    if (_icNumber == '' || _icNumber==null){
+      utils.showToastWindow('卡号不能为空!');
+      return;
+    } else if (_realName == '' || _realName == null){
+      utils.showToastWindow('请填写真实姓名!');
+      return;
+    } else if (isCheck == 0){
+      utils.showToastWindow('请先同意使用服务协议!')
+      return;
+    }else{
+      var data = {
+        telephoneNumber: _telephoneNumber,
+        icNumber: _icNumber
+      }
+      utils.bindIcNumber(data).then(res => {
+        console.log(res);
+        if (res.data.code == 200) {
+          utils.showToastWindow('绑定卡号成功');
+          //跳转登录页面
+          wx.redirectTo({
+            url: '/pages/login/login',
+          })
+        } else {
+        }
+      }, err => {
+        console.log(err);
+      })
+    }
+  },
 
+  /**
+   * 完善信息事件
+   */
+  informationSubmit: function(e) {
+    console.log(e);
+    var that = this;
+    var data = {
+      telephoneNumber: that.data.phone,
+      name: e.detail.value.nickname,
+      sex: e.detail.value.gender,
+      brith: e.detail.value.date,
+      hight: e.detail.value.height,
+      weight: e.detail.value.weight,
+      sportType: e.detail.value.sport
+    }
+    utils.perfectInfo(data).then(res => {
+      console.log(res);
+      if (res.data.code == 200) {
+        utils.showToastWindow('完善信息成功');
+        that.numSteps(); //步骤条数字加一
+      }
+
+    }, err => {
+      console.log(err);
+    })
+
+  },
   /**
    * 注册提交事件
    */
@@ -232,16 +327,16 @@ Page({
     var picCodeWarn = that.validatePicCode();
     var msgCodeWarn = that.validateMsgCode();
     if (picCodeWarn != '图形验证码正确') {
-      that.showToastWindow(picCodeWarn);
+      utils.showToastWindow(picCodeWarn);
       return;
     } else if (msgCodeWarn != '验证正确') {
-      that.showToastWindow(msgCodeWarn);
+      utils.showToastWindow(msgCodeWarn);
       return;
     } else if (that.data.NewChanges == '') {
-      that.showToastWindow('请输入密码');
+      utils.showToastWindow('请输入密码');
       return;
     } else if (that.data.NewChanges != that.data.NewChangesAgain) {
-      that.showToastWindow('两次密码不一致');
+      utils.showToastWindow('两次密码不一致');
       return;
     } else {
       var that = this;
@@ -254,7 +349,7 @@ Page({
       utils.registerRequest(data).then(res => {
         console.log(res);
         if (res.data.code == 200) {
-          that.showToastWindow('注册成功');
+          utils.showToastWindow('注册成功');
           that.numSteps(); //步骤条数字加一
         }
 

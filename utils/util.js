@@ -18,17 +18,29 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const showToastWindow = (title, icon = null, image = null) => {
+  wx.showToast({
+    title: title,
+    icon: icon,
+    image: image,
+    duration: 2000
+  })
+}
+
 /**
  * 对wx.request请求进行二次封装
  */
-const sendRequest = (url, method, data = {}, header = {}) => {
+
+const sendRequest = (url, method, data) => {
   let _url = API_BASE_URL + url
   return new Promise((resolve, reject) => {
     wx.request({
       url: _url,
       data: data,
       method: method,
-      header: header,
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
       success: res => {
         resolve(res);
       },
@@ -64,23 +76,38 @@ const initChart = (canvas, width, height, option, element) => {
 }
 
 module.exports = {
+  //提示框函数
+  showToastWindow: showToastWindow,
   formatTime: formatTime,
   initChart: initChart,
   //wx.request的二次封装
   sendRequest: sendRequest,
   //通过手机号查找用户是否存在
   queryUserByPhone: (data) => {
-    var header = { 'Content-Type': 'application/x-www-form-urlencoded'};
-    return sendRequest('api/user/verification','POST',data,header);
+    return sendRequest('api/user/verification', 'POST', data);
   },
   //注册请求
   registerRequest: (data) => {
-    var header = { 'Content-Type': 'application/x-www-form-urlencoded'};
-    return sendRequest('api/user/register','POST',data,header);
+    return sendRequest('api/user/registerUser', 'POST', data);
+  },
+  //微信授权请求
+  wxloginRequest:(data) => {
+    return sendRequest('api/wexin/WeXinLogin','POST',data);
   },
   //登录请求
   loginRequest: (data) => {
-    var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
-    return sendRequest('', 'POST', data, header);
+    return sendRequest('api/user/login', 'POST', data);
+  },
+  //登录态判断
+  checkToken: (data) => {
+    return sendRequest('','POST',data);
+  },
+  //完善信息请求
+  perfectInfo:(data)=>{
+    return sendRequest('api/user/perfectUser','POST',data);
+  },
+  //绑定卡号请求
+  bindIcNumber:(data)=>{
+    return sendRequest('api/user/bindingIC','POST',data);
   }
 }
