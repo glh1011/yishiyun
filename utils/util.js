@@ -69,7 +69,7 @@ module.exports = {
   },
   //登录请求
   loginRequest: (data) => {
-    return sendRequest('', 'POST', data);
+    return sendRequest('api/user/login', 'POST', data);
   },
   //登录态判断
   checkToken: (data) => {

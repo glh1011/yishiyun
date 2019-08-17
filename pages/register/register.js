@@ -25,13 +25,13 @@ Page({
     }, {
       name: '绑定餐卡'
     }],
-    num: 2,
+    num: 0,
     date: '请选择生日',
     text: '获取验证码',
     currentTime: 61, //倒计时
     registerBtnDisabled: false, //立即注册按钮是否禁用
     disabled: true, //获取验证码按钮是否禁用
-    phone: '15002942176', //获取到的手机栏中的值
+    phone: '', //获取到的手机栏中的值
     CheckCode: '', //获取到验证码
     Code: '', //输入的短信验证码，
     NewChanges: '', //获取输入的登录密码

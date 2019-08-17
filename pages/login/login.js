@@ -100,9 +100,11 @@ Page({
         password: password
       }
       utils.loginRequest(data).then(res => {
+        console.log(res);
         wx.hideLoading();
         //登录成功
         if(res.data.code == 200){
+          console.log("登录成功!!")
           //后台传过来的登录态标识符token
           var token = res.data.data.token;
           //将token存储到全局变量和本地缓存中
