@@ -68,14 +68,14 @@
         <view class="icon-view">
           <image class="icon-view-image" src="../../images/nickname.png"></image>
         </view>
-        <input placeholder="请输入昵称" placeholder-class="placeholderStyle"></input>
+        <input name="nickname" placeholder="请输入昵称" placeholder-class="placeholderStyle"></input>
       </view>
       <!--性别-->
       <view class="gender-informationInputView margin-20 bg-white">
         <view class="icon-view">
           <image class="icon-view-image" src="../../images/gender.png"></image>
         </view>
-        <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+        <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}" name="gender">
           <view class="picker">
             {{index?picker[index]:'请选择性别'}}
           </view>
@@ -86,7 +86,7 @@
         <view class="icon-view">
           <image class="icon-view-image" src="../../images/birthday.png"></image>
         </view>
-        <picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
+        <picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange" name="date">
           <view class="picker">
             {{date}}
           </view>
@@ -97,7 +97,7 @@
         <view class="icon-view">
           <image class="icon-view-image" src="../../images/height.png"></image>
         </view>
-        <input placeholder="请输入您的身高" placeholder-class="placeholderStyle"></input>
+        <input name="height" placeholder="请输入您的身高" placeholder-class="placeholderStyle"></input>
         <text class="kgicon">cm</text>
       </view>
       <!--体重-->
@@ -105,7 +105,7 @@
         <view class="icon-view">
           <image class="icon-view-image" src="../../images/weight.png"></image>
         </view>
-        <input placeholder="请输入您的体重" placeholder-class="placeholderStyle"></input>
+        <input name="weight" placeholder="请输入您的体重" placeholder-class="placeholderStyle"></input>
         <text class="kgicon">kg</text>
       </view>
       <!--运动量-->
@@ -113,7 +113,7 @@
         <view class="icon-view">
           <image class="icon-view-image" src="../../images/runlog.png"></image>
         </view>
-        <picker bindchange="SportPickerChange" value="{{sportindex}}" range="{{sportpicker}}">
+        <picker bindchange="SportPickerChange" value="{{sportindex}}" range="{{sportpicker}}" name="sport">
           <view class="picker">
             {{sportindex?sportpicker[sportindex]:'选择您的运动量'}}
           </view>
@@ -127,20 +127,20 @@
   </view>
   <!--绑定卡号表单-->
   <view class="bindic-form" hidden="{{num==2 ? '' : true}}">
-    <form class="form" bindsubmit="informationSubmit">
+    <form class="form" bindsubmit="bindIcSubmit">
       <!--卡号-->
       <view class="icInputView margin-60 bg-white">
         <view class="icon-view">
           <image class="icon-view-image" src="../../images/card.png"></image>
         </view>
-        <input bindinput="handleInputIC" placeholder="请输入绑定卡号" placeholder-class="placeholderStyle"></input>
+        <input name="icnumber" bindinput="handleInputIC" placeholder="请输入绑定卡号" placeholder-class="placeholderStyle"></input>
       </view>
       <!--姓名-->
       <view class="icInputView margin-20 bg-white">
         <view class="icon-view">
           <image class="icon-view-image" src="../../images/nickname.png"></image>
         </view>
-        <input bindinput="handleCheckCode" placeholder="请输入真实姓名" placeholder-class="placeholderStyle"></input>
+        <input name="realname" bindinput="handleCheckCode" placeholder="请输入真实姓名" placeholder-class="placeholderStyle"></input>
         <view bindtap="onRefreshMcaptcha">
           <canvas style="width:180rpx;height:80rpx;text-align:center;z-index:9999;" canvas-id="canvas"></canvas>
         </view>
@@ -149,10 +149,12 @@
       <view class="beginBtnView">
         <button class="begin-Btn bg-cyan" hover-class="beginBtn-hover" form-type="submit" disabled='{{beginBtnDisabled}}'>开始使用</button>
       </view>
-      <view class="checkboxView">
-        <checkbox class="round cyan"></checkbox>
-        <text>我已阅读并同意使用服务协议</text>
-      </view>
+      <checkbox-group bindchange="agreeCheckbox">
+        <view class="checkboxView">
+          <checkbox class="round cyan" value="agree"></checkbox>
+          <text>我已阅读并同意使用服务协议</text>
+        </view>
+      </checkbox-group>
     </form>
   </view>
 </view>

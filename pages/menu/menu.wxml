@@ -1,0 +1,10 @@
+<!--pages/menu/menu.wxml-->
+<cu-custom bgColor="bg-cyan" isBack="{{false}}">
+  <view slot="content">菜单</view>
+</cu-custom>
+<view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="搜索icon" confirm-type="search" bindinput="searchIcon"></input>
+  </view>
+</view>

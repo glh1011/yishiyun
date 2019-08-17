@@ -1,4 +1,5 @@
 //app.js
+import wux from 'components/wux'
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -42,7 +43,11 @@ App({
       }
     })
   },
+  // 通过scope来引入wux函数
+  wux: (scope) => new wux(scope),
   globalData: {
     userInfo: null,
+    token:'',
+    userId:''
   }
 })
