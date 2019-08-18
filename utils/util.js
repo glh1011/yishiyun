@@ -100,7 +100,7 @@ module.exports = {
   },
   //登录态判断
   checkToken: (data) => {
-    return sendRequest('','POST',data);
+    return sendRequest('api/user/checkToken','POST',data);
   },
   //完善信息请求
   perfectInfo:(data)=>{

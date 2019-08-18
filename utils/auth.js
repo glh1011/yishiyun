@@ -1,6 +1,9 @@
 //获取工具类
 const utils = require('util.js');
 
+//获取应用实例
+const app = getApp();
+
 // 检测登录状态，返回 true / false
 async function checkHasLogined() {
   const token = wx.getStorageSync('token')
@@ -17,8 +20,9 @@ async function checkHasLogined() {
     token:token
   }
   const checkTokenRes = await utils.checkToken(data)
+  console.log(checkTokenRes);
   //token已经过期了，返回false
-  if (checkTokenRes.code != 0) {
+  if (checkTokenRes.data.code != 201) {
     wx.removeStorageSync('token')
     return false
   }
@@ -45,13 +49,14 @@ async function wxlogin(){
             }
             utils.wxloginRequest(data).then(res => {
               console.log(res);
-              if (res.result == 0) {
+              if (res.data.code == 200) {
                 //将微信用户信息保存在全局变量和本地缓存中
-                that.globalData.userInfo = res.userInfo;
-                wx.setStorageSync('userInfo', JSON.stringify(res.userInfo));
+                console.log(JSON.stringify(res.data.data.userInfo));
+                app.globalData.userInfo = res.data.data.userInfo;
+                wx.setStorageSync('userInfo', JSON.stringify(res.data.data.userInfo));
                 //将代表微信用户的唯一userid保存在全局变量和本地缓存中
-                that.globalData.userId = res.userId;
-                wx.setStorageSync('userId', res.userId)
+                app.globalData.userId = res.data.data.skey;
+                wx.setStorageSync('userId', res.data.data.skey)
               } else {
                 console.log('res error');
               } 

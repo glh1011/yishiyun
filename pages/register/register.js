@@ -273,7 +273,8 @@ Page({
     }else{
       var data = {
         telephoneNumber: _telephoneNumber,
-        icNumber: _icNumber
+        icNumber: _icNumber,
+        userName:_realName
       }
       utils.bindIcNumber(data).then(res => {
         console.log(res);

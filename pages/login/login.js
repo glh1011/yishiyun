@@ -104,6 +104,7 @@ Page({
         wx.hideLoading();
         //登录成功
         if(res.data.code == 200){
+          console.log(res);
           console.log("登录成功!!")
           //后台传过来的登录态标识符token
           var token = res.data.data.token;
