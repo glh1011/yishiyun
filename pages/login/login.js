@@ -14,6 +14,8 @@ Page({
    */
   data: {
     disabled:false,
+    remind: '加载中',
+    angle: 0,
     account:'',
     password:''
   },
@@ -40,18 +42,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.$wuxToast = app.wux(this).$wuxToast
   },
 
   onGotUserInfo(e) {
     if (!e.detail.userInfo) {
-      this.$wuxToast.show({
-        type: 'cancel',
-        timer: 1000,
-        color: '#fff',
-        text: "拒绝授权将无法登录，请授权!",
-        success: () => console.log('拒绝授权将无法登录，请授权!')
-      })
+      utils.showToastWindow("拒绝授权将无法登录，请授权!");
       return;
     }else{
       console.log(e.detail.userInfo);
@@ -72,23 +67,10 @@ Page({
     var account = that.data.account;
     var password = that.data.password;
     if (account == '' || account == null) {
-      this.$wuxToast.show({
-        type: 'cancel',
-        timer: 1000,
-        color: '#fff',
-        text: "用户名不能为空！",
-        success: () => console.log('用户名不能为空！')
-      })
+      utils.showToastWindow("用户名不能为空!");
       return;
     } else if (password == '' || password == null) {
-
-      that.$wuxToast.show({
-        type: 'cancel',
-        timer: 1000,
-        color: '#fff',
-        text: "密码不能为空！",
-        success: () => console.log('密码不能为空！')
-      })
+      utils.showToastWindow("密码不能为空!");
       return;
     } else {
       //加载提示框
@@ -117,23 +99,11 @@ Page({
             url: '/pages/index/index',
           })
         }else{
-          that.$wuxToast.show({
-            type: 'cancel',
-            timer: 1000,
-            color: '#fff',
-            text: "账号或者密码错误,请重新输入!",
-            success: () => console.log('账号或者密码错误,请重新输入!')
-          })
+          utils.showToastWindow("账号或者密码错误,请重新输入!");
           return;
         }
       }, err => {
-        that.$wuxToast.show({
-          type: 'text',
-          timer: 1000,
-          color: '#fff',
-          text: "登录失败,请稍后重试！",
-          success: () => console.log('登录失败,请稍后重试！')
-        })
+        utils.showToastWindow("登录失败,请稍后重试!");
         return;
       })
     }
@@ -143,6 +113,22 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    var that = this;
+    setTimeout(function () {
+      that.setData({
+        remind: ''
+      });
+    }, 1000);
+    wx.onAccelerometerChange(function (res) {
+      var angle = -(res.x * 30).toFixed(1);
+      if (angle > 14) { angle = 14; }
+      else if (angle < -14) { angle = -14; }
+      if (that.data.angle !== angle) {
+        that.setData({
+          angle: angle
+        });
+      }
+    });
   },
 
   /**

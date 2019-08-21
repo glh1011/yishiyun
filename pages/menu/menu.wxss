@@ -1,1 +1,46 @@
 /* pages/menu/menu.wxss */
+
+page {
+  height: 100%;
+  background-color: #fff;
+  /* overflow: hidden; */
+}
+
+.header {
+  padding-top: 20rpx;
+  border: 1px solid #d3d3d3;
+}
+
+.menu-container {
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.left-view {
+  width: 20%;
+  height: 200rpx;
+}
+
+.right-view {
+  width: 80%;
+  height: 200rpx;
+}
+
+.food-pic {
+  width: 100%;
+  height: 100%;
+  /* margin:30rpx 20rpx 0 20rpx; */
+}
+
+.food-item {
+  width: 740rpx;
+  margin: 7rpx 0 6rpx 0;
+  background: #fff;
+  border-top: solid 1px #eee;
+  border-bottom: solid 1px #eee;
+  box-shadow: 0 2rpx 5rpx #eee;
+}

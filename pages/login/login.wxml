@@ -1,38 +1,41 @@
 <!--pages/login/login.wxml-->
-<import src="../../components/toast.wxml"/>
-<!-- is="toast" 匹配组件中的toast提示  如果用dialog的话这就是dialog -->
-<template is="toast" data="{{ ...$wux.toast }}"/>
-<view class="container">
-  <!--logo-->
-  <view class="login-icon">
-    <image class="login-image"></image>
+<view class="container" style='background:#1cbbb4;'>
+  <view class="remind-box" wx:if="{{remind}}">
+    <image class="remind-img" src="../../images/loading.gif"></image>
   </view>
-  <view class="login-form">
-    <!-- <form class="form" bindsubmit="loginSubmit"> -->
-      <!--账户-->
-      <view class="account-loginInputView margin-60 bg-white">
-        <view class="icon-view">
-          <image class="icon-view-image" src="../../images/username.png"></image>
+  <block wx:else>
+    <image class="title" src="../../images/title8.png"></image>
+    <view class="content">
+      <view class="hd" style="transform:rotateZ({{angle}}deg);">
+        <open-data class='logo' type="userAvatarUrl"></open-data>
+        <image class="wave" src="../../images/wave.png" mode="aspectFill"></image>
+        <image class="wave wave-bg" src="../../images/wave.png" mode="aspectFill"></image>
+      </view>
+      <view class="bd">
+        <view class="account-loginInputView margin-20">
+          <view class="icon-view">
+            <image class="icon-view-image" src="../../images/username.png"></image>
+          </view>
+          <input bindinput="handleInputAccount" name="account" placeholder="请输入账号" placeholder-class="placeholderStyle"></input>
         </view>
-        <input bindinput="handleInputAccount" name="account" placeholder="请输入账号" placeholder-class="placeholderStyle"></input>
-      </view>
-      <!--密码-->
-      <view class="password-loginInputView margin-20 bg-white">
-        <view class="icon-view">
-          <image class="icon-view-image" src="../../images/password.png"></image>
+        <view class="password-loginInputView margin-20">
+          <view class="icon-view">
+            <image class="icon-view-image" src="../../images/password.png"></image>
+          </view>
+          <input bindinput="handleInputPassword" password="true" name="password" placeholder="请输入密码" placeholder-class="placeholderStyle"></input>
         </view>
-        <input bindinput="handleInputPassword" password="true" name="password" placeholder="请输入密码" placeholder-class="placeholderStyle"></input>
+        <!--登录按钮-->
+        <view class="loginBtnView">
+          <!-- <button class="loginBtn" hover-class="loginBtn-hover" form-type="submit" disabled='{{disabled}}'>立即登录</button> -->
+          <button class="loginBtn" hover-class="loginBtn-hover" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">立即登录</button>
+        </view>
+        <!--注册和忘记密码-->
+        <view class="registerAndForget">
+          <navigator class="forgetPassword" hover-class="navigator-hover-class">忘记密码</navigator>
+          <navigator class="register" hover-class="navigator-hover-class" url="../register/register">立即注册</navigator>
+        </view>
+        <text class="copyright">© 2019 僮健科技 倾情巨献</text>
       </view>
-      <!--登录按钮-->
-      <view class="loginBtnView">
-        <!-- <button class="loginBtn" hover-class="loginBtn-hover" form-type="submit" disabled='{{disabled}}'>立即登录</button> -->
-        <button class="loginBtn" hover-class="loginBtn-hover" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">立即登录</button>
-      </view>
-      <!--注册和忘记密码-->
-      <view class="registerAndForget">
-        <navigator class="forgetPassword" hover-class="navigator-hover-class">忘记密码</navigator>
-        <navigator class="register" hover-class="navigator-hover-class" url="../register/register">立即注册</navigator>
-      </view>
-    <!-- </form> -->
-  </view>
+    </view>
+  </block>
 </view>
