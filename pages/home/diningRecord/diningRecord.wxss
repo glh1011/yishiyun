@@ -7,8 +7,8 @@
   color: #3B3B3B;
   font-size: 26rpx;
   line-height: 36rpx;
-  padding: 5rpx 10rpx;
-  border-radius: 10rpx;
+  padding: 10rpx 15rpx;
+  border-radius: 12rpx;
 }
 .dinning-title-padding {
   padding: 30rpx 0 20rpx 40rpx;

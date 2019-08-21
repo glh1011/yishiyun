@@ -12,11 +12,8 @@
     "pages/home/purchaseHistory/purchaseHistory"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "white",
-    "navigationBarBackgroundColor": "#1cbbb4",
-    "backgroundColor": "#1cbbb4"
+    "navigationStyle": "default",
+    "navigationBarBackgroundColor": "#28B8A1"
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"

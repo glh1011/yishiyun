@@ -1,6 +1,3 @@
-<cu-custom bgColor="bg-gradual-cyan" isBack="{{true}}">
-  <view slot="backText">返回</view><view slot="content">今日营养</view>
-</cu-custom>
 <scroll-view scroll-y class="scrollPage">
   <view class="flex padding justify-center">
     <view class="radius text-lg" >
@@ -22,8 +19,7 @@
     <view class="cu-item shadow bg-white" style="margin:5rpx 60rpx">
       <view class="flex justify-center">
         <view class="container">
-          <image wx:if="{{calorieEchartImgSrc!==''}}" mode="widthFix" src="{{calorieEchartImgSrc}}"></image>
-            <ec-canvas id="mychart-dom-pie-calorie" wx:if="{{calorieEchartImgSrc===''}}" canvas-id="mychart-pie-calorie" ec="{{ec}}" bind:init="calorieEchartInit"></ec-canvas>
+          <canvas canvas-id="calorieCanvas" id="calorieCanvas" class="charts" touchstart="touchRing"></canvas>
         </view>
       </view>
       <view class="flex justify-center">
@@ -33,11 +29,29 @@
             <view class="padding solid-bottom">摄入(kcal)</view>
             <view class="padding solid-bottom">推荐(kcal)</view>
             <view class="padding solid-bottom">早餐</view>
-            <view class="padding solid-bottom"><text class="cuIcon-check lg text-cyan"></text>200</view>
-            <view class="padding solid-bottom">422~591</view>
+            <view class="padding solid-bottom">
+              <template is="upOrDown" data="{{sign:calorieReal.breakfastSign}}"></template>
+              {{calorieReal.breakfast}}
+            </view>
+            <view class="padding solid-bottom">{{calorieAdvise.breakfast}}</view>
+            <view class="padding solid-bottom">午餐</view>
+            <view class="padding solid-bottom">
+              <template is="upOrDown" data="{{sign:calorieReal.lunchSign}}"></template>
+              {{calorieReal.lunch}}
+            </view>
+            <view class="padding solid-bottom">{{calorieAdvise.lunch}}</view>
+            <view class="padding solid-bottom">晚餐</view>
+            <view class="padding solid-bottom">
+              <template is="upOrDown" data="{{sign:calorieReal.dinnerSign}}"></template>
+              {{calorieReal.dinner}}
+            </view>
+            <view class="padding solid-bottom">{{calorieAdvise.dinner}}</view>
             <view class="padding">总摄入</view>
-            <view class="padding"><text class="cuIcon-check lg text-cyan"></text>1304</view>
-            <view class="padding">1422~1591</view>
+            <view class="padding">
+              <template is="upOrDown" data="{{sign:calorieReal.sumEnergySign}}"></template>
+              {{calorieReal.sumEnergy}}
+            </view>
+            <view class="padding">{{calorieAdvise.sumEnergy}}</view>
           </view>
         </view>
       </view>
@@ -54,8 +68,7 @@
     <view class="cu-item shadow bg-white" style="margin:5rpx 60rpx">
       <view class="flex justify-center">
         <view class="container">
-          <image wx:if="{{mainNutritionEchartImgSrc!==''}}" mode="widthFix" src="{{mainNutritionEchartImgSrc}}"></image>
-          <ec-canvas id="mychart-dom-pie-mainNutrition" wx:if="{{mainNutritionEchartImgSrc===''}}" canvas-id="mychart-pie-mainNutrition" ec="{{ec}}" bind:init="mainNutritionEchartInit"></ec-canvas>
+          <canvas canvas-id="nutritionCanvas" id="nutritionCanvas" class="charts" touchstart="touchRing"></canvas>
         </view>
       </view>
       <view class="flex justify-center">
@@ -65,14 +78,23 @@
             <view class="padding solid-bottom">摄入(g)</view>
             <view class="padding solid-bottom">推荐(g)</view>
             <view class="padding solid-bottom">脂肪</view>
-            <view class="padding solid-bottom"><text class="cuIcon-check lg text-cyan"></text>20.5</view>
-            <view class="padding solid-bottom">42~59</view>
+            <view class="padding solid-bottom">
+              <template is="upOrDown" data="{{sign:mainNutritionReal.fatSign}}"></template>
+              {{mainNutritionReal.fat}}
+            </view>
+            <view class="padding solid-bottom">{{mainNutritionAdvise.fat}}</view>
             <view class="padding solid-bottom">蛋白质</view>
-            <view class="padding solid-bottom"><text class="cuIcon-check lg text-cyan"></text>78.9</view>
-            <view class="padding solid-bottom">47~78</view>
+            <view class="padding solid-bottom">
+              <template is="upOrDown" data="{{sign:mainNutritionReal.proteinSign}}"></template>
+              {{mainNutritionReal.protein}}
+            </view>
+            <view class="padding solid-bottom">{{mainNutritionAdvise.protein}}</view>
             <view class="padding">碳水</view>
-            <view class="padding"><text class="cuIcon-check lg text-cyan"></text>180</view>
-            <view class="padding">190~279</view>
+            <view class="padding">
+              <template is="upOrDown" data="{{sign:mainNutritionReal.carbohydrateSign}}"></template>
+              {{mainNutritionReal.carbohydrate}}
+            </view>
+            <view class="padding">{{mainNutritionAdvise.carbohydrate}}</view>
           </view>
         </view>
       </view>
@@ -86,49 +108,43 @@
     </view>
   </view>
   <view class="cu-card case">
-  <view class="cu-item shadow bg-white" style="margin:5rpx 60rpx 60rpx">
-    <view class="grid col-3 margin-bottom margin-top text-center">
-      <view class="padding solid-bottom">名称</view>
-      <view class="padding solid-bottom">摄入量</view>
-      <view class="padding solid-bottom">推荐</view>
-      <view class="padding solid-bottom">膳食纤维</view>
-      <view class="padding solid-bottom"><text class="cuIcon-check lg text-cyan"></text>1.8克</view>
-      <view class="padding solid-bottom">25.0克</view>
-      <view class="padding solid-bottom">钠</view>
-      <view class="padding solid-bottom"><text class="cuIcon-top lg text-red"></text>0.24克</view>
-      <view class="padding solid-bottom">1.5克</view>
-      <view class="padding solid-bottom">钙</view>
-      <view class="padding solid-bottom"><text class="cuIcon-refresharrow lg text-orange"></text>0.24克</view>
-      <view class="padding solid-bottom">1.5克</view>
-      <view class="padding solid-bottom">铁</view>
-      <view class="padding solid-bottom">0.24克</view>
-      <view class="padding solid-bottom">1.5克</view>
-      <view class="padding solid-bottom">钾</view>
-      <view class="padding solid-bottom">0.24克</view>
-      <view class="padding solid-bottom">1.5克</view>
-
-      <view class="padding solid-bottom">名称</view>
-      <view class="padding solid-bottom">摄入量</view>
-      <view class="padding solid-bottom">推荐</view>
-      <view class="padding solid-bottom">膳食纤维</view>
-      <view class="padding solid-bottom"><text class="cuIcon-check lg text-cyan"></text>1.8克</view>
-      <view class="padding solid-bottom">25.0克</view>
-      <view class="padding solid-bottom">钠</view>
-      <view class="padding solid-bottom"><text class="cuIcon-top lg text-red"></text>0.24克</view>
-      <view class="padding solid-bottom">1.5克</view>
-      <view class="padding solid-bottom">钙</view>
-      <view class="padding solid-bottom"><text class="cuIcon-refresharrow lg text-orange"></text>0.24克</view>
-      <view class="padding solid-bottom">1.5克</view>
-      <view class="padding solid-bottom">铁</view>
-      <view class="padding solid-bottom">0.24克</view>
-      <view class="padding solid-bottom">1.5克</view>
-      <view class="padding">钾</view>
-      <view class="padding">0.24克</view>
-      <view class="padding">1.5克</view>
-
+    <view class="cu-item shadow bg-white" style="margin:5rpx 60rpx 60rpx">
+      <view class="grid col-3 margin-bottom margin-top text-center">
+        <view class="padding solid-bottom">名称</view>
+        <view class="padding solid-bottom">摄入量</view>
+        <view class="padding solid-bottom">推荐</view>
+        <view class="padding solid-bottom">膳食纤维</view>
+        <view class="padding solid-bottom">
+          <template is="upOrDown" data="{{sign:otherNutritionReal.dietaryFiberSign}}"></template>
+          {{otherNutritionReal.dietaryFiber}}
+        </view>
+        <view class="padding solid-bottom">{{otherNutritionAdvise.dietaryFiber}}</view>
+        <view class="padding solid-bottom">钠</view>
+        <view class="padding solid-bottom">
+          <template is="upOrDown" data="{{sign:otherNutritionReal.saltSign}}"></template>
+          {{otherNutritionReal.salt}}
+        </view>
+        <view class="padding solid-bottom">{{otherNutritionAdvise.salt}}</view>
+        <view class="padding solid-bottom">胆固醇</view>
+        <view class="padding solid-bottom">
+          <template is="upOrDown" data="{{sign:otherNutritionReal.cholesterolSign}}"></template>
+          {{otherNutritionReal.cholesterol}}
+          </view>
+        <view class="padding solid-bottom">{{otherNutritionAdvise.cholesterol}}</view>
+        <view class="padding">维生素</view>
+        <view class="padding">
+          <template is="upOrDown" data="{{sign:otherNutritionReal.vitaminSign}}"></template>
+          {{otherNutritionReal.vitamin}}
+        </view>
+        <view class="padding">{{otherNutritionAdvise.vitamin}}</view>
+      </view>
+    
     </view>
-     
-   
   </view>
-</view>
 </scroll-view>
+
+<template name="upOrDown">
+  <text wx:if="{{sign === 1}}" class="cuIcon-top lg text-red"></text>
+  <text wx:if="{{sign === 0}}" class="cuIcon-check lg text-cyan"></text>
+  <text wx:if="{{sign === -1}}" class="cuIcon-refresharrow lg text-orange"></text>
+</template>

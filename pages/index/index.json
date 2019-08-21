@@ -3,5 +3,6 @@
     "home": "/pages/home/home/home",
     "menu":"/pages/menu/menu",
     "user": "/pages/user/myself/myself"
-  }
+  },
+  "navigationStyle": "custom"
 }
