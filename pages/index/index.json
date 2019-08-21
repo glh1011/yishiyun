@@ -2,5 +2,6 @@
   "usingComponents": {
     "home": "/pages/home/home/home",
     "user": "/pages/user/myself/myself"
-  }
+  },
+  "navigationStyle": "custom"
 }

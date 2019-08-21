@@ -1,5 +1,4 @@
 const API_BASE_URL = 'https://mlquan.picp.vip/';
-import * as echarts from '../ec-canvas/echarts';
 
 const formatTime = date => {
   const year = date.getFullYear()
@@ -39,33 +38,8 @@ const sendRequest = (url, method, data = {}, header = {}) => {
   })
 }
 
-const initChart = (canvas, width, height, option, element) => {
-  const chart = echarts.init(canvas, null, {
-    width: width,
-    height: height
-  });
-  canvas.setChart(chart);
-  chart.setOption(option);
-  if(element){
-    return new Promise((resolve, reject) => {
-      chart.on('finished', () => {
-        element.canvasToTempFilePath({
-          success: res => {
-            resolve(res);
-          },
-          fail: res => {
-            reject(res);
-          }
-        })
-      })
-    })
-  }
-  // return chart;
-}
-
 module.exports = {
   formatTime: formatTime,
-  initChart: initChart,
   //wx.request的二次封装
   sendRequest: sendRequest,
   //通过手机号查找用户是否存在
@@ -82,5 +56,35 @@ module.exports = {
   loginRequest: (data) => {
     var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
     return sendRequest('', 'POST', data, header);
-  }
+  },
+  //首页今日摄入量分析获取
+  queryIntake: (data) => {
+    var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
+    return sendRequest('api/homePage/calorieAnalyze', 'POST', data, header);
+  },
+  //首页用户最近一次就餐记录获取
+  queryLastEatLog: (data) => {
+    var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
+    return sendRequest('api/homePage/lastEatLog', 'POST', data, header);
+  },
+  //首页最受欢迎菜品获取
+  queryMostLike: () => {
+    var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
+    return sendRequest('api/homePage/likedDish', 'POST', header);
+  },
+  //用户就餐记录获取
+  queryEatLog: (data) => {
+    var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
+    return sendRequest('api/consumptionLog/EatLogByDay', 'POST', data, header);
+  },
+  //营养分析
+  queryTrophicAnalysis: (data) => {
+    var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
+    return sendRequest('api/trophicAnalysis/taByday', 'POST', data, header);
+  },
+  //消费记录
+  queryEatLogByMonth: (data) => {
+    var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
+    return sendRequest('api/consumptionLog/EatLogByMonth', 'POST', data, header);
+  },
 }

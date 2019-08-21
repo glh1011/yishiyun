@@ -4,5 +4,4 @@
 .scrollPage {
   height: 100vh;
   background: #fff;
-  /* margin-bottom: 50px; */
 }
