@@ -1,4 +1,3 @@
-/* pages/home/home/home.wxss */
 .title-padding {
   padding: 100rpx 0 0 50rpx;
 }
@@ -7,9 +6,10 @@
   width: 300rpx;
   z-index: 100;
 }
-ec-canvas {
-  width: 100%;
-  height: 100%;
+.charts {
+  height: 300rpx;
+  width: 300rpx;
+  background-color: #FFFFFF;
 }
 .more-icon-container{
   font-size: 28rpx;
@@ -53,10 +53,12 @@ ec-canvas {
   font-weight: 300;
 }
 .nav-name, .nav-name1 {
-  font-size: 46rpx;
+  font-size: 50rpx;
   text-transform: Capitalize;
   margin-top: 20rpx;
   position: relative;
+  font-family:'Courier New', Courier, monospace;
+  font-weight: 700;
 }
 .nav-name::after {
   content: "千卡";
@@ -99,5 +101,5 @@ ec-canvas {
   font-weight: 700;
 }
 .menu-container {
-  margin-bottom: 120rpx;
+  margin-bottom: 50rpx;
 }

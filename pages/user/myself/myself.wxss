@@ -1,5 +1,4 @@
 .userinfo {
-  /* background-color: #28B8A1; */
   width: 100%;
   height: 300rpx;
   color: #fff;
@@ -32,4 +31,11 @@
 }
 .item-right-icon{
   float: right;
+}
+.margin-bottom-xxl{
+  margin-bottom: 100rpx;
+}
+.font-family-reset{
+  font-family:'Courier New', Courier, monospace;
+  font-weight: 700;
 }

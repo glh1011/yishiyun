@@ -1,14 +1,13 @@
 .container {
   margin: 20rpx 0;
-  height: 350rpx;
-  width: 600rpx;
-  z-index: 100;
+  height: 500rpx;
+  width: 750rpx;
 }
-ec-canvas {
-  width: 100%;
-  height: 100%;
+.charts {
+  height: 500rpx;
+  width: 750rpx;
+  background-color: #FFFFFF;
 }
-
 .detail-panel {
   width:90%; 
   background-color: #F6F7FB; 
