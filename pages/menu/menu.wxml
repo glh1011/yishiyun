@@ -1,12 +1,5 @@
 <!--pages/menu/menu.wxml-->
-
-
 <import src="../../templates/food-item/food-item.wxml" />
-
-
-<cu-custom bgColor="bg-cyan" isBack="{{false}}">
-  <view slot="content">菜单</view>
-</cu-custom>
 <view class="fixed header" style="top:{{CustomBar}}px;">
   <view class="cu-bar bg-white search">
     <view class="search-form round">
@@ -25,43 +18,97 @@
     </view>
   </scroll-view>
 </view>
-<scroll-view scroll-y class="indexes menu-container flex" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-with-animation="true" enable-back-to-top="true">
-  <view class='ctnt0' hidden="{{currentNavtab==0 ? '' : true}}">
-    <block wx:for="{{foodsLists}}" wx:key="{{index}}">
-      <view class="food-item flex">
-        <!--图片-->
-        <view class="left-view">
-          <image class="food-pic" src='{{item.pic}}'></image>
-        </view>
-        <view class="right-view">
-        </view>
-      </view>
-    </block>
-  </view>
-  <view class='ctnt1' hidden="{{currentNavtab==1 ? '' : true}}">
-    ctn1
-  </view>
-  <view class='ctnt2' hidden="{{currentNavtab==2 ? '' : true}}">
-    ctn2
-  </view>
-  <view class='ctnt3' hidden="{{currentNavtab==3 ? '' : true}}">
-    ctn3
-  </view>
-  <!-- <block wx:for="{{list}}" wx:key>
-    <view class="padding indexItem-{{list[index]}}" id="indexes-{{list[index]}}" data-index="{{list[index]}}">{{list[index]}}</view>
-    <view class="cu-list menu-avatar no-padding">
-      <view class="cu-item" wx:for="{{2}}" wx:key wx:for-index="sub">
-        <view class="cu-avatar round lg">{{list[index]}}</view>
-        <view class="content">
-          <view class="text-grey">{{list[index]}}
-            <text class="text-abc">{{list[sub]}}</text>君</view>
-          <view class="text-gray text-sm">
-            有{{sub+2}}个主子需要伺候
+<view class="menu-container">
+  <scroll-view scroll-y class="flex" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-with-animation="true" enable-back-to-top="true">
+    <view class='ctnt0' hidden="{{currentNavtab==0 ? '' : true}}">
+      <block wx:for="{{foodsLists}}" wx:key="{{index}}">
+        <view class="food-item flex">
+          <!--图片-->
+          <view class="left-view">
+            <image class="food-pic" src='{{item.pic}}'></image>
+          </view>
+          <view class="right-view">
+            <!--菜名、价格-->
+            <view class="nameAndPrice">
+              <!--菜名-->
+              <view class="food-name">
+                <text>{{item.foodName}}</text>
+              </view>
+              <!--价格-->
+              <view class="food-price">
+                <text>¥</text>
+                <text>{{item.price}}</text>
+                <text>元/50g</text>
+              </view>
+            </view>
+            <!--营养含量--->
+            <view class="nutrition">
+              <!--碳水-->
+              <view class="nutrition-view">
+                <!--icon-->
+                <view class="icon-view">
+                  <image class="icon-image" src="../../images/username.png"></image>
+                </view>
+                <!--含量-->
+                <view class="content-view">
+                  <text>碳水：{{item.carbohydrate}}</text>
+                  <text>g</text>
+                </view>
+              </view>
+              <!--蛋白质-->
+              <view class="nutrition-view">
+                <!--icon-->
+                <view class="icon-view">
+                  <image class="icon-image" src="../../images/username.png"></image>
+                </view>
+                <!--含量-->
+                <view class="content-view">
+                  <text>碳水：{{item.carbohydrate}}</text>
+                  <text>g</text>
+                </view>
+              </view>
+              <!--脂肪-->
+              <view class="nutrition-view">
+                <!--icon-->
+                <view class="icon-view">
+                  <image class="icon-image" src="../../images/username.png"></image>
+                </view>
+                <!--含量-->
+                <view class="content-view">
+                  <text>碳水：{{item.carbohydrate}}</text>
+                  <text>g</text>
+                </view>
+              </view>
+              <!--热量-->
+              <view class="nutrition-view">
+                <!--icon-->
+                <view class="icon-view">
+                  <image class="icon-image" src="../../images/username.png"></image>
+                </view>
+                <!--含量-->
+                <view class="content-view">
+                  <text>碳水：{{item.carbohydrate}}</text>
+                  <text>g</text>
+                </view>
+              </view>
+            </view>
+            <!--评论数和点赞数-->
+            <view class="commentAndLike">
+            </view>
           </view>
         </view>
-      </view>
+      </block>
     </view>
-  </block> -->
-  <wxc-loadmore wx:if="{{loadingMore}}" text="正在努力加载中..." icon="https://s10.mogucdn.com/mlcdn/c45406/171018_8gj08gbl9fj6igb380dec9k1ifhe2_32x32.png"></wxc-loadmore>
-  <wxc-loadmore wx:if="{{isEnd}}" is-end="{{isEnd}}" text="到底啦" icon="https://s10.mogucdn.com/mlcdn/c45406/171016_47j96cl3hdhhdf7ajg8hg2kd13gdc_400x400.png"></wxc-loadmore>
-</scroll-view>
+    <view class='ctnt1' hidden="{{currentNavtab==1 ? '' : true}}">
+      ctn1
+    </view>
+    <view class='ctnt2' hidden="{{currentNavtab==2 ? '' : true}}">
+      ctn2
+    </view>
+    <view class='ctnt3' hidden="{{currentNavtab==3 ? '' : true}}">
+      ctn3
+    </view>
+    <wxc-loadmore wx:if="{{loadingMore}}" text="正在努力加载中..." icon="https://s10.mogucdn.com/mlcdn/c45406/171018_8gj08gbl9fj6igb380dec9k1ifhe2_32x32.png"></wxc-loadmore>
+    <wxc-loadmore wx:if="{{isEnd}}" is-end="{{isEnd}}" text="到底啦" icon="https://s10.mogucdn.com/mlcdn/c45406/171016_47j96cl3hdhhdf7ajg8hg2kd13gdc_400x400.png"></wxc-loadmore>
+  </scroll-view>
+</view>

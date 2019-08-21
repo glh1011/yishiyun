@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "菜单",
   "component":true,
   "usingComponents": {
     "wxc-loadmore": "../../dist/packages/@minui/wxc-loadmore/dist/index"

@@ -1,9 +1,9 @@
-.foods-box .img-box {
+.goods-box .img-box {
   width: 250rpx;
   height: 250rpx;
 }
 
-.foods-box .img-box .image {
+.goods-box .img-box .image {
   width: 250rpx;
   height: 250rpx;
 }
