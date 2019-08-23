@@ -2,7 +2,6 @@ import utils from "../../../utils/util.js";
 import {banner} from '../../../images/base64/banner.js';
 import uCharts from '../../ucharts/u-charts.min.js';
 
-var value1 = null, value2 = null, str = null;
 var _self;
 var ringCanvas = null;
 
@@ -28,10 +27,10 @@ Component({
   methods:{
     getIndexData(){
       let data = {
-        telephoneNumber: "13384996939"
+        // telephoneNumber: "13384996939"
       }
-      this.getIntakeData(data);
-      this.getLatestLog(data);
+      this.getIntakeData();
+      this.getLatestLog();
       this.getMostLike();
     },
     //获取摄入热量等数据
@@ -46,18 +45,21 @@ Component({
             mealWeight: resultData.weight,
             rate: resultData.availableEnergy / (resultData.availableEnergy + resultData.availabledEnergy)
           })
-          str = Math.round((this.data.rate * 100)).toString() + "%";
-          value1 = this.data.intake;
-          value2 = this.data.ingestible;
-          var options = {
+          let str = Math.round((this.data.rate * 100)).toString() + "%";
+          let value1 = this.data.intake;
+          let value2 = this.data.ingestible;
+          let options = {
             series: [
               { name: "已摄入", data: value1 },
               { name: "未摄入", data: value2 }
             ]
           };
           _self.showRing("intakeCanvas", options, str);
+        } else {
+          this.setDefaultRing();
         }
       }).catch(res => {
+        this.setDefaultRing();
         console.log("获取热量摄入数据失败", res);
       })
     },
@@ -137,6 +139,19 @@ Component({
         disablePieStroke: true,
         dataLabel: false,
       });
+    },
+
+    setDefaultRing() {
+      let str = "0%";
+      let value1 = 0;
+      let value2 = 1;
+      let options = {
+        series: [
+          { name: "已摄入", data: value1 },
+          { name: "未摄入", data: value2 }
+        ]
+      };
+      _self.showRing("intakeCanvas", options, str);
     }
   }
 })

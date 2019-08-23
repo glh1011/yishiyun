@@ -13,8 +13,8 @@
 }
 .more-icon-container{
   font-size: 28rpx;
-  padding: 0rpx 5rpx;
-  height: 26rpx;
+  padding: 0rpx 10rpx;
+  height: 36rpx;
 }
 .text-xxxl {
 	font-size: 60rpx;

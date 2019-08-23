@@ -85,14 +85,14 @@ module.exports = {
     return sendRequest('api/user/bindingIC','POST',data);
   },
   //首页今日摄入量分析获取
-  queryIntake: (data) => {
+  queryIntake: () => {
     var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
-    return sendRequest('api/homePage/calorieAnalyze', 'POST', data, header);
+    return sendRequest('api/homePage/calorieAnalyze', 'POST', header);
   },
   //首页用户最近一次就餐记录获取
-  queryLastEatLog: (data) => {
+  queryLastEatLog: () => {
     var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
-    return sendRequest('api/homePage/lastEatLog', 'POST', data, header);
+    return sendRequest('api/homePage/lastEatLog', 'POST', header);
   },
   //首页最受欢迎菜品获取
   queryMostLike: () => {

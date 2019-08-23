@@ -94,6 +94,7 @@ Page({
           app.globalData.token = res.data.data.token;
           wx.setStorageSync('token', token);
           console.log("登录成功的token:"+token);
+
           //切换到首页
           wx.redirectTo({
             url: '/pages/index/index',

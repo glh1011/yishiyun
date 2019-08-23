@@ -3,11 +3,7 @@
 }
 .calendar-container {
   float: right;
-  background-color: #EEEEEE;
-  color: #3B3B3B;
-  font-size: 26rpx;
   line-height: 36rpx;
-  padding: 10rpx 15rpx;
   border-radius: 12rpx;
 }
 .dinning-title-padding {
@@ -16,3 +12,10 @@
 .no-margin-top {
   margin-top: 0!important;
 }
+/* .picker-btn{
+  background-color: #EEEEEE;
+  color: #3B3B3B;
+  font-size: 30rpx;
+  height: 60rpx;
+  line-height: 48rpx;
+} */

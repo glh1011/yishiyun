@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/login/login",
     "pages/menu/menu",
-    "pages/index/index",
     "pages/register/register",
     "pages/home/home/home",
     "pages/home/todayNutrition/todayNutrition",
@@ -13,7 +13,7 @@
   ],
   "window": {
     "navigationStyle": "default",
-    "navigationBarBackgroundColor": "#28B8A1"
+    "navigationBarBackgroundColor": "#1cbbb4"
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"

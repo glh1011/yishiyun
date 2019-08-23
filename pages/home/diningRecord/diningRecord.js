@@ -6,7 +6,8 @@ Page({
     date: "",
     breakfast: [],
     lunch: [],
-    supper: []
+    supper: [],
+    hasDiningRecord: false,
   },
 
   onLoad: function (options) {
@@ -28,23 +29,21 @@ Page({
       if (res.data.code == 200) {
         let responseData = res.data.data;
         this.setData({
+          hasDiningRecord: true,
           breakfast: responseData.breakfast,
           lunch: responseData.lunch,
           supper: responseData.dinner
         })
-      } else if (res.data.code == 202) {
-        this.setData({
-          breakfast: [],
-          lunch: [],
-          supper: []
-        })
-        wx.showToast({
-          title: res.data.msg,
-          icon: 'none',
-          duration: 2000
-        })
+      } else {
+        this.setDefault();
       }
     }).catch(res => {
+      this.setDefault();
+      wx.showToast({
+        title: "获取就餐记录失败",
+        icon: 'none',
+        duration: 2000
+      })
       console.log("获取就餐记录失败");
     })
   },
@@ -52,9 +51,19 @@ Page({
   bindDateChange: function (e) {
     //console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
+      hasDiningRecord: false,
       date: e.detail.value
     })
     this.displayDiningRecord();
+  },
+
+  setDefault() {
+    this.setData({
+      hasDiningRecord: false,
+      breakfast: [],
+      lunch: [],
+      supper: []
+    })
   }
 
 })

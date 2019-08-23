@@ -4,7 +4,9 @@ import uCharts from '../../ucharts/u-charts.min.js';
 const monthArr = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 const monthArr1 = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
 const dayArr = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15","16", "17", 
-                "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"];
+"18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"];
+const defaultMonth = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,];
+const defaultDay = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 var _self;
 var canvaColumn = null;
 var canvaLine = null;
@@ -26,6 +28,7 @@ Page({
     sumMoneyByMonth: 0,
     averageDaily: 0,
     highestSpend: 0,
+    hasPurchaseRecord: false
   },
 
   onLoad: function (options) {
@@ -66,6 +69,7 @@ Page({
     //console.log('picker发送选择改变，携带值为', e.detail.value)
     wx.showLoading({ title: '加载中', icon: 'loading' });
     this.setData({
+      hasPurchaseRecord: false,
       date: e.detail.value
     })
     this.getExpenseDetail();
@@ -118,16 +122,15 @@ Page({
         
         _self.showLine("canvasLine", Line);
         _self.showColumn("canvasColumn", Column);
-        wx.hideLoading()
+        
+      } else {
+        this.setDefaultDiagram();
       }
     }).catch(res => {
       console.log("获取月消费记录失败", res);
-      wx.showToast({
-        title: "获取月消费记录失败",
-        icon: 'none',
-        duration: 2000
-      })
+      this.setDefaultDiagram();
     })
+    wx.hideLoading();
   },
 
   //获取日消费详情
@@ -143,6 +146,7 @@ Page({
         expenseDetailArr = responseData.breakfast.concat(responseData.lunch);
         expenseDetailArr = expenseDetailArr.concat(responseData.dinner);
         this.setData({
+          hasPurchaseRecord: true,
           expenseDetail: expenseDetailArr
         })
       }else if(res.data.code == 202) {
@@ -268,5 +272,33 @@ Page({
       }
     });
   },
+
+  setDefaultDiagram() {
+    let Line = {
+      categories: [],
+      series: [{
+        "name": "单日消费金额/元",
+        "data": []
+      }]
+    };
+    Line.categories = dayArr;
+    Line.series[0].data = defaultDay;
+    let Column = {
+      categories: [],
+      series: [{
+        "name": "月消费金额/元",
+        "data": []
+      }]
+    };
+    Column.categories = monthArr.slice(0, this.data.curMonth);
+    Column.series[0].data = defaultMonth.slice(0, this.data.curMonth);
+    _self.showLine("canvasLine", Line);
+    _self.showColumn("canvasColumn", Column);
+    wx.showToast({
+      title: "获取月消费记录失败",
+      icon: 'none',
+      duration: 2000
+    })
+  }
 
 })
