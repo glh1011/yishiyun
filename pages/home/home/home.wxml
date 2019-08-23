@@ -74,9 +74,12 @@
       <text class="cuIcon-titles text-cyan"></text>最近一次就餐记录
     </view>
     <view class="action">
-      <view class="cu-tag round bg-cyan more-icon-container">
+      <!-- <view class="cu-tag round bg-cyan more-icon-container">
         <view class="cuIcon-more text-white xxl"></view>
-      </view>
+      </view> -->
+      <button class="cu-btn round bg-cyan more-icon-container">
+        <view class="cuIcon-more text-white xxl"></view>
+      </button>
     </view>
   </navigator>
   <view class="cu-list menu-avatar">

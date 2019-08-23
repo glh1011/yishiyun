@@ -40,27 +40,27 @@ Page({
     utils.queryTrophicAnalysis(requestData).then(res => {
       if (res.data.code == 200) {
         let responseData = res.data.data;
-        var energy1 = responseData.calorieAnalyze.calorieReal.sumEnergy;
-        var energy2 = responseData.calorieAnalyze.calorieAdvise.sumEnergy;
-        var protein = responseData.mainNutritionAdvise.calorieReal.protein;
-        var fat = responseData.mainNutritionAdvise.calorieReal.fat;
-        var carbon = responseData.mainNutritionAdvise.calorieReal.carbohydrate;
-        var options = {
+        let energy1 = responseData.calorieAnalyze.calorieReal.sumEnergy;
+        let energy2 = responseData.calorieAnalyze.calorieAdvise.sumEnergy;
+        let protein = responseData.mainNutritionAdvise.calorieReal.protein;
+        let fat = responseData.mainNutritionAdvise.calorieReal.fat;
+        let carbon = responseData.mainNutritionAdvise.calorieReal.carbohydrate;
+        let options = {
           series: [
             { name: "已摄入", data: energy1}, 
             { name: "未摄入", data: energy2}
           ]
         };
-        var color = {colors: ['#28B8A1', '#aaa']};
-        _self.showRing("calorieCanvas", options, color);
-        var options1 = {
+        let color = {colors: ['#28B8A1', '#aaa']};
+         _self.showRing("calorieCanvas", options, color);
+        let options1 = {
           series: [
             { data: carbon, name: '碳水' },
             { data: fat, name: '脂肪' },
             { data: protein, name: '蛋白质' }
           ]
         };
-        var color1 = { colors: ['#9085FB', '#FFCD6D', '#FC9E9E'] };
+        let color1 = { colors: ['#9085FB', '#FFCD6D', '#FC9E9E'] };
         _self.showRing("nutritionCanvas", options1, color1);
 
         this.setData({
@@ -71,17 +71,15 @@ Page({
           otherNutritionAdvise: responseData.otherNutritionAdvise.calorieAdvise,
           otherNutritionReal: responseData.otherNutritionAdvise.calorieReal
         })
-      } else if (res.data.code == 202){
-        wx.showToast({
-          title: res.data.msg,
-          icon: 'none',
-          duration: 2000
-        })
+      } else {
+        this.setDefaultDiagram(res.data.msg);
       }
-      wx.hideLoading()
+      //wx.hideLoading()
     }).catch(res => {
       console.log("获取营养分析失败",res);
+      this.setDefaultDiagram("获取营养分析失败");
     })
+    wx.hideLoading()
   },
 
   bindDateChange: function (e) {
@@ -119,5 +117,53 @@ Page({
       dataLabel: true,
     });
     return ringCanvas;
+  },
+
+  // showModal(e) {
+  //   this.setData({
+  //     modalName: e.currentTarget.dataset.target
+  //   })
+  // },
+  // hideModal(e) {
+  //   this.setData({
+  //     modalName: null
+  //   })
+  // },
+
+  setDefaultDiagram(msg) {
+    wx.showToast({
+      title: msg,
+      icon: 'none',
+      duration: 2000
+    })
+    this.setData({
+      calorieAdvise: { breakfast: 0, lunch: 0, dinner: 0, sumEnergy: 0 },
+      calorieReal: { breakfast: 0, lunch: 0, dinner: 0, sumEnergy: 0 },
+      mainNutritionAdvise: { fat: 0, protein: 0, carbohydrate: 0 },
+      mainNutritionReal: { fat: 0, protein: 0, carbohydrate: 0 },
+      otherNutritionAdvise: { dietaryFiber: 0, salt: 0, cholesterol: 0, vitamin: 0 },
+      otherNutritionReal: { dietaryFiber: 0, salt: 0, cholesterol: 0, vitamin: 0 },
+    })
+    // this.setData({
+    //   modalName: 'Modal'
+    // });
+    let options = {
+      series: [
+        { name: "已摄入", data: 0 },
+        { name: "未摄入", data: 1 }
+      ]
+    };
+    let color = { colors: ['#28B8A1', '#aaa'] };
+    _self.showRing("calorieCanvas", options, color);
+    let options1 = {
+      series: [
+        { data: 0, name: '碳水' },
+        { data: 0, name: '脂肪' },
+        { data: 0, name: '蛋白质' }
+      ]
+    };
+    let color1 = { colors: ['#9085FB', '#FFCD6D', '#FC9E9E'] };
+    _self.showRing("nutritionCanvas", options1, color1);
   }
+
 })

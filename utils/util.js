@@ -97,19 +97,16 @@ module.exports = {
     return sendRequest('api/user/bindingIC','POST',data);
   },
   //首页今日摄入量分析获取
-  queryIntake: (data) => {
-    var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
-    return sendRequest('api/homePage/calorieAnalyze', 'POST', data, header);
+  queryIntake: () => {
+    return sendRequest('api/homePage/calorieAnalyze', 'POST');
   },
   //首页用户最近一次就餐记录获取
-  queryLastEatLog: (data) => {
-    var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
-    return sendRequest('api/homePage/lastEatLog', 'POST', data, header);
+  queryLastEatLog: () => {
+    return sendRequest('api/homePage/lastEatLog', 'POST');
   },
   //首页最受欢迎菜品获取
   queryMostLike: () => {
-    var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
-    return sendRequest('api/homePage/likedDish', 'POST', header);
+    return sendRequest('api/homePage/likedDish', 'POST');
   },
   //用户就餐记录获取
   queryEatLog: (data) => {
@@ -123,7 +120,6 @@ module.exports = {
   },
   //消费记录
   queryEatLogByMonth: (data) => {
-    var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
-    return sendRequest('api/consumptionLog/EatLogByMonth', 'POST', data, header);
+    return sendRequest('api/consumptionLog/EatLogByMonth', 'POST', data);
   },
 }
