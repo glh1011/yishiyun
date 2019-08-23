@@ -7,20 +7,13 @@ Page({
   data: {
     PageCur: 'home',
   },
+  onLoad(){
+  },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    AUTH.checkHasLogined().then(isLogined => {
-      console.log(isLogined);
-      if (!isLogined) {
-        wx.redirectTo({
-          url: '/pages/login/login',
-        })
-      } else {
-      }
-    })
   },
 
   NavChange(e) {

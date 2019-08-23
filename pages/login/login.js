@@ -42,6 +42,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    AUTH.checkHasLogined().then(isLogined => {
+      console.log(isLogined);
+      if (isLogined) {
+        wx.redirectTo({
+          url: '/pages/index/index',
+        })
+      } else {
+      }
+    })
   },
 
   onGotUserInfo(e) {
@@ -86,14 +95,19 @@ Page({
         wx.hideLoading();
         //登录成功
         if(res.data.code == 200){
-          console.log(res);
           console.log("登录成功!!")
           //后台传过来的登录态标识符token
           var token = res.data.data.token;
+          var sessionId = res.data.data.sessionId;
           //将token存储到全局变量和本地缓存中
           app.globalData.token = res.data.data.token;
           wx.setStorageSync('token', token);
           console.log("登录成功的token:"+token);
+          // if (res && res.header && res.header['Set-Cookie']){
+          //   wx.setStorageSync('sessionId', res.header['Set-Cookie']);
+          // }
+          wx.setStorageSync('sessionId', sessionId);
+          console.log("登录成功的sessionId:" + sessionId);
           //切换到首页
           wx.redirectTo({
             url: '/pages/index/index',

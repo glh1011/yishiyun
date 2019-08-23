@@ -1,82 +1,119 @@
-.goods-box .img-box {
-  width: 250rpx;
-  height: 250rpx;
-}
-
-.goods-box .img-box .image {
-  width: 250rpx;
-  height: 250rpx;
-}
-
-.goods-info-box {
-  width: 430rpx;
-  height: 250rpx;
-  margin-left: 20rpx;
+.nameAndPrice{
+  width:100%;
+  height:70rpx;
+  /* border-bottom: 1px solid #eee; */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.goods-box .goods-title {
-  width: 430;
-  height: 60rpx;
-  font-size: 28rpx;
-  text-align: left;
-  padding-top: 5rpx;
-  color: black;
+.food-name{
+  height: 70rpx;
+  line-height:70rpx;
 }
 
-.goods-box .goods-introduction {
-  width: 430;
-  height: 100rpx;
-  font-size: 24rpx;
-  text-align: left;
-  padding-top: 5rpx;
-  color: dimgrey;
+.food-name text{
+  font-size:40rpx;
+  font-weight: bold;
 }
 
-.goods-box .goods-price-box {
-  width: 430rpx;
-  height: 40rpx;
+.food-price{
+  height: 70rpx;
+  line-height:70rpx;
+  margin-right:10rpx;
+}
+
+.food-price text{
+  font-size:30rpx;
+} 
+
+.food-price .moneyicon{
+  color:#1cbbb4;
+  font-size:40rpx;
+}
+
+.food-price .price{
+  color:#1cbbb4;
+  font-size:40rpx;
+  display: inline-block;
+  padding-right:10rpx;
+}
+
+.food-price .danwei{
+  color:#868282;
+}
+
+.nutrition{
+  width:100%;
+  height:170rpx;
+  /* border-bottom: 1px solid #eee; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.nutrition-view{
+  width:50%;
+  height:90rpx;
+  /* border-bottom: 1px solid #eee; */
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: flex-end;
-  /*flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-end;
-  overflow: hidden;*/
+  align-items: center;
 }
 
-.goods-box .goods-price-box .goods-minPrice {
-  font-size: 28rpx;
-  font-weight: bold;
-  color:  #ff4422;
+.nutrition-view .icon-view{
+  width:50rpx;
+  height:50rpx;
+  margin-right:10rpx;
 }
 
-.goods-box .goods-price-box .goods-originalPrice {
-  padding-left: 10rpx;
-  font-size: 24rpx;
+.nutrition-view .icon-view .icon-image{
+  width:100%;
+  height:100%;
 }
 
-.goods-box .sellInformation {
-  width: 430rpx;
-  height: 45rpx;
+.content-view text{
+  color:#868282;
+  font-size:30rpx;
+}
+
+.commentAndLike{
+  width:100%;
+  /* height:50rpx; */
+  /* border-bottom: 1px solid #eee; */
   display: flex;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  color: gray;
-  font-size: 22rpx;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.goods-box .sellInformation .goodsSoldNumber {
-  width: 40%;
-  padding: 5rpx 0;
-  text-align: left;
+.commentAndLike .icon-view{
+  width:50rpx;
+  height:50rpx;
+  display: flex;
+  flex-direction: row;
+  margin-right:20rpx;
 }
 
-.goods-box .sellInformation .goodsScore {
-  overflow: hidden;
-  width: 60%;
-  padding: 5rpx 0;
-  text-align: left;
+.commentAndLike .icon-view .icon-image{
+  width:100%;
+  height:100%;
+}
+
+.commentAndLike .icon-view text{
+  height:50rpx;
+  line-height: 50rpx;
+}
+
+.food-pic {
+  width: 100%;
+  height: 85%;
+  border-radius: 10px;
+}
+
+.food-item {
+  width: 95%;
+  margin: 20rpx auto;
+  background: #fff;
+  border-bottom: solid 2px #eee;
 }

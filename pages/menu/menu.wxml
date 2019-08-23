@@ -2,12 +2,12 @@
 <import src="../../templates/food-item/food-item.wxml" />
 <view class="fixed header" style="top:{{CustomBar}}px;">
   <view class="cu-bar bg-white search">
-    <view class="search-form round">
+    <view class="search-form round" style="height:80rpx;line-height:80rpx;font-size:30rpx;">
       <text class="cuIcon-search text-cyan"></text>
       <input type="text" placeholder="输入搜索的关键词" confirm-type="search"></input>
     </view>
     <view class="action">
-      <button class="cu-btn bg-gradual-cyan shadow-blur round">搜索</button>
+      <button class="cu-btn bg-gradual-cyan shadow-blur round" style="height:80rpx;line-height:80rpx;width:150rpx;font-size:30rpx;">搜索</button>
     </view>
   </view>
   <scroll-view scroll-x class="bg-white nav">
@@ -21,92 +21,32 @@
 <view class="menu-container">
   <scroll-view scroll-y class="flex" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-with-animation="true" enable-back-to-top="true">
     <view class='ctnt0' hidden="{{currentNavtab==0 ? '' : true}}">
-      <block wx:for="{{foodsLists}}" wx:key="{{index}}">
-        <view class="food-item flex">
-          <!--图片-->
-          <view class="left-view">
-            <image class="food-pic" src='{{item.pic}}'></image>
-          </view>
-          <view class="right-view">
-            <!--菜名、价格-->
-            <view class="nameAndPrice">
-              <!--菜名-->
-              <view class="food-name">
-                <text>{{item.foodName}}</text>
-              </view>
-              <!--价格-->
-              <view class="food-price">
-                <text>¥</text>
-                <text>{{item.price}}</text>
-                <text>元/50g</text>
-              </view>
-            </view>
-            <!--营养含量--->
-            <view class="nutrition">
-              <!--碳水-->
-              <view class="nutrition-view">
-                <!--icon-->
-                <view class="icon-view">
-                  <image class="icon-image" src="../../images/username.png"></image>
-                </view>
-                <!--含量-->
-                <view class="content-view">
-                  <text>碳水：{{item.carbohydrate}}</text>
-                  <text>g</text>
-                </view>
-              </view>
-              <!--蛋白质-->
-              <view class="nutrition-view">
-                <!--icon-->
-                <view class="icon-view">
-                  <image class="icon-image" src="../../images/username.png"></image>
-                </view>
-                <!--含量-->
-                <view class="content-view">
-                  <text>碳水：{{item.carbohydrate}}</text>
-                  <text>g</text>
-                </view>
-              </view>
-              <!--脂肪-->
-              <view class="nutrition-view">
-                <!--icon-->
-                <view class="icon-view">
-                  <image class="icon-image" src="../../images/username.png"></image>
-                </view>
-                <!--含量-->
-                <view class="content-view">
-                  <text>碳水：{{item.carbohydrate}}</text>
-                  <text>g</text>
-                </view>
-              </view>
-              <!--热量-->
-              <view class="nutrition-view">
-                <!--icon-->
-                <view class="icon-view">
-                  <image class="icon-image" src="../../images/username.png"></image>
-                </view>
-                <!--含量-->
-                <view class="content-view">
-                  <text>碳水：{{item.carbohydrate}}</text>
-                  <text>g</text>
-                </view>
-              </view>
-            </view>
-            <!--评论数和点赞数-->
-            <view class="commentAndLike">
-            </view>
-          </view>
+      <block wx:for="{{foodsLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
+        <view class="food-item flex" bindtap="toDetailsTap">
+          <template is="food-item" data="{{item}}"> </template>
         </view>
       </block>
     </view>
     <view class='ctnt1' hidden="{{currentNavtab==1 ? '' : true}}">
-      ctn1
+      <block wx:for="{{foodsLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
+        <view class="food-item flex" bindtap="toDetailsTap">
+          <template is="food-item" data="{{item}}"> </template>
+        </view>
+      </block>
     </view>
     <view class='ctnt2' hidden="{{currentNavtab==2 ? '' : true}}">
-      ctn2
+      <block wx:for="{{foodsLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
+        <view class="food-item flex" bindtap="toDetailsTap">
+          <template is="food-item" data="{{item}}"> </template>
+        </view>
+      </block>
     </view>
     <view class='ctnt3' hidden="{{currentNavtab==3 ? '' : true}}">
-      ctn3
+      <block wx:for="{{foodsLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
+        <view class="food-item flex" bindtap="toDetailsTap">
+          <template is="food-item" data="{{item}}"> </template>
+        </view>
+      </block>
     </view>
     <wxc-loadmore wx:if="{{loadingMore}}" text="正在努力加载中..." icon="https://s10.mogucdn.com/mlcdn/c45406/171018_8gj08gbl9fj6igb380dec9k1ifhe2_32x32.png"></wxc-loadmore>
     <wxc-loadmore wx:if="{{isEnd}}" is-end="{{isEnd}}" text="到底啦" icon="https://s10.mogucdn.com/mlcdn/c45406/171016_47j96cl3hdhhdf7ajg8hg2kd13gdc_400x400.png"></wxc-loadmore>

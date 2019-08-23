@@ -21,9 +21,9 @@ async function checkHasLogined() {
   }
   const checkTokenRes = await utils.checkToken(data)
   console.log(checkTokenRes);
-  //token已经过期了，返回false
-  if (checkTokenRes.data.code != 201) {
-    wx.removeStorageSync('token')
+  //sessionId已经过期了，返回false
+  if (checkTokenRes.data.code == 201) {
+    wx.removeStorageSync('sessionId')
     return false
   }
   return true

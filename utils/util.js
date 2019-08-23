@@ -32,14 +32,26 @@ const showToastWindow = (title, icon = null, image = null) => {
 
 const sendRequest = (url, method, data) => {
   let _url = API_BASE_URL + url
+  let sessionId = wx.getStorageSync('sessionId');
+  // console.log(sessionId);
+  var header = {}
+  if (sessionId != "" && sessionId != null){
+    header = {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'sessionId': sessionId
+    }
+  }else{
+    header = {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  }
+  // console.log(header)
   return new Promise((resolve, reject) => {
     wx.request({
       url: _url,
       data: data,
       method: method,
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
+      header: header,
       success: res => {
         resolve(res);
       },

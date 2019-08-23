@@ -1,29 +1,89 @@
 <import src="../starscore/starscore.wxml" />
 
 <template name="food-item">
-  <view class="img-box">
-    <image src="{{item.pic}}" class="image">
-    </image>
-  </view>
-
-  <view class='goods-info-box'>
-    <view class="goods-title">{{item.name}}</view>
-    <view class='goods-introduction'>{{item.characteristic}}</view>
-    <view class="goods-price-box">
-      <wxc-price class='goods-minPrice' value='{{item.minPrice}}'></wxc-price>
-      <wxc-price class="goods-originalPrice" wx:if='{{item.originalPrice != 0}}' value='{{item.originalPrice}}' status='del'></wxc-price>
+  
+    <!--图片-->
+    <view class="left-view">
+      <image class="food-pic" src='{{item.pic}}'></image>
     </view>
-    <view class="sellInformation">
-      <wxc-label wx:if="{{item.numberOrders == 0}}" class="goodsSoldNumber" type="fill">新品上市</wxc-label>
-      <wxc-label wx:else  class="goodsSoldNumber">已售{{item.numberOrders}}份</wxc-label>
-      <wxc-label class="goodsScore" type='fill' type-color='none' text-color='#666666'>评分：
-        <block wx:for="{{item.starpic}}" wx:key="{{item.id}}" wx:for-item="star">
-          <image class="img" src="{{star}}" style="width:20rpx;height:20rpx;"></image>
-        </block>
-        <text style='padding-left:10rpx;' wx:if="{{item.starscore}}" data-pingfen="{{item.starscore}}">{{item.starscore}}分</text>
-        <text style='padding-left:10rpx;' wx:else data-pingfen="{{item.starscore}}">0分</text>
-      </wxc-label>
+    <view class="right-view">
+      <!--菜名、价格-->
+      <view class="nameAndPrice">
+        <!--菜名-->
+        <view class="food-name">
+          <text>{{item.foodName}}</text>
+        </view>
+        <!--价格-->
+        <view class="food-price">
+          <text class="moneyicon">¥</text>
+          <text class="price">{{item.price}}</text>
+          <text class="danwei">元/50g</text>
+        </view>
+      </view>
+      <!--营养含量--->
+      <view class="nutrition">
+        <!--碳水-->
+        <view class="nutrition-view">
+          <!--icon-->
+          <view class="icon-view">
+            <image class="icon-image" src="../../images/C.png"></image>
+          </view>
+          <!--含量-->
+          <view class="content-view">
+            <text>碳水：{{item.carbohydrate}}</text>
+            <text>g</text>
+          </view>
+        </view>
+        <!--蛋白质-->
+        <view class="nutrition-view">
+          <!--icon-->
+          <view class="icon-view">
+            <image class="icon-image" src="../../images/P.png"></image>
+          </view>
+          <!--含量-->
+          <view class="content-view">
+            <text>碳水：{{item.carbohydrate}}</text>
+            <text>g</text>
+          </view>
+        </view>
+        <!--脂肪-->
+        <view class="nutrition-view">
+          <!--icon-->
+          <view class="icon-view">
+            <image class="icon-image" src="../../images/C.png"></image>
+          </view>
+          <!--含量-->
+          <view class="content-view">
+            <text>碳水：{{item.carbohydrate}}</text>
+            <text>g</text>
+          </view>
+        </view>
+        <!--热量-->
+        <view class="nutrition-view">
+          <!--icon-->
+          <view class="icon-view">
+            <image class="icon-image" src="../../images/P.png"></image>
+          </view>
+          <!--含量-->
+          <view class="content-view">
+            <text>碳水：{{item.carbohydrate}}</text>
+            <text>g</text>
+          </view>
+        </view>
+      </view>
+      <!--评论数和点赞数-->
+      <view class="commentAndLike">
+        <!--icon-->
+        <!-- <view class="icon-view">
+                <image class="icon-image" src="../../images/comment.png"></image>
+                <text>{{item.commentNums}}</text>
+              </view> -->
+        <!--icon-->
+        <!-- <view class="icon-view">
+                <image class="icon-image" src="../../images/like.png"></image>
+                <text>{{item.likeNum}}</text>
+              </view> -->
+      </view>
     </view>
-  </view>
-
+ 
 </template>
