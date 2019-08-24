@@ -34,7 +34,6 @@ Page({
 
   getNutritionAnalysis: function () {
     let requestData = {
-      telephoneNumber: "13384996939",
       date: this.data.date
     }
     utils.queryTrophicAnalysis(requestData).then(res => {

@@ -1,14 +1,14 @@
-<cu-custom bgColor="bg-gradual-cyan" isBack="{{true}}">
-  <view slot="backText">返回</view><view slot="content">换绑餐卡</view>
-</cu-custom>
-
-<form>
-	<view class="cu-form-group margin-top">
+<form bindsubmit="formSubmit">
+	<view class="cu-form-group">
 		<view class="title">餐卡卡号</view>
-		<input placeholder="请输入餐卡卡号"></input>
+		<input name="icNumber" value="{{icNumber}}" placeholder="请输入餐卡卡号"></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">真实姓名</view>
-		<input placeholder="请输入真实姓名"></input>
+		<input name="userName" placeholder="请输入真实姓名"></input>
 	</view>
+
+  <view class="padding-xl margin-bottom-xxl">
+    <button class="cu-btn block lg bg-cyan" form-type="submit">确认修改</button>
+  </view>
 </form>

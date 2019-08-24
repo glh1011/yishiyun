@@ -22,7 +22,6 @@ Page({
 
   displayDiningRecord: function() {
     let requestData = {
-      telephoneNumber: "13384996939",
       date: this.data.date
     }
     utils.queryEatLog(requestData).then(res => {

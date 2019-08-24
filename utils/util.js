@@ -122,4 +122,20 @@ module.exports = {
   queryEatLogByMonth: (data) => {
     return sendRequest('api/consumptionLog/EatLogByMonth', 'POST', data);
   },
+  //我的页面数据获取
+  queryUser: () => {
+    return sendRequest('api/my/getMyMonetary', 'POST');
+  },
+  //用户详细信息获取
+  queryUserInfo: () => {
+    return sendRequest('api/user/getUser', 'POST');
+  },
+  //菜品详细信息获取
+  queryDishDetail: (data) => {
+    return sendRequest('api/dishes/getDish', 'POST', data);
+  },
+  //用户退出登录
+  logout: () => {
+    return sendRequest('api/user/logout', 'POST');
+  }
 }

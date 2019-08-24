@@ -80,21 +80,21 @@
         <view class="cu-list menu-avatar">
 
           <block wx:for="{{expenseDetail}}" wx:for-item="item" wx:key>
-          <view class="cu-item">
-            <image class="cu-avatar radius lg" src="{{item.dishImage}}"></image>
-            <view class="content">
-              <view class="text-grey">{{item.dishName}}</view>
-              <view class="text-gray text-sm flex">
-                <text class="text-cut margin-right-xs">
-                  <text>{{item.weight}}</text>
-                </text>
+            <navigator class="cu-item" url="/pages/dishDetail/dishDetail?dishesId={{item.dishesId}}" hover-class="none">
+              <image class="cu-avatar radius lg" src="{{item.dishImage}}"></image>
+              <view class="content">
+                <view class="text-grey">{{item.dishName}}</view>
+                <view class="text-gray text-sm flex">
+                  <text class="text-cut margin-right-xs">
+                    <text>{{item.weight}}</text>
+                  </text>
+                </view>
               </view>
-            </view>
-            <view class="action">
-              <view class="text-grey text-xs">{{item.calorie}}</view>
-              <view class="cu-tag round bg-white sm">{{item.money}}</view>
-            </view>
-          </view>
+              <view class="action">
+                <view class="text-grey text-xs">{{item.calorie}}</view>
+                <view class="cu-tag round bg-white sm">{{item.money}}</view>
+              </view>
+            </navigator>
           </block>
   
         </view>

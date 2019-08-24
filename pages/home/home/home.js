@@ -20,22 +20,19 @@ Component({
     lastEatLog: [],
     mostLike: []
   },
-  attached: function() {
+  attached: function (options) {
     _self = this;
     this.getIndexData();
   },
   methods:{
-    getIndexData(){
-      let data = {
-        // telephoneNumber: "13384996939"
-      }
+    getIndexData: function(){
       this.getIntakeData();
       this.getLatestLog();
       this.getMostLike();
     },
     //获取摄入热量等数据
-    getIntakeData(data){
-      utils.queryIntake(data).then(res => {
+    getIntakeData: function(){
+      utils.queryIntake().then(res => {
         if (res.data.code == 200) {
           let resultData = res.data.data;
           if (resultData.availableEnergy == 0) {
@@ -72,7 +69,7 @@ Component({
       })
     },
     //获取最近一次就餐记录
-    getLatestLog(data){
+    getLatestLog: function(data){
       utils.queryLastEatLog(data).then(res => {
         if (res.data.code == 200) {
           if (res.data.data.length >= 2) {
@@ -90,7 +87,7 @@ Component({
       })
     },
     //获取最受欢迎菜品数据
-    getMostLike(){
+    getMostLike: function(){
       utils.queryMostLike().then(res => {
         if (res.data.code == 200) {
           if (res.data.data.length >= 4) {
@@ -109,7 +106,7 @@ Component({
     },
 
     //环形图
-    showRing(canvasId, chartData, rate) {
+    showRing: function(canvasId, chartData, rate) {
       ringCanvas = new uCharts({
         $this: _self,
         canvasId: canvasId,
@@ -149,7 +146,7 @@ Component({
       });
     },
 
-    setDefaultRing() {
+    setDefaultRing: function() {
       let str = "0%";
       let value1 = 0;
       let value2 = 1;
@@ -162,4 +159,5 @@ Component({
       _self.showRing("intakeCanvas", options, str);
     }
   }
-})
+
+ })

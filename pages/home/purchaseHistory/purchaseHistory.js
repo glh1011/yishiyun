@@ -87,7 +87,6 @@ Page({
   getDiagramData: function() {
     wx.showLoading({ title: '加载中', icon: 'loading' });
     let requestData = {
-      telephoneNumber: "13384996939",
       year: this.data.curYear,
       month: this.data.curMonth
     }
@@ -136,7 +135,6 @@ Page({
   //获取日消费详情
   getExpenseDetail: function() {
     let requestData = {
-      telephoneNumber: "13384996939",
       date: this.data.date
     }
     utils.queryEatLog(requestData).then(res => {
