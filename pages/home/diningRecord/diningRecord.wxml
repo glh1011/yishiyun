@@ -2,23 +2,24 @@
   <view class="text-xl title-padding">
     <text class="textblack text-bold">当日就餐</text>
     <view class="calendar-container">
-        <picker mode="date" value="{{date}}" end="{{today}}" bindchange="bindDateChange">
-          <view class="picker">
-            {{date}}
-            <text>| </text>
-            <text class="cuIcon-calendar"></text>
-          </view>
-        </picker>
-      </view>
+      <picker mode="date" value="{{date}}" end="{{today}}" bindchange="bindDateChange">
+        <button class="cu-btn shadow">
+          {{date}}
+          <text> | </text>
+          <text class="cuIcon-calendar"></text>
+        </button>
+      </picker>
+    </view>
   </view>
-  <view class="cu-card case">
+  <image wx:if="{{hasDiningRecord == false}}" src="../../../images/noStatus.jpg" style='width:100%;height:600rpx;' mode="aspectFill"></image>
+  <view wx:if="{{hasDiningRecord == true}}" class="cu-card case">
     <view class="cu-item shadow bg-white" style="margin:5rpx 60rpx 60rpx">
       <view class="cu-list menu-avatar solid-bottom">
         <view class="text-lg dinning-title-padding">
           <text class="textblack text-bold">早餐</text>
         </view>
         <block wx:for="{{breakfast}}" wx:for-item="item" wx:key>
-          <view class="cu-item">
+          <navigator class="cu-item" url="/pages/dishDetail/dishDetail?dishesId={{item.dishesId}}" hover-class="none">
             <image class="cu-avatar radius lg" src="{{item.dishImage}}"></image>
             <view class="content">
               <view class="text-grey">{{item.dishName}}</view>
@@ -32,7 +33,7 @@
               <view class="text-grey text-xs">{{item.calorie}}千卡</view>
               <view class="cu-tag round bg-white sm">{{item.money}}元</view>
             </view>
-          </view>
+          </navigator>
         </block>
       </view>
       
@@ -41,7 +42,7 @@
           <text class="textblack text-bold">午餐</text>
         </view>
         <block wx:for="{{lunch}}" wx:for-item="item" wx:key>
-          <view class="cu-item">
+          <navigator class="cu-item" url="/pages/dishDetail/dishDetail?dishesId={{item.dishesId}}" hover-class="none">
             <image class="cu-avatar radius lg" src="{{item.dishImage}}"></image>
             <view class="content">
               <view class="text-grey">{{item.dishName}}</view>
@@ -55,7 +56,7 @@
               <view class="text-grey text-xs">{{item.calorie}}千卡</view>
               <view class="cu-tag round bg-white sm">{{item.money}}元</view>
             </view>
-          </view>
+          </navigator>
         </block>
       </view>
 
@@ -64,7 +65,7 @@
           <text class="textblack text-bold">晚餐</text>
         </view>
         <block wx:for="{{supper}}" wx:for-item="item" wx:key>
-          <view class="cu-item">
+          <navigator class="cu-item" url="/pages/dishDetail/dishDetail?dishesId={{item.dishesId}}" hover-class="none">
             <image class="cu-avatar radius lg" src="{{item.dishImage}}"></image>
             <view class="content">
               <view class="text-grey">{{item.dishName}}</view>
@@ -78,7 +79,7 @@
               <view class="text-grey text-xs">{{item.calorie}}千卡</view>
               <view class="cu-tag round bg-white sm">{{item.money}}元</view>
             </view>
-          </view>
+          </navigator>
         </block>
       </view>
 

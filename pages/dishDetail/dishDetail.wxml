@@ -1,0 +1,52 @@
+<scroll-view scroll-y class="scrollPage">
+  <image src="{{dishImage}}" style='width:100%;height:750rpx;' mode="aspectFill"></image>
+  <view class="margin-left margin-right solid-bottom">
+    <view class="flex padding-top justify-center">
+      <view class="padding-sm margin-xs radius" style='font-size:46rpx'>{{dishNam}}</view>
+    </view>
+    <view class="flex padding-bottom justify-center">
+      <view class="margin-xs radius" style='font-size:34rpx'>{{dishPrice}}元</view>
+    </view>
+  </view>
+  <view class="cu-bar bg-white">
+    <view class="action">
+      <text class="cuIcon-titles text-cyan"></text>营养信息
+    </view>
+  </view>
+
+  <view class="flex justify-center">
+        <view class="detail-panel padding-left padding-right" style="padding-bottom: 100rpx">
+          <view class="grid col-2 margin-bottom text-center">
+            <view class="padding solid-bottom">能量</view>
+            <view class="padding solid-bottom">{{calorie}}kcal</view>
+            <view class="padding solid-bottom">碳水化合物</view>
+            <view class="padding solid-bottom">{{carbohydrate}}g</view>
+            <view class="padding solid-bottom">胆固醇</view>
+            <view class="padding solid-bottom">{{cholesterol}}g</view>
+            <view class="padding solid-bottom">膳食纤维</view>
+            <view class="padding solid-bottom">{{dietaryFiber}}g</view>
+            <view class="padding solid-bottom">脂肪</view>
+            <view class="padding solid-bottom">{{fat}}g</view>
+            <view class="padding solid-bottom">钠</view>
+            <view class="padding solid-bottom">{{salt}}g</view>
+            <view class="padding solid-bottom">蛋白质</view>
+            <view class="padding solid-bottom">{{protein}}g</view>
+            <view class="padding">维生素</view>
+            <view class="padding">{{vitamin}}g</view>
+          </view>
+        </view>
+      </view>
+
+
+  <button class="cu-btn bg-cyan shadow" style="border-radius:50%;position:fixed;bottom:200rpx;right:50rpx;height: 100rpx;width:100rpx;text-align:center; font-size: 60rpx"><text class="cuIcon-comment"></text></button>
+</scroll-view>
+
+<view class="cu-bar bg-white tabbar border solid-top" style="bottom:0; position:fixed;width: 100%">
+  <view class="action">
+    <view class="cuIcon-comment"></view>
+    {{commentNum}}
+  </view>
+  <view class="action">
+    <view class="cuIcon-favor"></view>{{likeNum}}
+  </view>
+</view>

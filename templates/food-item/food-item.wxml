@@ -50,7 +50,7 @@
         <view class="nutrition-view">
           <!--icon-->
           <view class="icon-view">
-            <image class="icon-image" src="../../images/C.png"></image>
+            <image class="icon-image" src="../../images/F.png"></image>
           </view>
           <!--含量-->
           <view class="content-view">
@@ -62,12 +62,12 @@
         <view class="nutrition-view">
           <!--icon-->
           <view class="icon-view">
-            <image class="icon-image" src="../../images/P.png"></image>
+            <image class="icon-image" src="../../images/Q.png"></image>
           </view>
           <!--含量-->
           <view class="content-view">
             <text>热量:{{item.calorie}}</text>
-            <text>Cal</text>
+            <text>KCal</text>
           </view>
         </view>
       </view>

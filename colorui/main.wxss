@@ -290,11 +290,11 @@ radio.radio[checked]::after {
 }
 
 .switch-sex::after {
-	content: "\e71c";
+	content: "\e71a";
 }
 
 .switch-sex::before {
-	content: "\e71a";
+	content: "\e71c";
 }
 
 .switch-sex .wx-switch-input {

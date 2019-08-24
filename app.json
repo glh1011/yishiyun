@@ -9,7 +9,9 @@
     "pages/home/diningRecord/diningRecord",
     "pages/user/myself/myself",
     "pages/user/renewCard/renewCard",
-    "pages/home/purchaseHistory/purchaseHistory"
+    "pages/home/purchaseHistory/purchaseHistory",
+    "pages/user/modifyUserInfo/modifyUserInfo",
+    "pages/dishDetail/dishDetail"
   ],
   "window": {
     "navigationStyle": "default",

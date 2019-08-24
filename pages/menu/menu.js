@@ -11,12 +11,15 @@ Component({
     currentNavtab: 0,
     CustomBar: app.globalData.CustomBar,
     loadingMore: true, //loading中
-    loadingMoreHidden: true,
+    loadingMoreHidden: false,
     isEnd: false, //到底啦
     allLists: [], //全部菜品
+    allFoodShow: [], //展示的全部菜品
     breakfastLists: [], //早饭菜品
     lunchLists: [], //午饭菜品
-    dinnerLists: [] //晚饭菜品
+    dinnerLists: [], //晚饭菜品
+    pageSize: 1,
+    page: 1000
   },
   attached: function() {
     // _self = this;
@@ -27,15 +30,16 @@ Component({
     }
     this.setData({
       list: list,
-      listCur: list[0]
-    })
-
-    this.setData({
+      listCur: list[0],
       allLists: app.globalData.allDishesDatas,
       breakfastLists: app.globalData.breakfastDishesDatas,
       lunchLists: app.globalData.lunchDishesDatas,
-      dinnerLists: app.globalData.dinnerDishesDatas
+      dinnerLists: app.globalData.dinnerDishesDatas,
+      pageSize: 1,
+      page: 1000,
+      allFoodShow: []
     })
+    this.getFoodShow();
   },
   methods: {
     tabSelect(e) {
@@ -47,6 +51,55 @@ Component({
     toDetailsTap: function(e) {
       console.log("detail");
     },
+
+    getFoodShow: function() {
+      var that = this;
+      if (that.data.isEnd) {
+        console.log('isEnd,return...');
+        return;
+      }
+      console.log('notEnd,continue...');
+      that.setData({
+        loadingMore: true
+      })
+      var pageSize = 2;
+      var allFoodShow = that.data.allFoodShow;
+      var allFoodLength = allFoodShow.length;
+      console.log('allFoodLength:' + allFoodLength);
+      if (allFoodLength + pageSize <= that.data.allLists.length) {
+        for (var i = allFoodLength; i < allFoodLength + pageSize; i++) {
+          allFoodShow.push(that.data.allLists[i]);
+        }
+
+        that.setData({
+          allFoodShow: allFoodShow
+        })
+
+        if (allFoodShow.length < that.data.allLists.length) {
+          that.setData({
+            loadingMore: false
+          })
+        } else {
+          that.setData({
+            loadingMore: false,
+            isEnd: true
+          })
+        }
+        console.log(allFoodShow.length, '-=-=-=-=-=-=-=')
+      } else if (allFoodLength < that.data.allLists.length) {
+        for (var i = allFoodLength; i < that.data.allLists.length; i++) {
+          allFoodShow.push(that.data.allLists[i])
+        }
+        //虚拟加载特效
+
+        that.setData({
+          allFoodShow: allFoodShow,
+          loadingMore: false,
+          isEnd: true
+        })
+        console.log(allFoodShow.length, '-=-=-=-=-=-=-=')
+      }
+    }
   }
 })
 

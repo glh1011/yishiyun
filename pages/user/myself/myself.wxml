@@ -1,13 +1,14 @@
-<view class="userinfo bg-cyan">
+<scroll-view scroll-y class="scrollPage">
+<navigator class="userinfo bg-cyan" url="/pages/user/modifyUserInfo/modifyUserInfo" hover-class="none">
   <view class="userinfo-avatar">
     <open-data type="userAvatarUrl"></open-data>
   </view>
   <view class="userinfo-name"><open-data type="userNickName"></open-data></view>
   <view class="cuIcon-right right-icon"></view>  
-</view>
+</navigator>
 <view class="grid col-2 margin-bottom text-center">
-  <view class="bg-cyan padding-bottom text-xl font-family-reset">297.33元</view>
-  <view class="bg-cyan padding-bottom text-xl font-family-reset">5345千卡</view>
+  <view class="bg-cyan padding-bottom text-xl font-family-reset">{{monetarySum}}元</view>
+  <view class="bg-cyan padding-bottom text-xl font-family-reset">{{calorieSum}}千卡</view>
   <view class="bg-cyan padding-bottom text-lg">累计消费</view>
   <view class="bg-cyan padding-bottom text-lg">摄入能量</view>
 </view>
@@ -20,7 +21,7 @@
   </view>
   <view class="action">
     <view class="cuIcon-right text-gray item-right-icon"></view>
-    <view class="text-grey text-xs">18101242556</view>
+    <view class="text-grey text-xs">{{icNumber}}</view>
   </view>
 </view>
 </navigator>
@@ -59,5 +60,6 @@
 </view>
 
 <view class="padding-xl margin-bottom-xxl">
-  <button class="cu-btn block line-cyan lg">退出登录</button>
+  <button class="cu-btn block line-cyan lg" bindtap="logout">退出登录</button>
 </view>
+</scroll-view>

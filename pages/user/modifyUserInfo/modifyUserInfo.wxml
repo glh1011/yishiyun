@@ -1,0 +1,39 @@
+<form bindsubmit="formSubmit">
+	<view class="cu-form-group">
+		<view class="title">昵称</view>
+		<input class="right" name="name" placeholder="请输入昵称" value="{{userName}}"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">性别</view>
+		<switch class="switch-sex cyan" name="sex" checked="{{userSex}}"></switch>
+	</view>
+  <view class="cu-form-group">
+		<view class="title">生日</view>
+		<picker mode="date" name="brith" value="{{userBirth}}" start="1955-09-01" end="{{endDate}}" bindchange="DateChange">
+			<view class="picker">
+				{{userBirth}}
+			</view>
+		</picker>
+	</view>
+  <view class="cu-form-group">
+		<view class="title">身高</view>
+		<input class="right" name="hight" placeholder="请输入身高/cm" value="{{userHeight}}"></input>
+	</view>
+  <view class="cu-form-group">
+		<view class="title">体重</view>
+		<input class="right" name="weight" placeholder="请输入体重/kg" value="{{userWeight}}"></input>
+	</view>
+  <view class="cu-form-group">
+		<view class="title">运动量</view>
+		<picker bindchange="PickerChange" name="sportType" value="{{userSportIndex}}" range="{{picker}}">
+			<view class="picker">
+				{{userSportIndex?picker[userSportIndex]:'选择您的运动方式'}}
+			</view>
+		</picker>
+	</view>
+
+<view class="padding-xl margin-bottom-xxl">
+  <button class="cu-btn block lg bg-cyan" form-type="submit">确认修改</button>
+</view>
+
+</form>

@@ -97,12 +97,12 @@ module.exports = {
     return sendRequest('api/user/bindingIC','POST',data);
   },
   //首页今日摄入量分析获取
-  queryIntake: (data) => {
-    return sendRequest('api/homePage/calorieAnalyze', 'POST', data);
+  queryIntake: () => {
+    return sendRequest('api/homePage/calorieAnalyze', 'POST');
   },
   //首页用户最近一次就餐记录获取
-  queryLastEatLog: (data) => {
-    return sendRequest('api/homePage/lastEatLog', 'POST', data);
+  queryLastEatLog: () => {
+    return sendRequest('api/homePage/lastEatLog', 'POST');
   },
   //首页最受欢迎菜品获取
   queryMostLike: () => {
@@ -123,5 +123,21 @@ module.exports = {
   //菜单接口
   getMenuDatas:(data)=>{
     return sendRequest('api/dishes/getDishes','POST');
+  },
+  //我的页面数据获取
+  queryUser: () => {
+    return sendRequest('api/my/getMyMonetary', 'POST');
+  },
+  //用户详细信息获取
+  queryUserInfo: () => {
+    return sendRequest('api/user/getUser', 'POST');
+  },
+  //菜品详细信息获取
+  queryDishDetail: (data) => {
+    return sendRequest('api/dishes/getDish', 'POST', data);
+  },
+  //用户退出登录
+  logout: () => {
+    return sendRequest('api/user/logout', 'POST');
   }
 }

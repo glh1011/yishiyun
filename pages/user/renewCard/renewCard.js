@@ -1,66 +1,41 @@
-// pages/user/renewCard/renewCard.js
+import utils from "../../../utils/util.js";
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    icNumber: null
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.getCurrentCard();
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  getCurrentCard: function(){
+    utils.queryUser().then(res => {
+      if (res.data.code === 200) {
+        let responseData = res.data.data;
+        this.setData({
+          icNumber: responseData.icNumber,
+        })
+      } else {
+        console.log("获取卡号失败", res);
+      }
+    }).catch(res => {
+      console.log("获取卡号失败", res);
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  formSubmit: function (e) {
+    console.log(e.detail.value);
+    utils.bindIcNumber(e.detail.value).then(res => {
+      if (res.data.code === 200) {
+        wx.showToast({
+          title: res.data.msg,
+        })
+        this.getCurrentCard();
+      } else {
+        console.log("获取卡号失败", res);
+        wx.showToast({
+          title: res.data.msg,
+        })
+      }
+    }).catch(res => {
+      console.log("获取卡号失败", res);
+    })
   }
 })

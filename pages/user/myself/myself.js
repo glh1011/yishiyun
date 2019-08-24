@@ -1,66 +1,43 @@
-// pages/user/myself/myself.js
-Page({
-
-  /**
-   * 页面的初始数据
-   */
+import utils from "../../../utils/util.js";
+Component({
+  options: {
+    addGlobalClass: true,
+  },
   data: {
-
+    monetarySum: 0,
+    calorieSum: 0,
+    icNumber: null
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  attached: function (options) {
+    this.getData();
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  methods: {
+    getData: function () {
+      utils.queryUser().then(res => {
+        if (res.data.code === 200) {
+          let responseData = res.data.data;
+          this.setData({
+            calorieSum: responseData.calorieSum,
+            icNumber: responseData.icNumber,
+            monetarySum: responseData.monetarySum
+          })
+        } else {
+          console.log("获取信息失败", res);
+        }
+      }).catch(res => {
+        console.log("获取信息失败", res);
+      })
+    },
+    logout: function() {
+      utils.logout().then(res=>{
+        if (res.data.code === 200){
+          wx.redirectTo({
+            url: '/pages/login/login',
+          })
+        }
+      }).catch(res=>{
+        console.log("退出登录出错");
+      })
+    }
   }
 })
