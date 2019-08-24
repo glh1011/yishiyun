@@ -1,5 +1,8 @@
 //app.js
 
+//获取工具类
+const utils = require('/utils/util.js');
+
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -42,12 +45,24 @@ App({
         this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
       }
     })
+    utils.getMenuDatas({}).then(res => {
+      this.globalData.allDishesDatas = res.data.data.all;
+      this.globalData.breakfastDishesDatas = res.data.data.breakfast;
+      this.globalData.lunchDishesDatas = res.data.data.lunch;
+      this.globalData.dinnerDishesDatas = res.data.data.dinner;
+    }, err => {
+
+    })
   },
   // 通过scope来引入wux函数
   wux: (scope) => new wux(scope),
   globalData: {
     userInfo: null,
     token:'',
-    userId:''
+    userId:'',
+    allDishesDatas:[],
+    breakfastDishesDatas:[],
+    lunchDishesDatas:[],
+    dinnerDishesDatas:[]
   }
 })

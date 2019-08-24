@@ -1,13 +1,17 @@
 <!--pages/menu/menu.wxml-->
 <import src="../../templates/food-item/food-item.wxml" />
+<cu-custom bgColor="bg-gradual-cyan" isBack="{{false}}">
+  <!-- <view slot="backText">返回</view> -->
+  <view slot="content">菜单</view>
+</cu-custom>
 <view class="fixed header" style="top:{{CustomBar}}px;">
   <view class="cu-bar bg-white search">
-    <view class="search-form round" style="height:80rpx;line-height:80rpx;font-size:30rpx;">
+    <view class="search-form round">
       <text class="cuIcon-search text-cyan"></text>
       <input type="text" placeholder="输入搜索的关键词" confirm-type="search"></input>
     </view>
     <view class="action">
-      <button class="cu-btn bg-gradual-cyan shadow-blur round" style="height:80rpx;line-height:80rpx;width:150rpx;font-size:30rpx;">搜索</button>
+      <button class="cu-btn bg-gradual-cyan shadow-blur round">搜索</button>
     </view>
   </view>
   <scroll-view scroll-x class="bg-white nav">
@@ -21,28 +25,28 @@
 <view class="menu-container">
   <scroll-view scroll-y class="flex" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-with-animation="true" enable-back-to-top="true">
     <view class='ctnt0' hidden="{{currentNavtab==0 ? '' : true}}">
-      <block wx:for="{{foodsLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
+      <block wx:for="{{allLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
         <view class="food-item flex" bindtap="toDetailsTap">
           <template is="food-item" data="{{item}}"> </template>
         </view>
       </block>
     </view>
     <view class='ctnt1' hidden="{{currentNavtab==1 ? '' : true}}">
-      <block wx:for="{{foodsLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
+      <block wx:for="{{breakfastLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
         <view class="food-item flex" bindtap="toDetailsTap">
           <template is="food-item" data="{{item}}"> </template>
         </view>
       </block>
     </view>
     <view class='ctnt2' hidden="{{currentNavtab==2 ? '' : true}}">
-      <block wx:for="{{foodsLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
+      <block wx:for="{{lunchLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
         <view class="food-item flex" bindtap="toDetailsTap">
           <template is="food-item" data="{{item}}"> </template>
         </view>
       </block>
     </view>
     <view class='ctnt3' hidden="{{currentNavtab==3 ? '' : true}}">
-      <block wx:for="{{foodsLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
+      <block wx:for="{{dinnerLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
         <view class="food-item flex" bindtap="toDetailsTap">
           <template is="food-item" data="{{item}}"> </template>
         </view>

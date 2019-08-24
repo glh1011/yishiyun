@@ -1,7 +1,6 @@
 {
   "navigationBarTitleText": "菜单",
   "enablePullDownRefresh": true,
-  "disableScroll": true,
   "component":true,
   "usingComponents": {
     "wxc-loadmore": "../../dist/packages/@minui/wxc-loadmore/dist/index"

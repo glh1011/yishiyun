@@ -98,32 +98,30 @@ module.exports = {
   },
   //首页今日摄入量分析获取
   queryIntake: (data) => {
-    var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
-    return sendRequest('api/homePage/calorieAnalyze', 'POST', data, header);
+    return sendRequest('api/homePage/calorieAnalyze', 'POST', data);
   },
   //首页用户最近一次就餐记录获取
   queryLastEatLog: (data) => {
-    var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
-    return sendRequest('api/homePage/lastEatLog', 'POST', data, header);
+    return sendRequest('api/homePage/lastEatLog', 'POST', data);
   },
   //首页最受欢迎菜品获取
   queryMostLike: () => {
-    var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
-    return sendRequest('api/homePage/likedDish', 'POST', header);
+    return sendRequest('api/homePage/likedDish', 'POST');
   },
   //用户就餐记录获取
   queryEatLog: (data) => {
-    var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
-    return sendRequest('api/consumptionLog/EatLogByDay', 'POST', data, header);
+    return sendRequest('api/consumptionLog/EatLogByDay', 'POST', data);
   },
   //营养分析
   queryTrophicAnalysis: (data) => {
-    var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
-    return sendRequest('api/trophicAnalysis/taByday', 'POST', data, header);
+    return sendRequest('api/trophicAnalysis/taByday', 'POST', data);
   },
   //消费记录
   queryEatLogByMonth: (data) => {
-    var header = { 'Content-Type': 'application/x-www-form-urlencoded' };
-    return sendRequest('api/consumptionLog/EatLogByMonth', 'POST', data, header);
+    return sendRequest('api/consumptionLog/EatLogByMonth', 'POST', data);
   },
+  //菜单接口
+  getMenuDatas:(data)=>{
+    return sendRequest('api/dishes/getDishes','POST');
+  }
 }

@@ -4,7 +4,7 @@
     <image class="remind-img" src="../../images/loading.gif"></image>
   </view>
   <block wx:else>
-    <image class="title" src="../../images/title8.png"></image>
+    <image class="title" src="../../images/title1.png"></image>
     <view class="content">
       <view class="hd" style="transform:rotateZ({{angle}}deg);">
         <open-data class='logo' type="userAvatarUrl"></open-data>

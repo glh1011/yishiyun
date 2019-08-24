@@ -4,19 +4,19 @@
   
     <!--图片-->
     <view class="left-view">
-      <image class="food-pic" src='{{item.pic}}'></image>
+      <image class="food-pic" src='{{item.dishImage}}'></image>
     </view>
     <view class="right-view">
       <!--菜名、价格-->
       <view class="nameAndPrice">
         <!--菜名-->
-        <view class="food-name">
-          <text>{{item.foodName}}</text>
+        <view class="food-name text-xl">
+          <text class="textblack text-bold">{{item.dishName}}</text>
         </view>
         <!--价格-->
         <view class="food-price">
           <text class="moneyicon">¥</text>
-          <text class="price">{{item.price}}</text>
+          <text class="price">{{item.dishPrice}}</text>
           <text class="danwei">元/50g</text>
         </view>
       </view>
@@ -30,7 +30,7 @@
           </view>
           <!--含量-->
           <view class="content-view">
-            <text>碳水：{{item.carbohydrate}}</text>
+            <text>碳水:{{item.carbohydrate}}</text>
             <text>g</text>
           </view>
         </view>
@@ -42,7 +42,7 @@
           </view>
           <!--含量-->
           <view class="content-view">
-            <text>碳水：{{item.carbohydrate}}</text>
+            <text>蛋白质:{{item.protein}}</text>
             <text>g</text>
           </view>
         </view>
@@ -54,7 +54,7 @@
           </view>
           <!--含量-->
           <view class="content-view">
-            <text>碳水：{{item.carbohydrate}}</text>
+            <text>脂肪:{{item.fat}}</text>
             <text>g</text>
           </view>
         </view>
@@ -66,8 +66,8 @@
           </view>
           <!--含量-->
           <view class="content-view">
-            <text>碳水：{{item.carbohydrate}}</text>
-            <text>g</text>
+            <text>热量:{{item.calorie}}</text>
+            <text>Cal</text>
           </view>
         </view>
       </view>

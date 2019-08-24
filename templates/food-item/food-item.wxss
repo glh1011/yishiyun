@@ -12,10 +12,10 @@
   line-height:70rpx;
 }
 
-.food-name text{
+/* .food-name text{
   font-size:40rpx;
   font-weight: bold;
-}
+} */
 
 .food-price{
   height: 70rpx;
