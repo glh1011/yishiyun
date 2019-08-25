@@ -1,0 +1,18 @@
+<!--pages/nutritionSummary/nutritionSummary.wxml-->
+<scroll-view scroll-y class="scrollPage">
+  <weekCalendar timeBean="{{timeBean}}" bind:lastWeek="lastWeek" bind:nextWeek="nextWeek" bind:dayClick="dayClick"></weekCalendar>
+  <view class="cu-bar bg-white">
+    <view class="action">
+      <text class="cuIcon-titles text-cyan"></text>一周营养摄入情况(单位:千卡)
+    </view>
+  </view>
+  <view class="cu-card case shadow">
+      <view class="cu-item shadow bg-white" style="margin:5rpx 50rpx 60rpx">
+        <view class="flex justify-center">
+          <view class="container">
+             <canvas canvas-id="canvasColumn" id="canvasColumn" class="charts" bindtouchstart="touchColumn"></canvas>
+          </view>
+        </view>
+      </view>
+    </view>
+</scroll-view>

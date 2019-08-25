@@ -49,7 +49,10 @@ Component({
     },
 
     toDetailsTap: function(e) {
-      console.log("detail");
+      console.log("detail:" + e.currentTarget.dataset.id);
+      wx.navigateTo({
+        url: "/pages/dishDetail/dishDetail?dishesId=" + e.currentTarget.dataset.id
+      })
     },
 
     getFoodShow: function() {
@@ -62,7 +65,7 @@ Component({
       that.setData({
         loadingMore: true
       })
-      var pageSize = 2;
+      var pageSize = 5;
       var allFoodShow = that.data.allFoodShow;
       var allFoodLength = allFoodShow.length;
       console.log('allFoodLength:' + allFoodLength);

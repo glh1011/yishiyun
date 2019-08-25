@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "weekCalendar": "../../templates/weekCalendar/weekCalendar"
+  }
+}

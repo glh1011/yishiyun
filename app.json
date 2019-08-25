@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/login/login",
+    "pages/nutritionSummary/nutritionSummary",
     "pages/index/index",
     "pages/menu/menu",
     "pages/register/register",

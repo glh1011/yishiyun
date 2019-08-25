@@ -26,28 +26,28 @@
   <scroll-view scroll-y class="flex" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-with-animation="true" enable-back-to-top="true" bindscrolltolower="getFoodShow">
     <view class='ctnt0' hidden="{{currentNavtab==0 ? '' : true}}">
       <block wx:for="{{allFoodShow}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
-        <view class="food-item flex" bindtap="toDetailsTap">
+        <view class="food-item flex" data-id="{{item.id}}" bindtap="toDetailsTap">
           <template is="food-item" data="{{item}}"> </template>
         </view>
       </block>
     </view>
     <view class='ctnt1' hidden="{{currentNavtab==1 ? '' : true}}">
       <block wx:for="{{breakfastLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
-        <view class="food-item flex" bindtap="toDetailsTap">
+        <view class="food-item flex" data-id="{{item.id}}" bindtap="toDetailsTap">
           <template is="food-item" data="{{item}}"> </template>
         </view>
       </block>
     </view>
     <view class='ctnt2' hidden="{{currentNavtab==2 ? '' : true}}">
       <block wx:for="{{lunchLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
-        <view class="food-item flex" bindtap="toDetailsTap">
+        <view class="food-item flex" data-id="{{item.id}}" bindtap="toDetailsTap">
           <template is="food-item" data="{{item}}"> </template>
         </view>
       </block>
     </view>
     <view class='ctnt3' hidden="{{currentNavtab==3 ? '' : true}}">
       <block wx:for="{{dinnerLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
-        <view class="food-item flex" bindtap="toDetailsTap">
+        <view class="food-item flex" data-id="{{item.id}}" bindtap="toDetailsTap">
           <template is="food-item" data="{{item}}"> </template>
         </view>
       </block>

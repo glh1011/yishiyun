@@ -46,6 +46,7 @@ App({
       }
     })
     utils.getMenuDatas({}).then(res => {
+      console.log(res);
       this.globalData.allDishesDatas = res.data.data.all;
       this.globalData.breakfastDishesDatas = res.data.data.breakfast;
       this.globalData.lunchDishesDatas = res.data.data.lunch;
