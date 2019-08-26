@@ -21,6 +21,7 @@ Page({
   },
 
   displayDiningRecord: function() {
+    wx.showLoading({ title: '加载中', icon: 'loading' });
     let requestData = {
       date: this.data.date
     }
@@ -36,6 +37,7 @@ Page({
       } else {
         this.setDefault(res.data.msg);
       }
+      wx.hideLoading();
     }).catch(res => {
       this.setDefault("获取就餐记录失败");
       console.log("获取就餐记录失败");
@@ -45,7 +47,7 @@ Page({
   bindDateChange: function (e) {
     //console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      hasDiningRecord: false,
+      // hasDiningRecord: false,
       date: e.detail.value
     })
     this.displayDiningRecord();
@@ -58,11 +60,7 @@ Page({
       lunch: [],
       supper: []
     })
-    wx.showToast({
-      title: msg,
-      icon: 'none',
-      duration: 2000
-    })
+    utils.showToastWindow(msg, "none");
   }
 
 })

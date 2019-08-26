@@ -66,9 +66,7 @@ Page({
     utils.perfectInfo(allValue).then(res=>{
       if(res.data.code == 200){
         console.log(res);
-        wx.showToast({
-          title: res.data.msg,
-        })
+        utils.showToastWindow(res.data.msg);
       }
       this.getUserInfo();
     }).catch(res=>{

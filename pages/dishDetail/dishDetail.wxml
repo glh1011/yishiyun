@@ -5,7 +5,7 @@
       <view class="padding-sm margin-xs radius" style='font-size:46rpx'>{{dishNam}}</view>
     </view>
     <view class="flex padding-bottom justify-center">
-      <view class="margin-xs radius" style='font-size:34rpx'>{{dishPrice}}元</view>
+      <view class="margin-xs radius" style='font-size:34rpx'>{{dishPrice}}元/{{weight}}克</view>
     </view>
   </view>
   <view class="cu-bar bg-white">

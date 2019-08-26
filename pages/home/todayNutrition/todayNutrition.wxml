@@ -148,17 +148,3 @@
   <text wx:if="{{sign === 0}}" class="cuIcon-check lg text-cyan"></text>
   <text wx:if="{{sign === -1}}" class="cuIcon-refresharrow lg text-orange"></text>
 </template>
-
-<!-- <view class="cu-modal {{modalName=='Modal'?'show':''}}">
-  <view class="cu-dialog">
-    <view class="cu-bar bg-white justify-end">
-      <view class="content">提示</view>
-      <view class="action" bindtap="hideModal">
-        <text class="cuIcon-close text-red"></text>
-      </view>
-    </view>
-    <view class="padding-xl">
-      获取营养分析失败
-    </view>
-  </view>
-</view> -->
