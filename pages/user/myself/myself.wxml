@@ -59,7 +59,7 @@
   </view>
 </view>
 
-<view class="padding-xl margin-bottom-xxl">
+<view class="padding-xl logout-button-container">
   <button class="cu-btn block line-cyan lg" bindtap="logout">退出登录</button>
 </view>
 </scroll-view>
