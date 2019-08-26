@@ -25,14 +25,17 @@ Page({
     utils.bindIcNumber(e.detail.value).then(res => {
       if (res.data.code === 200) {
         utils.showToastWindow(res.data.msg);
-        this.getCurrentCard();
+        //this.getCurrentCard();
+        wx.navigateBack({
+          delta: 1
+        })
       } else {
-        console.log("获取卡号出错", res);
+        console.log("更新卡号出错", res);
         utils.showToastWindow(res.data.msg);
       }
     }).catch(res => {
-      console.log("获取卡号失败", res);
-      utils.showToastWindow("获取卡号失败");
+      console.log("更新卡号失败", res);
+      utils.showToastWindow("更新卡号失败");
     })
   }
 })

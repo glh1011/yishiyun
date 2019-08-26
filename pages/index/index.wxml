@@ -1,7 +1,7 @@
 <home wx:if="{{PageCur=='home'}}"></home>
 <menu wx:if="{{PageCur=='menu'}}"></menu>
 <nutrition wx:if="{{PageCur=='nutrition'}}"></nutrition>
-<user wx:if="{{PageCur=='user'}}"></user>
+<user wx:if="{{PageCur=='user'}}" id="userComponent"></user>
 <view class="cu-bar tabbar bg-white shadow foot">
   <view class="action" bindtap="NavChange" data-cur="home">
     <view class='cuIcon-cu-image'>
