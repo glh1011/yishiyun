@@ -12,7 +12,9 @@
     "pages/user/renewCard/renewCard",
     "pages/home/purchaseHistory/purchaseHistory",
     "pages/user/modifyUserInfo/modifyUserInfo",
-    "pages/dishDetail/dishDetail"
+    "pages/dishDetail/dishDetail",
+    "pages/user/myComment/myComment",
+    "pages/user/myMessage/myMessage"
   ],
   "window": {
     "navigationStyle": "default",

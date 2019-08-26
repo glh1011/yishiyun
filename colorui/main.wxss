@@ -2114,7 +2114,7 @@ button.icon.lg {
 }
 
 .cu-chat .cu-item>.main {
-	max-width: calc(100% - 260rpx);
+	max-width: calc(100% - 180rpx);
 	margin: 0 40rpx;
 	display: flex;
 	align-items: center;

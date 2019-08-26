@@ -15,7 +15,8 @@ Page({
     protein: 0,
     salt: 0,
     vitamin: 0,
-    weight: 0
+    weight: 0,
+    textareaAValue: ''
   },
   onLoad: function (options) {
     console.log(options);
@@ -55,5 +56,23 @@ Page({
     }).catch(res=>{
       console.log(res);
     })
-  }
+  },
+
+
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null,
+      textareaAValue: ''
+    })
+  },
+  textareaAInput(e) {
+    this.setData({
+      textareaAValue: e.detail.value
+    })
+  },
 })

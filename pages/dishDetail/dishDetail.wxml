@@ -38,7 +38,7 @@
       </view>
 
 
-  <button class="cu-btn bg-cyan shadow" style="border-radius:50%;position:fixed;bottom:200rpx;right:50rpx;height: 100rpx;width:100rpx;text-align:center; font-size: 60rpx"><text class="cuIcon-comment"></text></button>
+  <button class="cu-btn bg-cyan shadow" style="border-radius:50%;position:fixed;bottom:200rpx;right:50rpx;height: 100rpx;width:100rpx;text-align:center; font-size: 60rpx" bindtap="showModal" data-target="bottomModal"><text class="cuIcon-comment"></text></button>
 </scroll-view>
 
 <view class="cu-bar bg-white tabbar border solid-top" style="bottom:0; position:fixed;width: 100%">
@@ -48,5 +48,17 @@
   </view>
   <view class="action">
     <view class="cuIcon-favor"></view>{{likeNum}}
+  </view>
+</view>
+
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+  <view class="cu-dialog" style="border-radius: 20rpx 20rpx 0 0; height: 500rpx">
+    <view class="cu-bar bg-white solid-bottom">
+      <view class="action text-grey" bindtap="hideModal">取消</view>
+      <view class="action text-cyan" bindtap="hideModal">确定</view>
+    </view>
+    <view class="cu-form-group {{modalName=='bottomModal'?'show':''}}" style="height:100%">
+      <textarea maxlength="-1" placeholder="请输入您对菜品的评价"></textarea>
+    </view>
   </view>
 </view>

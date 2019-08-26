@@ -295,7 +295,7 @@ Page({
     Column.series[0].data = defaultMonth.slice(0, this.data.curMonth);
     _self.showLine("canvasLine", Line);
     _self.showColumn("canvasColumn", Column);
-    utils.showToastWindow("获取月消费记录失败");
+    utils.showToastWindow("获取月消费记录失败", "none");
   }
 
 })

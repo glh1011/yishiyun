@@ -36,9 +36,12 @@ Component({
           wx.redirectTo({
             url: '/pages/login/login',
           })
+        } else {
+          utils.showToastWindow("退出登录失败", "none");
         }
       }).catch(res=>{
         console.log("退出登录出错");
+        utils.showToastWindow("退出登录失败", "none");
       })
     }
   }

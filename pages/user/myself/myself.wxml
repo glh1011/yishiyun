@@ -34,16 +34,16 @@
     </navigator>
   </view>
   <view class="cu-item arrow">
-    <navigator class="content" url="" hover-class="none">
+    <navigator class="content" url="/pages/user/myComment/myComment" hover-class="none">
       <text class="cuIcon-community text-green"></text>
       <text class="text-grey">我的评价</text>
     </navigator>
   </view>
   <view class="cu-item arrow">
-    <view class="content">
+    <navigator class="content" url="/pages/user/myMessage/myMessage" hover-class="none">
       <text class="cuIcon-message text-red"></text>
       <text class="text-grey">我的消息</text>
-    </view>
+    </navigator>
   </view>
   <view class="cu-item arrow">
     <button class="cu-btn content">
