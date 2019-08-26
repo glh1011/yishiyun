@@ -96,7 +96,7 @@ Component({
             })
           } else {
             this.setData({
-              lastEatLog: res.data.data
+              mostLike: res.data.data
             })
           }
         }

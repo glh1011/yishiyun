@@ -22,10 +22,12 @@ Component({
             monetarySum: responseData.monetarySum
           })
         } else {
-          console.log("获取信息失败", res);
+          console.log("获取信息出错", res);
+          utils.showToastWindow('获取信息出错');
         }
       }).catch(res => {
         console.log("获取信息失败", res);
+        utils.showToastWindow('获取信息失败');
       })
     },
     logout: function() {

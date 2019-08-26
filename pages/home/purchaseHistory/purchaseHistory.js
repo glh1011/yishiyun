@@ -69,7 +69,7 @@ Page({
     //console.log('picker发送选择改变，携带值为', e.detail.value)
     wx.showLoading({ title: '加载中', icon: 'loading' });
     this.setData({
-      hasPurchaseRecord: false,
+      // hasPurchaseRecord: false,
       date: e.detail.value
     })
     this.getExpenseDetail();
@@ -149,22 +149,25 @@ Page({
         })
       }else if(res.data.code == 202) {
         this.setData({
+          hasPurchaseRecord: false,
           expenseDetail: []
         })
-        wx.showToast({
-          title: "当日"+res.data.msg,
-          icon: 'none',
-          duration: 2000
-        })
+        // wx.showToast({
+        //   title: "当日"+res.data.msg,
+        //   icon: 'none',
+        //   duration: 2000
+        // })
+        let msg = "当日" + res.data.msg;
+        utils.showToastWindow(msg, 'none');
       }
       wx.hideLoading();
     }).catch(res => {
-      console.log("获取就餐记录失败",res);
-      wx.showToast({
-        title: "获取日消费记录失败",
-        icon: 'none',
-        duration: 2000
+      this.setData({
+        hasPurchaseRecord: false,
+        expenseDetail: []
       })
+      console.log("获取就餐记录失败",res);
+      utils.showToastWindow("获取日消费记录失败");
     })
   },
 
@@ -292,11 +295,7 @@ Page({
     Column.series[0].data = defaultMonth.slice(0, this.data.curMonth);
     _self.showLine("canvasLine", Line);
     _self.showColumn("canvasColumn", Column);
-    wx.showToast({
-      title: "获取月消费记录失败",
-      icon: 'none',
-      duration: 2000
-    })
+    utils.showToastWindow("获取月消费记录失败");
   }
 
 })

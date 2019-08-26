@@ -15,6 +15,7 @@ Page({
     protein: 0,
     salt: 0,
     vitamin: 0,
+    weight: 0
   },
   onLoad: function (options) {
     console.log(options);
@@ -43,6 +44,7 @@ Page({
           protein: responseData.protein,
           salt: responseData.salt,
           vitamin: responseData.vitamin,
+          weight: responseData.weight
         })
       }else{
         wx.showToast({

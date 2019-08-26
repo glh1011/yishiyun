@@ -1,5 +1,5 @@
 .title-padding {
-  padding: 100rpx 0 0 50rpx;
+  padding: 100rpx 0 20rpx 80rpx;
 }
 .container {
   height: 300rpx;
@@ -7,8 +7,11 @@
   z-index: 100;
 }
 .charts {
-  height: 300rpx;
+  /* height: 300rpx;
   width: 300rpx;
+  background-color: #FFFFFF; */
+  height: 100%;
+  width: 100%;
   background-color: #FFFFFF;
 }
 .more-icon-container{
@@ -100,6 +103,6 @@
   color: #fff;
   font-weight: 700;
 }
-.menu-container {
-  margin-bottom: 50rpx;
+.home-menu-container {
+  padding-bottom: 150rpx;
 }

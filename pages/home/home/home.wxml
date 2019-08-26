@@ -41,7 +41,7 @@
   </view>
   <swiper class="card-swiper" next-margin="140rpx" circular="{{true}}">
     <swiper-item class="swiper-item">
-      <navigator class="swiper-item" url="/pages/home/purchaseHistory/purchaseHistory" hover-class="none">
+      <navigator class="swiper-item" url="/pages/home/purchaseHistory/purchaseHistory">
         <view style="background-image:url({{banner.banner4_url}});" class='swiper-image'>
           <view class="swiper-name">消费记录 
             <text class="cuIcon-pay text-white"></text>
@@ -50,7 +50,7 @@
       </navigator>
     </swiper-item>
     <swiper-item class="swiper-item">
-      <navigator class="swiper-item" hover-class='none' url="../../pages/home/todayNutrition/todayNutrition">
+      <navigator class="swiper-item" url="../../pages/home/todayNutrition/todayNutrition">
         <view style="background-image:url({{banner.banner2_url}});" class='swiper-image'>
           <view class="swiper-name">营养分析 
             <text class="cuIcon-similar text-white"></text>
@@ -69,7 +69,7 @@
     </swiper-item>
   </swiper>
 
-  <navigator class="cu-bar bg-white" url="/pages/home/diningRecord/diningRecord" hover-class="none">
+  <navigator class="cu-bar bg-white" url="/pages/home/diningRecord/diningRecord">
     <view class="action">
       <text class="cuIcon-titles text-cyan"></text>最近一次就餐记录
     </view>
@@ -85,7 +85,7 @@
   <view class="cu-list menu-avatar">
    
   <block wx:for="{{lastEatLog}}" wx:for-item="item" wx:key>
-    <navigator class="cu-item arrow" url="/pages/dishDetail/dishDetail?dishesId={{item.dishesId}}" hover-class="none">
+    <navigator class="cu-item arrow" url="/pages/dishDetail/dishDetail?dishesId={{item.dishesId}}">
       <image class="cu-avatar radius lg" src="{{item.dishImage}}"></image>
       <view class="content">
         <view class="text-grey">{{item.dishName}}</view>
@@ -109,46 +109,21 @@
       <text class="cuIcon-titles text-cyan"></text>本周最受欢迎的菜品
     </view>
   </view>
-  <view class="padding-left padding-right menu-container">
-    <view class="grid col-2 margin-bottom text-center">
-      <view class="padding-sm">
-        <navigator url="/pages/dishDetail/dishDetail?dishesId={{mostLike[0].dishesId}}" hover-class="none">
-          <view class="image">
-            <image src="{{mostLike[0].dishesImage}}" mode="aspectFill" style='width:100%;height:300rpx; border-radius:8rpx'></image>
-          </view>
-          <view class="content flex-sub">
-            <view class="text-grey text-sm flex justify-between">{{mostLike[0].dishesName}}</view>
-            <view class="text-gray text-xs flex justify-between">{{mostLike[0].dishesCalorie}}千卡/克</view>
-          </view>
-        </navigator>
-      </view>
-      <view class="padding-top-sm padding-left-lg padding-right-lg">
-        <navigator url="/pages/dishDetail/dishDetail?dishesId={{mostLike[1].dishesId}}" hover-class="none">
-          <image src="{{mostLike[1].dishesImage}}" mode="aspectFill" style='width:100%;height:260rpx; border-radius:8rpx'></image>
-          <view class="content flex-sub">
-            <view class="text-grey text-sm flex justify-between">{{mostLike[1].dishesName}}</view>
-            <view class="text-gray text-xs flex justify-between">{{mostLike[1].dishesCalorie}}千卡/克</view>
-          </view>
-        </navigator>
-      </view>
-      <view class="padding-top-lg padding-left-sm padding-right-sm">
-        <navigator url="/pages/dishDetail/dishDetail?dishesId={{mostLike[2].dishesId}}" hover-class="none">
-          <image src="{{mostLike[2].dishesImage}}" mode="aspectFill" style='width:100%;height:280rpx; border-radius:8rpx'></image>
-          <view class="content flex-sub">
-            <view class="text-grey text-sm flex justify-between">{{mostLike[2].dishesName}}</view>
-            <view class="text-gray text-xs flex justify-between">{{mostLike[2].dishesCalorie}}千卡/克</view>
-          </view>
-        </navigator>
-      </view>
-      <view class="padding-top-sm padding-left-lg padding-right-lg">
-        <navigator url="/pages/dishDetail/dishDetail?dishesId={{mostLike[3].dishesId}}" hover-class="none">
-          <image src="{{mostLike[3].dishesImage}}" mode="aspectFill" style='width:100%;height:320rpx; border-radius:8rpx'></image>
-          <view class="content flex-sub">
-            <view class="text-grey text-sm flex justify-between">{{mostLike[3].dishesName}}</view>
-            <view class="text-gray text-xs flex justify-between">{{mostLike[3].dishesCalorie}}千卡/克</view>
-          </view>
-        </navigator>
-      </view>
+  <view class="padding-left padding-right home-menu-container">
+    <view class="grid col-2 text-center">
+      <block wx:for="{{mostLike}}" wx:for-item="item" wx:key>
+        <view>
+          <navigator class="padding-sm" url="/pages/dishDetail/dishDetail?dishesId={{item.dishesId}}">
+            <view class="image">
+              <image src="{{item.dishesImage}}" mode="aspectFill" style='width:100%;height:300rpx; border-radius:8rpx'></image>
+            </view>
+            <view class="content flex-sub">
+              <view class="text-grey text-sm flex justify-between">{{item.dishesName}}</view>
+              <view class="text-gray text-xs flex justify-between">{{item.dishesCalorie}}千卡/克</view>
+            </view>
+          </navigator>
+        </view>
+      </block>
     </view>
   </view>
 

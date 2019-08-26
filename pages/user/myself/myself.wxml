@@ -1,4 +1,4 @@
-<scroll-view scroll-y class="scrollPage">
+<scroll-view scroll-y class="scrollPage" style="background: #eee">
 <navigator class="userinfo bg-cyan" url="/pages/user/modifyUserInfo/modifyUserInfo" hover-class="none">
   <view class="userinfo-avatar">
     <open-data type="userAvatarUrl"></open-data>
