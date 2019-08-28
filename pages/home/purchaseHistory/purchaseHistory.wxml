@@ -53,7 +53,7 @@
       <view class="cu-item shadow bg-white" style="margin:5rpx 50rpx 60rpx">
         <view class="flex justify-center">
           <view class="container">
-             <canvas canvas-id="canvasColumn" id="canvasColumn" class="charts" bindtouchstart="touchColumn"></canvas>
+            <canvas canvas-id="canvasColumn" id="canvasColumn" class="charts" bindtouchstart="touchColumn"></canvas>
           </view>
         </view>
       </view>
@@ -64,7 +64,7 @@
   <view wx:if="{{1==TabCur}}">
     <view class="text-xl title-padding">
       <text class="textblack text-bold">支出详情</text>
-       <view class="calendar-container">
+      <view class="calendar-container">
         <picker mode="date" value="{{date}}" end="{{today}}" bindchange="bindDateChange">
           <button class="cu-btn shadow">
             {{date}}
@@ -96,7 +96,7 @@
               </view>
             </navigator>
           </block>
-  
+
         </view>
       </view>
     </view>

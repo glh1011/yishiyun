@@ -19,8 +19,13 @@ Page({
   },
 
   onLoad: function (options) {
-    var today = new Date();
-    var d = utils.formatTime(today);
+    var d;
+    if(options.date != "" && options.date != null){
+      d = options.date;
+    }else{
+      var today = new Date();
+      d = utils.formatTime(today);
+    }
     this.setData({
       today: d,
       date: d

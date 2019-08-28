@@ -1,4 +1,8 @@
 <!--pages/nutritionSummary/nutritionSummary.wxml-->
+<cu-custom bgColor="bg-gradual-cyan" isBack="{{false}}">
+  <!-- <view slot="backText">返回</view> -->
+  <view slot="content">营养汇总</view>
+</cu-custom>
 <scroll-view scroll-y class="scrollPage">
   <weekCalendar timeBean="{{timeBean}}" bind:lastWeek="lastWeek" bind:nextWeek="nextWeek" bind:dayClick="dayClick"></weekCalendar>
   <view class="cu-bar bg-white">
@@ -6,13 +10,25 @@
       <text class="cuIcon-titles text-cyan"></text>一周营养摄入情况(单位:千卡)
     </view>
   </view>
-  <view class="cu-card case shadow">
-      <view class="cu-item shadow bg-white" style="margin:5rpx 50rpx 60rpx">
-        <view class="flex justify-center">
-          <view class="container">
-             <canvas canvas-id="canvasColumn" id="canvasColumn" class="charts" bindtouchstart="touchColumn"></canvas>
-          </view>
+  <view class="container">
+    <canvas canvas-id="canvasColumn" id="canvasColumn" class="charts" bindtouchstart="touchColumn"></canvas>
+  </view>
+  <view wx:if="{{isHaveCal}}" class="table">
+    <view class="tr">
+      <view class="th">日期</view>
+      <view class="th">摄入热量</view>
+      <view class="th">评价</view>
+    </view>
+    <block wx:for="{{curWeekDataList}}" wx:key="{{code}}">
+      <view wx:if="{{item.input != 0}}" class="tr" data-id="{{item.date}}" bindtap="toTodayNutrition">
+        <view class="td">{{item.date}}</view>
+        <view class="td">{{item.input}}</view>
+        <view class="td">
+        `<view class="cu-tag bg-{{compareColor[item.comment]}}">{{compareItemTitle[item.comment]}}</view>
         </view>
       </view>
-    </view>
+    </block>
+  </view>
+
+
 </scroll-view>

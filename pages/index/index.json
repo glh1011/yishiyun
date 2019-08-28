@@ -2,7 +2,8 @@
   "usingComponents": {
     "home": "/pages/home/home/home",
     "menu":"/pages/menu/menu",
-    "user": "/pages/user/myself/myself"
+    "user": "/pages/user/myself/myself",
+    "nutrition":"/pages/nutritionSummary/nutritionSummary"
   },
   "navigationStyle": "custom"
 }

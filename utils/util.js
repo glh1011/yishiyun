@@ -1,3 +1,4 @@
+// const API_BASE_URL = 'https://nocode.goho.co/';
 const API_BASE_URL = 'https://mlquan.picp.vip/';
 
 const formatTime = date => {
@@ -139,5 +140,9 @@ module.exports = {
   //用户退出登录
   logout: () => {
     return sendRequest('api/user/logout', 'POST');
+  },
+  //营养汇总信息获取
+  queryNuritionSummary:(data)=>{
+    return sendRequest('/api/trophicAnalysis/toByWeek','POST',data);
   }
 }
