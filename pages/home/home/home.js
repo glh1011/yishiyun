@@ -35,7 +35,7 @@ Component({
       utils.queryIntake().then(res => {
         if (res.data.code == 200) {
           let resultData = res.data.data;
-          if (resultData.availableEnergy == 0) {
+          if (resultData.availabledEnergy == 0) {
             this.setData({
               rate: 0
             })
@@ -45,8 +45,8 @@ Component({
             })
           }
           this.setData({
-            intake: resultData.availableEnergy,
-            ingestible: resultData.availabledEnergy,
+            intake: resultData.availabledEnergy,
+            ingestible: resultData.availableEnergy, 
             mealMoney: resultData.money,
             mealWeight: resultData.weight,
           })
@@ -96,7 +96,7 @@ Component({
             })
           } else {
             this.setData({
-              lastEatLog: res.data.data
+              mostLike: res.data.data
             })
           }
         }

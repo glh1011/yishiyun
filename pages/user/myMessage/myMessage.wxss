@@ -1,0 +1,11 @@
+.main-reset {
+  max-width: calc(100% - 180rpx);
+  margin: 0 0 0 40rpx;
+  display: flex;
+  align-items: center;
+}
+.bottom-scroll {
+  height: calc(100vh-90px);
+  position: relative;
+  top: 90rpx;
+}

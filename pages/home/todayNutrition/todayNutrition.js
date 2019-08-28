@@ -123,23 +123,8 @@ Page({
     return ringCanvas;
   },
 
-  // showModal(e) {
-  //   this.setData({
-  //     modalName: e.currentTarget.dataset.target
-  //   })
-  // },
-  // hideModal(e) {
-  //   this.setData({
-  //     modalName: null
-  //   })
-  // },
-
   setDefaultDiagram(msg) {
-    wx.showToast({
-      title: msg,
-      icon: 'none',
-      duration: 2000
-    })
+    utils.showToastWindow(msg, 'none');
     this.setData({
       calorieAdvise: { breakfast: 0, lunch: 0, dinner: 0, sumEnergy: 0 },
       calorieReal: { breakfast: 0, lunch: 0, dinner: 0, sumEnergy: 0 },

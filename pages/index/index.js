@@ -14,6 +14,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    if (this.selectComponent("#userComponent")) {
+      this.selectComponent("#userComponent").getData();
+    }
   },
 
   NavChange(e) {
@@ -21,4 +24,5 @@ Page({
       PageCur: e.currentTarget.dataset.cur
     })
   },
+
 })

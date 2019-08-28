@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 9,
 			"list": [
 				{
 					"id": 0,
@@ -104,6 +104,20 @@
 					"id": -1,
 					"name": "菜品详情",
 					"pathName": "pages/dishDetail/dishDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的消息",
+					"pathName": "pages/user/myMessage/myMessage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的评价",
+					"pathName": "pages/user/myComment/myComment",
 					"scene": null
 				}
 			]
