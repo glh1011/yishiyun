@@ -5,8 +5,9 @@ Page({
     date: '',
     index: null,
     picker: ['坐式生活方式：极少运动', '轻微活动：日常活动', '中等强度健身：每周3-4次', '大强度健身：每周4次以上', '专业运动员：每周6次以上运动'],
-    userName: 'fff',
-    userSex: 'f',
+    tongtongId: null,
+    userName: '',
+    userSex: '',
     userBirth: '',
     userHeight: '',
     userWeight: '',
@@ -31,6 +32,7 @@ Page({
           sexTmp = true;
         }
         this.setData({
+          tongtongId: responseData.id,
           userName: responseData.name,
           userSex: sexTmp,
           userBirth: responseData.brith,
@@ -73,4 +75,7 @@ Page({
       console.log("修改个人信息失败",res);
     })
   },
+  showAlert: function() {
+    utils.showToastWindow("此项不可修改", "none")
+  }
 })

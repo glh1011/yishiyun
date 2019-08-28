@@ -136,6 +136,18 @@ module.exports = {
   queryDishDetail: (data) => {
     return sendRequest('api/dishes/getDish', 'POST', data);
   },
+  //菜品评论信息获取
+  queryDishComment: (data) => {
+    return sendRequest('api/comment/getCommentByDishes', 'POST', data);
+  },
+  //评论菜品
+  submitComment: (data) => {
+    return sendRequest('api/comment/addComment', 'POST', data);
+  },
+  //用户所有评论获取
+  queryUserComment: () => {
+    return sendRequest('api/comment/getCommentByUser', 'POST');
+  },
   //用户退出登录
   logout: () => {
     return sendRequest('api/user/logout', 'POST');

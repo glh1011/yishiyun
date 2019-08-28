@@ -1,75 +1,35 @@
-<view class="cu-card dynamic no-card" style="border-bottom: 1rpx solid #eee; margin: 0 20rpx">
-  <view class="cu-item shadow">
-    <view class="cu-list menu-avatar">
-      <view class="cu-item">
-        <view class="cu-avatar round lg"><open-data class='avatar' type="userAvatarUrl"></open-data></view>
-        <view class="content flex-sub">
-          <view><open-data type="userNickName"></open-data></view>
-          <view class="text-gray text-sm flex justify-between">
-            2019年12月3日
-          </view>
-        </view>
-      </view>
-    </view>
-    <view class="text-content">
-      评论评论评论评论评论评论评论评论评论评论
-    </view>
-    <view class="grid flex-sub padding-lr padding-bottom {{isCard?'col-3 grid-square':'col-1'}}">
-      <view class="cu-list menu-avatar">
-        <navigator class="cu-item arrow" url="" style="background: #eee">
-        <image class="cu-avatar radius lg" src="https://chiyikou.oss-cn-beijing.aliyuncs.com/chiyikou/%E9%A6%99%E7%94%9C%E6%9E%9C%E7%B3%95.jpg"></image>
-        <view class="content">
-          <view class="text-grey">菜品名称</view>
-          <view class="text-gray text-sm flex">
-            <text class="text-cut margin-right-xs">
-                <text>100克</text>
-            </text>
-          </view>
-        </view>
-        <view class="action">
-          <view class="cuIcon-right text-gray lg"></view>
-          <view class="cu-tag round sm">100元</view>
-        </view>
-      </navigator>
-      </view>
-    </view>
-  </view>
-</view>
+<image wx:if="{{hasComment == false}}" src="../../../images/noStatus.jpg" style='width:100%;height:600rpx;' mode="aspectFill"></image>
 
-<view class="cu-card dynamic no-card" style="border-bottom: 1rpx solid #eee; margin: 0 20rpx">
-  <view class="cu-item shadow">
-    <view class="cu-list menu-avatar">
-      <view class="cu-item">
-        <view class="cu-avatar round lg"><open-data class='avatar' type="userAvatarUrl"></open-data></view>
-        <view class="content flex-sub">
-          <view><open-data type="userNickName"></open-data></view>
-          <view class="text-gray text-sm flex justify-between">
-            2019年12月3日
+<block wx:if="{{hasComment == true}}" wx:for="{{userComments}}" wx:for-item="item" wx:key>
+  <view class="cu-card dynamic no-card" style="border-bottom: 1rpx solid #eee; margin: 0 20rpx">
+    <view class="cu-item shadow">
+      <view class="cu-list menu-avatar">
+        <view class="cu-item">
+          <view class="cu-avatar round lg"><open-data class='avatar' type="userAvatarUrl"></open-data></view>
+          <view class="content flex-sub">
+            <view><open-data type="userNickName"></open-data></view>
+            <view class="text-gray text-sm flex justify-between">
+              {{item.commentTime}}
+            </view>
           </view>
         </view>
       </view>
-    </view>
-    <view class="text-content">
-      评论评论评论评论评论评论评论评论评论评论
-    </view>
-    <view class="grid flex-sub padding-lr padding-bottom {{isCard?'col-3 grid-square':'col-1'}}">
-      <view class="cu-list menu-avatar">
-        <navigator class="cu-item arrow" url="" style="background: #eee">
-        <image class="cu-avatar radius lg" src="https://chiyikou.oss-cn-beijing.aliyuncs.com/chiyikou/%E9%A6%99%E7%94%9C%E6%9E%9C%E7%B3%95.jpg"></image>
-        <view class="content">
-          <view class="text-grey">菜品名称</view>
-          <view class="text-gray text-sm flex">
-            <text class="text-cut margin-right-xs">
-                <text>100克</text>
-            </text>
+      <view class="text-content">
+        {{item.commentContent}}
+      </view>
+      <view class="grid flex-sub padding-lr padding-bottom {{isCard?'col-3 grid-square':'col-1'}}">
+        <view class="cu-list menu-avatar">
+          <navigator class="cu-item arrow" url="/pages/dishDetail/dishDetail?dishesId={{item.dishId}}" style="background: #eee">
+          <image class="cu-avatar radius lg" src="{{item.dishImage}}"></image>
+          <view class="content">
+            <view class="text-grey">{{item.dishName}}</view>
           </view>
+          <view class="action">
+            <view class="cuIcon-right text-gray lg"></view>
+          </view>
+        </navigator>
         </view>
-        <view class="action">
-          <view class="cuIcon-right text-gray lg"></view>
-          <view class="cu-tag round sm">100元</view>
-        </view>
-      </navigator>
       </view>
     </view>
   </view>
-</view>
+</block>

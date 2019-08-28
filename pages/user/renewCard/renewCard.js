@@ -1,7 +1,8 @@
 import utils from "../../../utils/util.js";
 Page({
   data: {
-    icNumber: null
+    icNumber: "",
+    userName: ""
   },
   onLoad: function (options) {
     this.getCurrentCard();
@@ -22,20 +23,42 @@ Page({
   },
   formSubmit: function (e) {
     console.log(e.detail.value);
-    utils.bindIcNumber(e.detail.value).then(res => {
-      if (res.data.code === 200) {
-        utils.showToastWindow(res.data.msg);
-        //this.getCurrentCard();
-        wx.navigateBack({
-          delta: 1
-        })
-      } else {
-        console.log("更新卡号出错", res);
-        utils.showToastWindow(res.data.msg);
+    if(this.data.userName.length > 0 ) {
+      let requestData = {
+        icNumber: e.detail.value.icNumber,
+        userName: this.data.userName
       }
-    }).catch(res => {
-      console.log("更新卡号失败", res);
-      utils.showToastWindow("更新卡号失败");
+      utils.bindIcNumber(requestData).then(res => {
+        if (res.data.code === 200) {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'success',
+            duration: 2000,
+            mask: true,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateBack({
+                  delta: 1
+                })
+              }, 1000) //延迟时间
+            },
+          });
+        } else {
+          console.log("更新卡号出错", res);
+          utils.showToastWindow(res.data.msg);
+        }
+      }).catch(res => {
+        console.log("更新卡号失败", res);
+        utils.showToastWindow("更新卡号失败");
+      })
+    } else {
+      utils.showToastWindow("真实姓名不能为空", "none")
+    } 
+  },
+  clearSpace: function (e) {
+    this.setData({
+      userName: e.detail.value.replace(/\s*/g, "")
     })
+    console.log(this.data.userName.length);
   }
 })
