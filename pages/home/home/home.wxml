@@ -36,7 +36,7 @@
 
   <view class="cu-bar bg-white">
     <view class="action">
-      <text class="cuIcon-titles text-cyan"></text>轮播图轮播图
+      <text class="cuIcon-titles text-cyan text-bold"></text><text class="text-bold">轮播图轮播图</text>
     </view>
   </view>
   <swiper class="card-swiper" next-margin="140rpx" circular="{{true}}">
@@ -71,7 +71,7 @@
 
   <navigator class="cu-bar bg-white" url="/pages/home/diningRecord/diningRecord">
     <view class="action">
-      <text class="cuIcon-titles text-cyan"></text>最近一次就餐记录
+      <text class="cuIcon-titles text-cyan text-bold"></text><text class="text-bold">最近一次就餐记录</text>
     </view>
     <view class="action">
       <!-- <view class="cu-tag round bg-cyan more-icon-container">
@@ -106,7 +106,7 @@
 
   <view class="cu-bar bg-white">
     <view class="action">
-      <text class="cuIcon-titles text-cyan"></text>本周最受欢迎的菜品
+      <text class="cuIcon-titles text-cyan text-bold"></text><text class="text-bold">本周最受欢迎的菜品</text>
     </view>
   </view>
   <view class="padding-left padding-right home-menu-container">

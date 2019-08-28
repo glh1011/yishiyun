@@ -19,7 +19,8 @@ Component({
           this.setData({
             calorieSum: responseData.calorieSum,
             icNumber: responseData.icNumber,
-            monetarySum: responseData.monetarySum
+            monetarySum: responseData.monetarySum,
+            userName: responseData.userName
           })
         } else {
           console.log("获取信息出错", res);
@@ -43,6 +44,9 @@ Component({
         console.log("退出登录出错");
         utils.showToastWindow("退出登录失败", "none");
       })
+    },
+    showPrompt: function() {
+      utils.showToastWindow("待升级", "none");
     }
   }
 })
