@@ -4,7 +4,7 @@
   
     <!--图片-->
     <view class="left-view">
-      <image class="food-pic" src='{{item.dishImage}}'></image>
+      <image mode="aspectFill" class="food-pic" src='{{item.dishImage}}'></image>
     </view>
     <view class="right-view">
       <!--菜名、价格-->

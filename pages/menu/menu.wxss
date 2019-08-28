@@ -1,7 +1,7 @@
 /* pages/menu/menu.wxss */
 
 page {
-  height: 100%;
+  min-height: 100%;
   background-color: #fff;
   /* overflow: hidden; */
 }
@@ -17,6 +17,8 @@ page {
   justify-content: space-between;
   box-sizing: border-box;
   background-color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .left-view {
