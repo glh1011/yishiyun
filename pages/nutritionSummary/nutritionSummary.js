@@ -55,7 +55,9 @@ Component({
         //获取标准热量数组
         this.setData({
           standardWeekArray: res.data.data.availableEnergy,
-          curWeekDateArray: curWeekDateArray
+          curWeekDateArray: curWeekDateArray,
+          curWeekDataList:[],
+          isHaveCal:false
         })
         if(res.data.code == 200){
           var curWeekDataList = [];
@@ -230,7 +232,7 @@ Component({
         }]
       };
       Column.categories = this.data.curWeekArray;
-      Column.series[0].data = this.data.curWeekNutritionArray;
+      Column.series[0].data = [0,0,0,0,0,0,0];
       Column.series[1].data = this.data.standardWeekArray;
       _self.showColumn("canvasColumn", Column);
       wx.showToast({

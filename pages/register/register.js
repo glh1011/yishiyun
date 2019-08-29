@@ -36,7 +36,10 @@ Page({
     Code: '', //输入的短信验证码，
     NewChanges: '', //获取输入的登录密码
     NewChangesAgain: '', //获取再次输入的密码
-    checkAgree: 0 //默认没有同意服务协议
+    checkAgree: 0, //默认没有同意服务协议
+    userCity:'',//用户的城市
+    userProvince:'',//用户的省份
+    userArea:''//用户的区
   },
 
   SportPickerChange(e) {
@@ -343,9 +346,13 @@ Page({
       var that = this;
       var phone = that.data.phone;
       var password = that.data.NewChanges;
+      var userCity = that.data.userCity;
+      var userProvince = that.data.userProvince;
       var data = {
         telephoneNumber: phone,
-        password: password
+        password: password,
+        city: userCity,
+        province: userProvince
       }
       utils.registerRequest(data).then(res => {
         console.log(res);
@@ -370,10 +377,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    var that = this;
     wx.getUserInfo({
       lang:'zh_CN',
       success:res=>{
         console.log(res);
+        that.setData({
+          userCity:res.userInfo.city,
+          userProvince:res.userInfo.province
+        })
       }
     })
   },

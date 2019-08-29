@@ -24,11 +24,9 @@
         <view class="td">{{item.date}}</view>
         <view class="td">{{item.input}}</view>
         <view class="td">
-        `<view class="cu-tag bg-{{compareColor[item.comment]}}">{{compareItemTitle[item.comment]}}</view>
+          <view class="cu-tag bg-{{compareColor[item.comment]}}">{{compareItemTitle[item.comment]}}</view>
         </view>
       </view>
     </block>
   </view>
-
-
 </scroll-view>

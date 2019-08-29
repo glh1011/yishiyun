@@ -20,7 +20,7 @@ Page({
     password:''
   },
   updateing:function(){
-    utils.showToastWindow("功能升级中...");
+    utils.showToastWindow("待升级", "none");
   },
   /**
      * 获取账号

@@ -61,7 +61,7 @@ Component({
       })
     },
     searchByFoodName:function(){
-      utils.showToastWindow("搜索功能升级中...");
+      utils.showToastWindow("待升级", "none");
     },
     getNextFoodShow:function(){
       var curNav = this.data.currentNavtab;
