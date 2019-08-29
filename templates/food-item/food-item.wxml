@@ -17,7 +17,7 @@
         <view class="food-price">
           <text class="moneyicon">¥</text>
           <text class="price">{{item.dishPrice}}</text>
-          <text class="danwei">元/50g</text>
+          <text class="danwei">元/100g</text>
         </view>
       </view>
       <!--营养含量--->

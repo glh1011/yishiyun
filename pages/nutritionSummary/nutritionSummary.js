@@ -204,6 +204,7 @@ Component({
         },
         yAxis: {
           gridColor: '#eee',
+          format:(val)=>{return val.toFixed(0)}
           //format: (val) => { return val.toFixed(0) + '元' },
         },
         dataLabel: true,
@@ -233,7 +234,8 @@ Component({
       };
       Column.categories = this.data.curWeekArray;
       Column.series[0].data = [0,0,0,0,0,0,0];
-      Column.series[1].data = this.data.standardWeekArray;
+      // Column.series[1].data = this.data.standardWeekArray;
+      Column.series[1].data = [4,4,4,4,4,4,4];
       _self.showColumn("canvasColumn", Column);
       wx.showToast({
         title: "本周没有营养记录",
