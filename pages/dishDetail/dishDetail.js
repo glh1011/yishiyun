@@ -16,12 +16,24 @@ Page({
     salt: 0,
     vitamin: 0,
     weight: 0,
-    textareaAValue: ''
+    comments: [],
+    commentContent: '',
+    showModal: false,
   },
   onLoad: function (options) {
     console.log(options);
-    this.getDishDetail(options.dishesId);
+    this.setData({
+      dishesId: options.dishesId
+    })
+    this.getDishDetail(this.data.dishesId);
+    this.getComment(this.data.dishesId);
   },
+
+  onShow: function () {
+    this.getDishDetail(this.data.dishesId);
+    this.getComment(this.data.dishesId);
+  },
+
   getDishDetail: function (dishesId) {
     let requestData = {
       dishesId: dishesId
@@ -58,21 +70,67 @@ Page({
     })
   },
 
+  getComment: function (dishesId) {
+    let requestData = {
+      dishId: dishesId
+    }
+    utils.queryDishComment(requestData).then(res => {
+      console.log(res.data);
+      if (res.data.code == 200) {
+        let responseData = res.data.data;
+        console.log("comment",responseData);
+        this.setData({
+          comments: responseData
+        })
+      } else {
+      }
+    }).catch(res => {
+      console.log(res);
+    })
+  },
 
-  showModal(e) {
+  showDialogBtn: function () {
     this.setData({
-      modalName: e.currentTarget.dataset.target
+      showModal: true
     })
   },
-  hideModal(e) {
+ 
+  hideModal: function () {
     this.setData({
-      modalName: null,
-      textareaAValue: ''
-    })
+      showModal: false
+    });
   },
-  textareaAInput(e) {
+ 
+  onCancel: function () {
+    this.hideModal();
+  },
+  
+  onConfirm: function () {
+    wx.showLoading({title: '提交中'})
+    let requestData = {
+      dishesId: this.data.dishesId,
+      commentContent: this.data.commentContent
+    }
+    utils.submitComment(requestData).then(res => {
+      console.log(res);
+      if (res.data.code == 200) {
+        utils.showToastWindow(res.data.msg);
+        this.onShow();
+      } else if(res.data.code == 202){
+        utils.showToastWindow(res.data.msg, "none");
+      }else {
+        utils.showToastWindow("评论失败");
+      }
+    }).catch(res => {
+      console.log(res);
+      utils.showToastWindow('评论失败');
+    })
+    wx.hideLoading();
+    this.hideModal();
+  },
+  textareaInput(e) {
     this.setData({
-      textareaAValue: e.detail.value
+      commentContent: e.detail.value
     })
   },
 })

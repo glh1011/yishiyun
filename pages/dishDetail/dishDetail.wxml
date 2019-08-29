@@ -8,6 +8,7 @@
       <view class="margin-xs radius" style='font-size:34rpx'>{{dishPrice}}元/{{weight}}克</view>
     </view>
   </view>
+
   <view class="cu-bar bg-white">
     <view class="action">
       <text class="cuIcon-titles text-cyan"></text>营养信息
@@ -15,30 +16,52 @@
   </view>
 
   <view class="flex justify-center">
-        <view class="detail-panel padding-left padding-right" style="padding-bottom: 100rpx">
-          <view class="grid col-2 margin-bottom text-center">
-            <view class="padding solid-bottom">能量</view>
-            <view class="padding solid-bottom">{{calorie}}kcal</view>
-            <view class="padding solid-bottom">碳水化合物</view>
-            <view class="padding solid-bottom">{{carbohydrate}}g</view>
-            <view class="padding solid-bottom">胆固醇</view>
-            <view class="padding solid-bottom">{{cholesterol}}g</view>
-            <view class="padding solid-bottom">膳食纤维</view>
-            <view class="padding solid-bottom">{{dietaryFiber}}g</view>
-            <view class="padding solid-bottom">脂肪</view>
-            <view class="padding solid-bottom">{{fat}}g</view>
-            <view class="padding solid-bottom">钠</view>
-            <view class="padding solid-bottom">{{salt}}g</view>
-            <view class="padding solid-bottom">蛋白质</view>
-            <view class="padding solid-bottom">{{protein}}g</view>
-            <view class="padding">维生素</view>
-            <view class="padding">{{vitamin}}g</view>
+    <view class="detail-panel padding-left padding-right">
+      <view class="grid col-2 margin-bottom text-center">
+        <view class="padding solid-bottom">能量</view>
+        <view class="padding solid-bottom">{{calorie}}kcal</view>
+        <view class="padding solid-bottom">碳水化合物</view>
+        <view class="padding solid-bottom">{{carbohydrate}}g</view>
+        <view class="padding solid-bottom">胆固醇</view>
+        <view class="padding solid-bottom">{{cholesterol}}g</view>
+        <view class="padding solid-bottom">膳食纤维</view>
+        <view class="padding solid-bottom">{{dietaryFiber}}g</view>
+        <view class="padding solid-bottom">脂肪</view>
+        <view class="padding solid-bottom">{{fat}}g</view>
+        <view class="padding solid-bottom">钠</view>
+        <view class="padding solid-bottom">{{salt}}g</view>
+        <view class="padding solid-bottom">蛋白质</view>
+        <view class="padding solid-bottom">{{protein}}g</view>
+        <view class="padding">维生素</view>
+        <view class="padding">{{vitamin}}g</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-bar bg-white">
+    <view class="action">
+      <text class="cuIcon-titles text-cyan"></text>菜品评价
+    </view>
+  </view>
+
+  <view class="cu-list menu padding-lr-sm" style="padding-bottom: 150rpx">
+    <block wx:for="{{comments}}" wx:for-item="item" wx:key>
+      <view class="cu-item">
+        <view class="content padding-tb-sm">
+          <view style="padding-left: 30rpx; box-sizing:border-box;display: inline-block">
+            匿名用户
           </view>
+          <view style="float: right; padding-right:30rpx;">
+            <view class="text-grey text-sm">{{item.commentTime}}</view>
+          </view>
+          <view class="text-gray text-df" style="text-indent:30rpx">
+            {{item.commentContent}}</view>
         </view>
       </view>
+    </block>
+  </view>
 
-
-  <button class="cu-btn bg-cyan shadow" style="border-radius:50%;position:fixed;bottom:200rpx;right:50rpx;height: 100rpx;width:100rpx;text-align:center; font-size: 60rpx" bindtap="showModal" data-target="bottomModal"><text class="cuIcon-comment"></text></button>
+  <button class="cu-btn bg-cyan shadow" style="border-radius:50%;position:fixed;bottom:200rpx;right:50rpx;height: 100rpx;width:100rpx;text-align:center; font-size: 60rpx" bindtap="showDialogBtn" data-target="bottomModal"><text class="cuIcon-comment"></text></button>
 </scroll-view>
 
 <view class="cu-bar bg-white tabbar border solid-top" style="bottom:0; position:fixed;width: 100%">
@@ -51,14 +74,24 @@
   </view>
 </view>
 
-<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
-  <view class="cu-dialog" style="border-radius: 20rpx 20rpx 0 0; height: 500rpx">
-    <view class="cu-bar bg-white solid-bottom">
-      <view class="action text-grey" bindtap="hideModal">取消</view>
-      <view class="action text-cyan" bindtap="hideModal">确定</view>
-    </view>
-    <view class="cu-form-group {{modalName=='bottomModal'?'show':''}}" style="height:100%">
-      <textarea maxlength="-1" placeholder="请输入您对菜品的评价"></textarea>
-    </view>
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view> 
+<view class = "modal-dialog" wx:if = "{{showModal}}"> 
+  <view class = "modal-title">菜品评论</view>
+  <view class="modal-content">
+    <form bindsubmit="commentSubmit">
+      <view class="" style="height: 260rpx">
+        <textarea maxlength="-1" placeholder="请输入您对菜品的评价" style="width: 100%!important;height: 100%!important; padding: 0 20rpx;" bindinput="textareaInput"></textarea>
+      </view>
+    </form>
+  </view > 
+  <view class = "modal-footer" > 
+    <view class="btn-cancel" bindtap="onCancel" data-status="cancel" > 取消 </view>
+    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view > 
   </view>
-</view>
+</view > 
+
+<!-- <modal class="modal" hidden="{{hidden}}" title="菜品评论" confirm-text="确认" bindconfirm="confirm" bindcancel="onPressCancel">
+  <form bindsubmit="evaSubmit">
+    <textarea bindinput="bindinput" class='text' placeholder="请输入您对菜品的评价" />
+  </form>
+</modal> -->

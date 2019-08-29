@@ -4,12 +4,8 @@
 .container {
   height: 300rpx;
   width: 300rpx;
-  z-index: 100;
 }
 .charts {
-  /* height: 300rpx;
-  width: 300rpx;
-  background-color: #FFFFFF; */
   height: 100%;
   width: 100%;
   background-color: #FFFFFF;

@@ -18,10 +18,15 @@ Component({
     mealMoney: '0',
     mealWeight: '0',
     lastEatLog: [],
-    mostLike: []
+    mostLike: [],
+    cWidth: '',
+    cHeight: ''
   },
   attached: function (options) {
     _self = this;
+    //首页环形图占据的宽度比例约为0.4，并依此设置环形图实际宽度
+    this.cWidth = wx.getSystemInfoSync().windowWidth * 0.4;
+    this.cHeight = wx.getSystemInfoSync().windowWidth * 0.4;
     this.getIndexData();
   },
   methods:{
@@ -92,7 +97,7 @@ Component({
         if (res.data.code == 200) {
           if (res.data.data.length >= 4) {
             this.setData({
-              mostLike: res.data.data.slice(0, 4)
+              mostLike: res.data.data
             })
           } else {
             this.setData({
@@ -139,8 +144,8 @@ Component({
         pixelRatio: 1,
         series: chartData.series,
         animation: true,
-        width: 150,
-        height: 150,
+        width: _self.cWidth,
+        height: _self.cHeight,
         disablePieStroke: true,
         dataLabel: false,
       });

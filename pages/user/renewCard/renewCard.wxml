@@ -3,10 +3,10 @@
 		<view class="title">餐卡卡号</view>
 		<input name="icNumber" value="{{icNumber}}" placeholder="请输入餐卡卡号"></input>
 	</view>
-	<view class="cu-form-group">
+	<!-- <view class="cu-form-group">
 		<view class="title">真实姓名</view>
-		<input name="userName" placeholder="请输入真实姓名"></input>
-	</view>
+		<input name="userName" placeholder="请输入真实姓名" bindblur='clearSpace'></input>
+	</view> -->
 
   <view class="padding-xl margin-bottom-xxl">
     <button class="cu-btn block lg bg-cyan" form-type="submit">确认修改</button>

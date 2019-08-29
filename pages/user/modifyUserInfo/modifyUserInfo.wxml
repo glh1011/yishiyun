@@ -1,4 +1,8 @@
 <form bindsubmit="formSubmit">
+  <view class="cu-form-group" bindtap="showAlert">
+		<view class="title">僮僮id</view>
+		<view class="right">{{tongtongId}}</view>
+	</view>
 	<view class="cu-form-group">
 		<view class="title">昵称</view>
 		<input class="right" name="name" placeholder="请输入昵称" value="{{userName}}"></input>
@@ -11,7 +15,7 @@
 		<view class="title">生日</view>
 		<picker mode="date" name="brith" value="{{userBirth}}" start="1955-09-01" end="{{endDate}}" bindchange="DateChange">
 			<view class="picker">
-				{{userBirth}}
+				{{userBirth?userBirth:'请选择您的出生日期'}}
 			</view>
 		</picker>
 	</view>

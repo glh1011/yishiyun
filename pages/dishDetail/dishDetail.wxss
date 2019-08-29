@@ -1,1 +1,64 @@
-/* pages/dishDetail/dishDetail.wxss */
+.modal-mask {
+  width: 100vh;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+.modal-dialog {
+  width: 640rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50% ;
+  left: 50%;
+  z-index: 9999;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  border-radius: 15rpx;
+}
+.modal-title {
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 32rpx;
+  color: #030303;
+  text-align: center;
+
+}
+.modal-content {
+  padding: 20rpx 10rpx;
+}
+.modal-input {
+  display: flex;
+  background: #fff;
+  border-bottom: 2rpx solid#ddd;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+}
+.input-holder {
+  color: #666;
+  font-size: 28rpx;
+}
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height: 86rpx;
+  border-top: 1px solid #dedede;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+.btn-cancel {
+  width: 50% ;
+  color: #666;
+  text-align: center;
+  border-right: 1px solid #dedede;
+}
+.btn-confirm {
+  width: 50% ;
+  color: #1cbbb4;
+  text-align: center;
+}
