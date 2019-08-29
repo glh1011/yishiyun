@@ -116,7 +116,7 @@
             </view>
             <view class="content flex-sub">
               <view class="text-grey text-sm flex justify-between">{{item.dishesName}}</view>
-              <view class="text-gray text-xs flex justify-between">{{item.dishesCalorie}}千卡/克</view>
+              <view class="text-gray text-xs flex justify-between">{{item.dishesCalorie}}千卡/100克</view>
             </view>
           </navigator>
         </view>

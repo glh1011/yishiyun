@@ -242,6 +242,7 @@ Page({
       animation: true,
       categories: chartData.categories,
       series: chartData.series,
+      enableScroll: false,
       xAxis: {
         disableGrid: true,
       },
@@ -260,17 +261,17 @@ Page({
     });
   },
   
-  touchColumn(e) {
-    canvaColumn.showToolTip(e, {
-      format: function (item, category) {
-        if (typeof item.data === 'object') {
-          return category + ' ' + item.name + ':' + item.data.value
-        } else {
-          return category + ' ' + item.name + ':' + item.data
-        }
-      }
-    });
-  },
+  // touchColumn(e) {
+  //   canvaColumn.showToolTip(e, {
+  //     format: function (item, category) {
+  //       if (typeof item.data === 'object') {
+  //         return category + ' ' + item.name + ':' + item.data.value
+  //       } else {
+  //         return category + ' ' + item.name + ':' + item.data
+  //       }
+  //     }
+  //   });
+  // },
 
   setDefaultDiagram() {
     let Line = {

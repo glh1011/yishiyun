@@ -20,7 +20,7 @@
       <view class="grid flex-sub padding-lr padding-bottom {{isCard?'col-3 grid-square':'col-1'}}">
         <view class="cu-list menu-avatar">
           <navigator class="cu-item arrow" url="/pages/dishDetail/dishDetail?dishesId={{item.dishId}}" style="background: #eee">
-          <image class="cu-avatar radius lg" src="{{item.dishImage}}"></image>
+          <image class="cu-avatar radius lg" mode="aspectFill" src="{{item.dishImage}}"></image>
           <view class="content">
             <view class="text-grey">{{item.dishName}}</view>
           </view>

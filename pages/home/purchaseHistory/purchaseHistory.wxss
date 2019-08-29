@@ -1,3 +1,9 @@
+cover-view {
+  visibility: visible;
+}
+/* .cu-item.cur {
+	border-bottom: 6rpx solid!important;
+} */
 .bottom-scroll {
   height: calc(100vh-90px);
   position: relative;
