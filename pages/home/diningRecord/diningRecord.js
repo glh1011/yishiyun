@@ -45,9 +45,7 @@ Page({
   },
 
   bindDateChange: function (e) {
-    //console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      // hasDiningRecord: false,
       date: e.detail.value
     })
     this.displayDiningRecord();

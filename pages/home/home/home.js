@@ -12,11 +12,11 @@ Component({
   data: {
     banner: banner,
     cardCur: 0,
-    intake: '0',
-    ingestible: '0',
-    rate: '0',
-    mealMoney: '0',
-    mealWeight: '0',
+    intake: 0,
+    ingestible: 0,
+    rate: 0,
+    mealMoney: 0,
+    mealWeight: 0,
     lastEatLog: [],
     mostLike: [],
     cWidth: '',
@@ -150,7 +150,7 @@ Component({
         dataLabel: false,
       });
     },
-
+    //出错等情况下的默认设置
     setDefaultRing: function() {
       let str = "0%";
       let value1 = 0;

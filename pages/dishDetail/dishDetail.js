@@ -1,4 +1,5 @@
 import utils from "../../utils/util.js";
+
 Page({
   data: {
     calorie: 0,
@@ -20,6 +21,7 @@ Page({
     commentContent: '',
     showModal: false,
   },
+
   onLoad: function (options) {
     console.log(options);
     this.setData({

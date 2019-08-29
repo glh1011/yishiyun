@@ -61,8 +61,11 @@
     </block>
   </view>
 
-  <button class="cu-btn bg-cyan shadow" style="border-radius:50%;position:fixed;bottom:200rpx;right:50rpx;height: 100rpx;width:100rpx;text-align:center; font-size: 60rpx" bindtap="showDialogBtn" data-target="bottomModal"><text class="cuIcon-comment"></text></button>
 </scroll-view>
+
+<button class="cu-btn bg-cyan shadow cover-btn" bindtap="showDialogBtn" data-target="bottomModal">
+  <text class="cuIcon-comment"></text>
+</button>
 
 <view class="cu-bar bg-white tabbar border solid-top" style="bottom:0; position:fixed;width: 100%">
   <view class="action">
@@ -75,23 +78,21 @@
 </view>
 
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view> 
-<view class = "modal-dialog" wx:if = "{{showModal}}"> 
-  <view class = "modal-title">菜品评论</view>
+<view class="modal-dialog" wx:if="{{showModal}}"> 
+  <view class="modal-title solid-bottom">菜品评论</view>
   <view class="modal-content">
     <form bindsubmit="commentSubmit">
-      <view class="" style="height: 260rpx">
-        <textarea maxlength="-1" placeholder="请输入您对菜品的评价" style="width: 100%!important;height: 100%!important; padding: 0 20rpx;" bindinput="textareaInput"></textarea>
+      <view style="height:260rpx">
+        <textarea maxlength="-1" placeholder="请输入您对菜品的评价" class="modal-textarea" bindinput="textareaInput"></textarea>
       </view>
     </form>
   </view > 
-  <view class = "modal-footer" > 
-    <view class="btn-cancel" bindtap="onCancel" data-status="cancel" > 取消 </view>
-    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view > 
+  <view class="modal-footer solid-top"> 
+    <view class="btn-cancel solid-right">
+      <button class=" cu-btn bg-white lg" bindtap="onCancel" data-status="cancel">取消</button>
+    </view>
+    <view class="btn-confirm">
+      <button class="cu-btn bg-white lg text-cyan" bindtap="onConfirm" data-status="confirm">确定</button> 
+    </view>
   </view>
 </view > 
-
-<!-- <modal class="modal" hidden="{{hidden}}" title="菜品评论" confirm-text="确认" bindconfirm="confirm" bindcancel="onPressCancel">
-  <form bindsubmit="evaSubmit">
-    <textarea bindinput="bindinput" class='text' placeholder="请输入您对菜品的评价" />
-  </form>
-</modal> -->

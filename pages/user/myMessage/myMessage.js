@@ -1,66 +1,22 @@
-// pages/user/myMessage/myMessage.js
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     TabCur: 0,
+    data: [
+      { 
+        message: '根据学校2019年暑假餐饮工作安排，结合师生留校情况及食堂实际状况，现将我校暑期食堂工作安排通知如下：暑假期间（7月6日至8月30日），由我校一食堂二楼、三食堂提供餐饮服务工作，其他食堂暂停营业。特此通知',
+        image: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1801876585,962760975&fm=26&gp=0.jpg',
+        time: '2019年8月23日 13:23'
+      },
+      {
+        message: '根据学校2019年暑假餐饮工作安排，结合师生留校情况及食堂实际状况，现将我校暑期食堂工作安排通知如下：暑假期间（7月6日至8月30日），由我校一食堂二楼、三食堂提供餐饮服务工作，其他食堂暂停营业。特此通知',
+        image: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2837298411,46615710&fm=26&gp=0.jpg",
+        time: '2019年8月21日 10:18'
+      }
+    ],
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

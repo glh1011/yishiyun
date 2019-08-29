@@ -65,22 +65,22 @@ Page({
     }
   },
 
+  //月消费月份切换
+  bindPickerChange: function (e) {
+    this.setData({
+      index: e.detail.value,
+      curMonth: parseInt(e.detail.value) + 1
+    })
+    this.getDiagramData();
+  },
+
+  //日消费日期切换
   bindDateChange: function (e) {
-    //console.log('picker发送选择改变，携带值为', e.detail.value)
     wx.showLoading({ title: '加载中', icon: 'loading' });
     this.setData({
-      // hasPurchaseRecord: false,
       date: e.detail.value
     })
     this.getExpenseDetail();
-  },
-  bindPickerChange: function (e) {
-    //console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      index: e.detail.value,
-      curMonth: parseInt(e.detail.value)+ 1
-    })
-    this.getDiagramData();
   },
 
   //月消费数据获取，并配置图表
@@ -152,11 +152,6 @@ Page({
           hasPurchaseRecord: false,
           expenseDetail: []
         })
-        // wx.showToast({
-        //   title: "当日"+res.data.msg,
-        //   icon: 'none',
-        //   duration: 2000
-        // })
         let msg = "当日" + res.data.msg;
         utils.showToastWindow(msg, 'none');
       }
@@ -204,7 +199,6 @@ Page({
         min: 10,
         max: 180,
         format: (val) => { return val.toFixed(0) }
-        //format: (val) => { return val.toFixed(0) + '元' }//如不写此方法，Y轴刻度默认保留两位小数
       },
       width: _self.cWidth,
       height: _self.cHeight,
@@ -215,21 +209,25 @@ Page({
       },
     });
   },
+
   touchLine(e) {
     canvaLine.scrollStart(e);
   },
+
   moveLine(e) {
     canvaLine.scroll(e);
   },
+
   touchEndLine(e) {
     canvaLine.scrollEnd(e);
-    //下面是toolTip事件，如果滚动后不需要显示，可不填写
+    //toolTip事件，如果滚动后不需要显示，可不填写
     canvaLine.showToolTip(e, {
       format: function (item, category) {
         return category + ' ' + item.name + ':' + item.data
       }
     });
   },
+
   //柱状图
   showColumn(canvasId, chartData) {
     canvaColumn = new uCharts({
@@ -249,7 +247,6 @@ Page({
       },
       yAxis: {
         gridColor: '#eee',
-        //format: (val) => { return val.toFixed(0) + '元' },
       },
       dataLabel: true,
       width: _self.cWidth,
@@ -262,6 +259,7 @@ Page({
       }
     });
   },
+  
   touchColumn(e) {
     canvaColumn.showToolTip(e, {
       format: function (item, category) {

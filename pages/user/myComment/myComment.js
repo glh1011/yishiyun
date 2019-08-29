@@ -1,10 +1,8 @@
 import utils from "../../../utils/util.js";
 
 Page({
-
   data: {
     userComments: [],
-    // hasComment: ''
   },
 
   onLoad: function (options) {
@@ -32,4 +30,5 @@ Page({
       })
     })
   },
+
 })

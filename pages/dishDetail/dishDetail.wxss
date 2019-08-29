@@ -1,3 +1,13 @@
+.cover-btn{
+  border-radius:50%;
+  position:fixed;
+  bottom:200rpx;
+  right:50rpx;
+  height: 100rpx;
+  width:100rpx;
+  text-align:center; 
+  font-size: 60rpx
+}
 .modal-mask {
   width: 100vh;
   height: 100vh;
@@ -32,33 +42,33 @@
 .modal-content {
   padding: 20rpx 10rpx;
 }
-.modal-input {
-  display: flex;
-  background: #fff;
-  border-bottom: 2rpx solid#ddd;
-  border-radius: 4rpx;
-  font-size: 28rpx;
-}
-.input-holder {
-  color: #666;
-  font-size: 28rpx;
+.modal-textarea {
+  width: 100%!important;
+  height: 100%!important; 
+  padding: 0 20rpx;
 }
 .modal-footer {
   display: flex;
   flex-direction: row;
-  height: 86rpx;
-  border-top: 1px solid #dedede;
   font-size: 34rpx;
-  line-height: 86rpx;
 }
 .btn-cancel {
+  height: 100%;
   width: 50% ;
   color: #666;
   text-align: center;
-  border-right: 1px solid #dedede;
 }
 .btn-confirm {
   width: 50% ;
-  color: #1cbbb4;
   text-align: center;
+}
+button {
+  background-color: #fff;
+  border: none;
+  padding: 0;
+  margin: 0;
+  border-radius:0;
+}
+button::after {
+  border: none;
 }

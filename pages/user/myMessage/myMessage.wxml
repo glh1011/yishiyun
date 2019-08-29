@@ -13,30 +13,19 @@
 <scroll-view scroll-y class="scrollPage bottom-scroll">
   <view wx:if="{{0==TabCur}}">
 
-<view class="cu-chat">
-<view class="cu-info round">2019年8月23日 13:23</view>
-  <view class="cu-item">
-    <view class="cu-avatar radius" style="background-image:url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1801876585,962760975&fm=26&gp=0.jpg);"></view>
-    <view class="main">
-      <view class="content shadow" style="background-color: #eee">
-        <text>根据学校2019年暑假餐饮工作安排，结合师生留校情况及食堂实际状况，现将我校暑期食堂工作安排通知如下：暑假期间（7月6日至8月30日），由我校一食堂二楼、三食堂提供餐饮服务工作，其他食堂暂停营业。特此通知</text>
-      </view>
+    <view class="cu-chat">
+      <block wx:for="{{data}}" wx:item="item" wx:key>
+        <view class="cu-info round">{{item.time}}</view>
+        <view class="cu-item">
+          <image class="cu-avatar radius" src="{{item.image}}"></image>
+          <view class="main">
+            <view class="content shadow" style="background-color: #eee">
+              <text>{{item.message}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
     </view>
-    
-    <!-- <view class="date">2018年3月23日 13:23</view> -->
-  </view>
-  <view class="cu-info round">2019年8月23日 13:23</view>
-  <view class="cu-item">
-    <view class="cu-avatar radius" style="background-image:url(https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2837298411,46615710&fm=26&gp=0.jpg);"></view>
-    <view class="main">
-      <view class="content shadow" style="background-color: #eee">
-        <text>所有食堂工作人员（包括新上岗和临时帮忙人员）只要在食堂内从事食品安全工作，均需取得有效健康证明，并将有效证件或复印件张贴在公示栏内。此外应建立健康档案（留存上一年的健康合格证明或者健康档案表）</text>
-      </view>
-    </view>
-    <!-- <view class="date "> 13:23</view> -->
-  </view>
-</view>
 
   </view>
 </scroll-view>
-

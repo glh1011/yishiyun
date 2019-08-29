@@ -1,6 +1,6 @@
 <scroll-view scroll-y class="scrollPage">
-  <view class="flex padding justify-center">
-    <view class="radius text-lg" >
+  <view class="flex padding-top-xl padding-bottom-sm justify-center">
+    <view class="radius text-xl text-bold" >
     <picker mode="date" value="{{date}}" end="{{today}}" bindchange="bindDateChange">
       <view class="picker">
         {{date}} <text class="cuIcon-unfold lg text-bold"></text>
@@ -100,7 +100,6 @@
       </view>
     </view>
   </view>
-
 
   <view class="cu-bar bg-white">
     <view class="action">
