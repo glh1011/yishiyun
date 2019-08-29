@@ -86,7 +86,7 @@
         <view class="icon-view">
           <image class="icon-view-image" src="../../images/birthday.png"></image>
         </view>
-        <picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange" name="date">
+        <picker mode="date" value="{{date}}" start="1900-09-01" end="2019-09-01" bindchange="DateChange" name="date">
           <view class="picker">
             {{date}}
           </view>

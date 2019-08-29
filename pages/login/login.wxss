@@ -211,7 +211,7 @@ page{
 }
 
 .margin-20 {
-  margin-top: 20rpx;
+  margin-top: 30rpx;
 }
 
 /*按钮*/

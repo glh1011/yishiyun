@@ -19,6 +19,9 @@ Page({
     account:'',
     password:''
   },
+  updateing:function(){
+    utils.showToastWindow("功能升级中...");
+  },
   /**
      * 获取账号
      */

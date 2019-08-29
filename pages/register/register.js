@@ -238,7 +238,7 @@ Page({
     return setInterval(function() {
       currentTime--; //每执行一次让倒计时秒数减一
       that.setData({
-        text: '重新发送(' + currentTime + 's)', //按钮文字变成倒计时对应秒数
+        text: currentTime + 's', //按钮文字变成倒计时对应秒数
       })
       //如果当秒数小于等于0时 停止计时器 且按钮文字变成重新发送 且按钮变成可用状态 倒计时的秒数也要恢复成默认秒数 即让获取验证码的按钮恢复到初始化状态只改变按钮文字
       if (currentTime <= 0) {
