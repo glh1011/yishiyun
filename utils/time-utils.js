@@ -6,8 +6,9 @@
 function getWeekDayList(selectWeek) {
   // 1.获取周一对应得时间
   // 2.用循环七次添加周一到周日对应得周几和几号
-  var selectWeekTime = getCurrentTimeStamp() + (selectWeek * 7) * 24 * 60 * 60 * 1000
-  var mondayTime = selectWeekTime - (getWeekNumber(selectWeekTime) - 1) * 24 * 60 * 60 * 1000
+  var selectWeekTime = getCurrentTimeStamp() + (selectWeek * 7) * 24 * 60 * 60 * 1000;
+  var mondayTime = selectWeekTime - (getWeekNumber(selectWeekTime) - 1) * 24 * 60 * 60 * 1000;
+  console.log("mondayTime:"+mondayTime);
   var timeBean = {
     selectDay: 0,
     yearMonth: '',
@@ -33,6 +34,7 @@ function getWeekDayList(selectWeek) {
 //获取当前时间戳  --
 function getCurrentTimeStamp() {
   var timestamp = new Date().getTime();
+  console.log("timestamp:"+timestamp);
   return timestamp
 }
 
@@ -63,16 +65,22 @@ function getWeek(res) {
   var y = time.getFullYear();
   var m = time.getMonth() + 1;
   var d = time.getDate();
-  return "日一二三四五六".charAt(new Date(y + '-' + m + '-' + d).getDay());
+  var dateStr = y + '-' + m + '-' + d;
+  return "日一二三四五六".charAt(new Date(dateStr.replace(/\-/g, '/')).getDay());
+  // return "日一二三四五六".charAt(new Date(y + '-' + m + '-' + d).getDay());
 }
 
 //时间戳转周几 0123456  --
 function getWeekNumber(res) {
   var time = new Date(res);
+  console.log("time:"+time);
   var y = time.getFullYear();
   var m = time.getMonth() + 1;
   var d = time.getDate();
-  return "0123456".charAt(new Date(y + '-' + m + '-' + d).getDay());
+  var dateStr = y+'-'+m+'-'+d;
+  console.log("0123456".charAt(new Date(dateStr.replace(/\-/g, '/')).getDay()));
+  return "0123456".charAt(new Date(dateStr.replace(/\-/g, '/')).getDay());
+  // return "0123456".charAt(new Date(y + '-' + m + '-' + d).getDay());
 }
 
 module.exports = {  //把方法共享，让引用的地方可以调用

@@ -28,6 +28,7 @@ Component({
     _self = this;
     this.cWidth = wx.getSystemInfoSync().windowWidth;
     this.cHeight = 500 / 750 * wx.getSystemInfoSync().windowWidth;
+    console.log("selectWeek:" + this.data.selectWeek);
     this.setData({
       timeBean: util.getWeekDayList(this.data.selectWeek)
     })
@@ -234,8 +235,8 @@ Component({
       };
       Column.categories = this.data.curWeekArray;
       Column.series[0].data = [0,0,0,0,0,0,0];
-      // Column.series[1].data = this.data.standardWeekArray;
-      Column.series[1].data = [4,4,4,4,4,4,4];
+      Column.series[1].data = this.data.standardWeekArray;
+      // Column.series[1].data = [4,4,4,4,4,4,4];
       _self.showColumn("canvasColumn", Column);
       wx.showToast({
         title: "本周没有营养记录",
