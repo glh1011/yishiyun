@@ -1,13 +1,13 @@
-<view class="bg-white nav fixed">
-  <view class="flex text-center">
-    <view class="cu-item flex-sub {{0==TabCur?'text-cyan cur':''}}" bindtap="tabSelect" data-id="0">
+<cover-view class="bg-white nav fixed solid-bottom">
+  <cover-view class="flex text-center">
+    <cover-view class="cu-item flex-sub {{0==TabCur?'text-cyan cur':''}}" bindtap="tabSelect" data-id="0">
       月
-    </view>
-    <view class="cu-item flex-sub {{1==TabCur?'text-cyan cur':''}}" bindtap="tabSelect" data-id="1">
+    </cover-view>
+    <cover-view class="cu-item flex-sub {{1==TabCur?'text-cyan cur':''}}" bindtap="tabSelect" data-id="1">
       日
-    </view>
-  </view>
-</view>
+    </cover-view>
+  </cover-view>
+</cover-view>
 
 <scroll-view scroll-y class="scrollPage bottom-scroll">
   <view wx:if="{{0==TabCur}}">
@@ -54,7 +54,8 @@
       <view class="cu-item shadow bg-white" style="margin:5rpx 50rpx 60rpx">
         <view class="flex justify-center">
           <view class="container">
-            <canvas canvas-id="canvasColumn" id="canvasColumn" class="charts" bindtouchstart="touchColumn"></canvas>
+            <!-- <canvas canvas-id="canvasColumn" id="canvasColumn" class="charts" bindtouchstart="touchColumn"></canvas> -->
+            <canvas canvas-id="canvasColumn" id="canvasColumn" class="charts"></canvas>
           </view>
         </view>
       </view>
@@ -87,13 +88,13 @@
                 <view class="text-grey">{{item.dishName}}</view>
                 <view class="text-gray text-sm flex">
                   <text class="text-cut margin-right-xs">
-                    <text>{{item.weight}}</text>
+                    <text>{{item.weight}}克</text>
                   </text>
                 </view>
               </view>
               <view class="action">
-                <view class="text-grey text-xs">{{item.calorie}}</view>
-                <view class="cu-tag round bg-white sm">{{item.money}}</view>
+                <view class="text-grey text-xs">{{item.calorie}}千卡</view>
+                <view class="cu-tag round bg-white sm">{{item.money}}元</view>
               </view>
             </navigator>
           </block>
