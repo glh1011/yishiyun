@@ -1,4 +1,5 @@
 <scroll-view scroll-y class="scrollPage">
+
   <view class="padding-xs flex align-center">
     <view class="flex-sub text-left">
       <view class="text-xxxl title-padding">
@@ -36,7 +37,7 @@
 
   <view class="cu-bar bg-white">
     <view class="action">
-      <text class="cuIcon-titles text-cyan text-bold"></text><text class="text-bold">轮播图轮播图</text>
+      <text class="cuIcon-titles text-cyan text-bold"></text><text class="">首页推荐</text>
     </view>
   </view>
   <swiper class="card-swiper" next-margin="140rpx" circular="{{true}}">
@@ -71,42 +72,38 @@
 
   <navigator class="cu-bar bg-white" url="/pages/home/diningRecord/diningRecord">
     <view class="action">
-      <text class="cuIcon-titles text-cyan text-bold"></text><text class="text-bold">最近一次就餐记录</text>
+      <text class="cuIcon-titles text-cyan text-bold"></text><text class="">最近一次就餐记录</text>
     </view>
     <view class="action">
-      <!-- <view class="cu-tag round bg-cyan more-icon-container">
-        <view class="cuIcon-more text-white xxl"></view>
-      </view> -->
       <button class="cu-btn round bg-cyan more-icon-container">
         <view class="cuIcon-more text-white xxl"></view>
       </button>
     </view>
   </navigator>
-  <view class="cu-list menu-avatar">
-   
-  <block wx:for="{{lastEatLog}}" wx:for-item="item" wx:key>
-    <navigator class="cu-item arrow" url="/pages/dishDetail/dishDetail?dishesId={{item.dishesId}}">
-      <image class="cu-avatar radius lg" src="{{item.dishImage}}"></image>
-      <view class="content">
-        <view class="text-grey">{{item.dishName}}</view>
-        <view class="text-gray text-sm flex">
-          <text class="text-cut margin-right-xs">
-							<text>{{item.weight}}克</text>
-          </text>
-        </view>
-      </view>
-      <view class="action">
-        <view class="cuIcon-right text-gray lg"></view>
-        <view class="cu-tag round bg-white sm">{{item.money}}元</view>
-      </view>
-    </navigator>
-  </block>
 
+  <view class="cu-list menu-avatar">
+    <block wx:for="{{lastEatLog}}" wx:for-item="item" wx:key>
+      <navigator class="cu-item arrow" url="/pages/dishDetail/dishDetail?dishesId={{item.dishesId}}">
+        <image class="cu-avatar radius lg" src="{{item.dishImage}}"></image>
+        <view class="content">
+          <view class="text-grey">{{item.dishName}}</view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut margin-right-xs">
+                <text>{{item.weight}}克</text>
+            </text>
+          </view>
+        </view>
+        <view class="action">
+          <view class="cuIcon-right text-gray lg"></view>
+          <view class="cu-tag round bg-white sm">{{item.money}}元</view>
+        </view>
+      </navigator>
+    </block>
   </view>
 
   <view class="cu-bar bg-white">
     <view class="action">
-      <text class="cuIcon-titles text-cyan text-bold"></text><text class="text-bold">本周最受欢迎的菜品</text>
+      <text class="cuIcon-titles text-cyan text-bold"></text><text class="">本周最受欢迎的菜品</text>
     </view>
   </view>
   <view class="padding-left padding-right home-menu-container">

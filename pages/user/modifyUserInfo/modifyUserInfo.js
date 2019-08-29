@@ -1,4 +1,5 @@
 import utils from "../../../utils/util.js";
+
 Page({
   data: {
     endDate: '',
@@ -13,6 +14,7 @@ Page({
     userWeight: '',
     userSportIndex: ''
   },
+
   onLoad: function (options) {
     let today = new Date();
     let d = utils.formatTime(today);
@@ -21,6 +23,7 @@ Page({
     });
     this.getUserInfo();
   },
+
   getUserInfo() {
     utils.queryUserInfo().then(res => {
       if(res.data.code == 200) {
@@ -45,17 +48,20 @@ Page({
       console.log(res);
     })
   },
+
   DateChange(e) {
     this.setData({
       userBirth: e.detail.value
     })
   },
+
   PickerChange(e) {
     console.log(e);
     this.setData({
       userSportIndex: e.detail.value
     })
   },
+
   formSubmit: function (e) {
     console.log(e.detail.value);
     let allValue = e.detail.value;
@@ -64,7 +70,6 @@ Page({
     } else if (allValue.sex == false) {
       allValue.sex = '0'
     }
-    console.log(allValue);
     utils.perfectInfo(allValue).then(res=>{
       if(res.data.code == 200){
         console.log(res);
@@ -75,6 +80,7 @@ Page({
       console.log("修改个人信息失败",res);
     })
   },
+  
   showAlert: function() {
     utils.showToastWindow("此项不可修改", "none")
   }

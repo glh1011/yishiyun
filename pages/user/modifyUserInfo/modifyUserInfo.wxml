@@ -36,8 +36,8 @@
 		</picker>
 	</view>
 
-<view class="padding-xl margin-bottom-xxl">
-  <button class="cu-btn block lg bg-cyan" form-type="submit">确认修改</button>
-</view>
+  <view class="padding-xl margin-bottom-xxl">
+    <button class="cu-btn block lg bg-cyan" form-type="submit">确认修改</button>
+  </view>
 
 </form>

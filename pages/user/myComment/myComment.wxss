@@ -1,6 +1,9 @@
 page {
   background: #fff
 }
+.comment-card { 
+  margin: 0 20rpx
+}
 .avatar {
   border-radius:50%;
   overflow:hidden;

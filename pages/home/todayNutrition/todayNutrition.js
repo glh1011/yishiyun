@@ -78,7 +78,6 @@ Page({
       } else {
         this.setDefaultDiagram(res.data.msg);
       }
-      //wx.hideLoading()
     }).catch(res => {
       console.log("获取营养分析失败",res);
       this.setDefaultDiagram("获取营养分析失败");
@@ -87,7 +86,6 @@ Page({
   },
 
   bindDateChange: function (e) {
-    //console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       date: e.detail.value
     })
@@ -133,9 +131,6 @@ Page({
       otherNutritionAdvise: { dietaryFiber: 0, salt: 0, cholesterol: 0, vitamin: 0 },
       otherNutritionReal: { dietaryFiber: 0, salt: 0, cholesterol: 0, vitamin: 0 },
     })
-    // this.setData({
-    //   modalName: 'Modal'
-    // });
     let options = {
       series: [
         { name: "已摄入", data: 0 },
