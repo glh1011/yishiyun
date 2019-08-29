@@ -55,6 +55,24 @@ Page({
       }
     })
   },
+  onGotUserInfo1(e) {
+    if (!e.detail.userInfo) {
+      utils.showToastWindow("拒绝授权将无法登录，请授权!");
+      return;
+    } else {
+      console.log(e.detail.userInfo);
+      app.globalData.userInfo = e.detail.userInfo;
+      wx.setStorageSync('userInfo', e.detail.userInfo);
+      //微信的授权登录,从后台获得微信用唯一的uerId
+      AUTH.wxlogin().then(res=>{
+        wx.navigateTo({
+          url: '../register/register',
+        })
+      },err=>{
+
+      })
+    }
+  },
 
   onGotUserInfo(e) {
     if (!e.detail.userInfo) {

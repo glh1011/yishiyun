@@ -26,13 +26,13 @@
         </view>
         <!--登录按钮-->
         <view class="loginBtnView">
-          <!-- <button class="loginBtn" hover-class="loginBtn-hover" form-type="submit" disabled='{{disabled}}'>立即登录</button> -->
           <button class="loginBtn" hover-class="loginBtn-hover" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">立即登录</button>
         </view>
         <!--注册和忘记密码-->
         <view class="registerAndForget">
           <navigator class="forgetPassword" hover-class="navigator-hover-class" bindtap="updateing">忘记密码</navigator>
-          <navigator class="register" hover-class="navigator-hover-class" url="../register/register">立即注册</navigator>
+          <button class="register" hover-class="navigator-hover-class" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo1">立即注册</button>
+          <!-- <navigator class="register" hover-class="navigator-hover-class" url="../register/register">立即注册</navigator> -->
         </view>
         <text class="copyright">© 2019 僮健科技 倾情巨献</text>
       </view>
