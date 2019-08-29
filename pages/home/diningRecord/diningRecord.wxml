@@ -1,4 +1,5 @@
 <scroll-view scroll-y class="scrollPage">
+
   <view class="text-xl title-padding">
     <text class="textblack text-bold">当日就餐</text>
     <view class="calendar-container">
@@ -11,7 +12,9 @@
       </picker>
     </view>
   </view>
+  
   <image wx:if="{{hasDiningRecord == false}}" src="../../../images/noStatus.jpg" style='width:100%;height:600rpx;' mode="aspectFill"></image>
+
   <view wx:if="{{hasDiningRecord == true}}" class="cu-card case">
     <view class="cu-item shadow bg-white" style="margin:5rpx 60rpx 60rpx">
       <view class="cu-list menu-avatar solid-bottom">

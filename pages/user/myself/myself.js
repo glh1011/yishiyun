@@ -1,16 +1,20 @@
 import utils from "../../../utils/util.js";
+
 Component({
   options: {
     addGlobalClass: true,
   },
+
   data: {
     monetarySum: 0,
     calorieSum: 0,
     icNumber: null
   },
+
   attached: function (options) {
     this.getData();
   },
+
   methods: {
     getData: function () {
       utils.queryUser().then(res => {
@@ -31,6 +35,7 @@ Component({
         utils.showToastWindow('获取信息失败');
       })
     },
+    
     logout: function() {
       utils.logout().then(res=>{
         if (res.data.code === 200){

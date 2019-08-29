@@ -12,10 +12,3 @@
 .no-margin-top {
   margin-top: 0!important;
 }
-/* .picker-btn{
-  background-color: #EEEEEE;
-  color: #3B3B3B;
-  font-size: 30rpx;
-  height: 60rpx;
-  line-height: 48rpx;
-} */

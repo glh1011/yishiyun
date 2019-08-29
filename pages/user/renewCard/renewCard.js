@@ -1,12 +1,15 @@
 import utils from "../../../utils/util.js";
+
 Page({
   data: {
     icNumber: "",
     userName: ""
   },
+
   onLoad: function (options) {
     this.getCurrentCard();
   },
+
   getCurrentCard: function(){
     utils.queryUser().then(res => {
       if (res.data.code === 200) {
@@ -21,6 +24,7 @@ Page({
       console.log("获取卡号失败", res);
     })
   },
+
   formSubmit: function (e) {
     console.log(e.detail.value);
     // if(this.data.userName.length > 0 ) {
@@ -55,6 +59,8 @@ Page({
     //   utils.showToastWindow("真实姓名不能为空", "none")
     // } 
   },
+
+  //真实姓名清除输入的空格
   clearSpace: function (e) {
     this.setData({
       userName: e.detail.value.replace(/\s*/g, "")
