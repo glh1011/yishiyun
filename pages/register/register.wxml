@@ -19,7 +19,7 @@
         <view class="icon-view">
           <image class="icon-view-image" src="../../images/newphone.png"></image>
         </view>
-        <input bindinput="handleInputPhone" placeholder="请输入手机号" placeholder-class="placeholderStyle"></input>
+        <input bindinput="handleInputPhone" placeholder="请输入手机号" placeholder-class="placeholderStyle" type="number"></input>
       </view>
       <!--验证码-->
       <view class="check-registerInputView margin-20 bg-white">
@@ -36,7 +36,7 @@
         <view class="icon-view">
           <image class="icon-view-image" src="../../images/newmessage.png"></image>
         </view>
-        <input bindinput="handleVerificationCode" placeholder="请输入短信验证码" placeholder-class="placeholderStyle"></input>
+        <input bindinput="handleVerificationCode" placeholder="请输入短信验证码" placeholder-class="placeholderStyle" type="number"></input>
         <view class="getMessageView">
           <button class="getMsnBtn bg-cyan" hover-class="registerBtn-hover" bindtap='doGetCode' disabled='{{disabled}}'>{{text}}</button>
         </view>
@@ -97,7 +97,7 @@
         <view class="icon-view">
           <image class="icon-view-image" src="../../images/height.png"></image>
         </view>
-        <input bindinput="handleInputHeight" name="height" placeholder="请输入您的身高" placeholder-class="placeholderStyle"></input>
+        <input bindinput="handleInputHeight" name="height" placeholder="请输入您的身高" placeholder-class="placeholderStyle" type="number"></input>
         <text class="kgicon">cm</text>
       </view>
       <!--体重-->
@@ -105,7 +105,7 @@
         <view class="icon-view">
           <image class="icon-view-image" src="../../images/weight.png"></image>
         </view>
-        <input bindinput="handleInputWeight" name="weight" placeholder="请输入您的体重" placeholder-class="placeholderStyle"></input>
+        <input bindinput="handleInputWeight" name="weight" placeholder="请输入您的体重" placeholder-class="placeholderStyle" type="number"></input>
         <text class="kgicon">kg</text>
       </view>
       <!--运动量-->

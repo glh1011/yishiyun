@@ -21,11 +21,11 @@
 	</view>
   <view class="cu-form-group">
 		<view class="title">身高</view>
-		<input class="right" name="hight" placeholder="请输入身高/cm" value="{{userHeight}}"></input>
+		<input class="right" name="hight" type="number" placeholder="请输入身高/cm" value="{{userHeight}}"></input>
 	</view>
   <view class="cu-form-group">
 		<view class="title">体重</view>
-		<input class="right" name="weight" placeholder="请输入体重/kg" value="{{userWeight}}"></input>
+		<input class="right" name="weight" type="number" placeholder="请输入体重/kg" value="{{userWeight}}"></input>
 	</view>
   <view class="cu-form-group">
 		<view class="title">运动量</view>
