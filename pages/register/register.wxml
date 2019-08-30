@@ -68,7 +68,7 @@
         <view class="icon-view">
           <image class="icon-view-image" src="../../images/nickname.png"></image>
         </view>
-        <input name="nickname" placeholder="请输入昵称" placeholder-class="placeholderStyle"></input>
+        <input bindinput="handleInputNickName" name="nickname" placeholder="请输入昵称" placeholder-class="placeholderStyle"></input>
       </view>
       <!--性别-->
       <view class="gender-informationInputView margin-20 bg-white">
@@ -97,7 +97,7 @@
         <view class="icon-view">
           <image class="icon-view-image" src="../../images/height.png"></image>
         </view>
-        <input name="height" placeholder="请输入您的身高" placeholder-class="placeholderStyle"></input>
+        <input bindinput="handleInputHeight" name="height" placeholder="请输入您的身高" placeholder-class="placeholderStyle"></input>
         <text class="kgicon">cm</text>
       </view>
       <!--体重-->
@@ -105,7 +105,7 @@
         <view class="icon-view">
           <image class="icon-view-image" src="../../images/weight.png"></image>
         </view>
-        <input name="weight" placeholder="请输入您的体重" placeholder-class="placeholderStyle"></input>
+        <input bindinput="handleInputWeight" name="weight" placeholder="请输入您的体重" placeholder-class="placeholderStyle"></input>
         <text class="kgicon">kg</text>
       </view>
       <!--运动量-->

@@ -39,7 +39,10 @@ Page({
     checkAgree: 0, //默认没有同意服务协议
     userCity:'',//用户的城市
     userProvince:'',//用户的省份
-    userArea:''//用户的区
+    userArea:'',//用户的区
+    nickName:'',//用户昵称
+    weight:0,//体重默认是0
+    height:0//默认是0
   },
 
   SportPickerChange(e) {
@@ -86,6 +89,33 @@ Page({
     console.log(e);
     this.setData({
       CheckCode: e.detail.value
+    })
+  },
+  /**
+   * 获取昵称
+   */
+  handleInputNickName:function(e){
+    console.log(e);
+    this.setData({
+      nickName: e.detail.value
+    })
+  },
+  /**
+   * 获取体重
+   */
+  handleInputWeight: function (e) {
+    console.log(e);
+    this.setData({
+      weight: e.detail.value
+    })
+  },
+  /**
+   * 获取身高
+   */
+  handleInputHeight: function (e) {
+    console.log(e);
+    this.setData({
+      height: e.detail.value
     })
   },
   /**
@@ -288,6 +318,7 @@ Page({
             url: '/pages/login/login',
           })
         } else {
+          utils.showToastWindow('用户卡号绑定失败')
         }
       }, err => {
         console.log(err);
@@ -301,13 +332,14 @@ Page({
   informationSubmit: function(e) {
     console.log(e);
     var that = this;
+
     var data = {
       telephoneNumber: that.data.phone,
-      name: e.detail.value.nickname,
+      name: that.data.nickName,
       sex: e.detail.value.gender,
       brith: e.detail.value.date,
-      hight: e.detail.value.height,
-      weight: e.detail.value.weight,
+      hight: that.data.height,
+      weight: that.data.weight,
       sportType: e.detail.value.sport
     }
     utils.perfectInfo(data).then(res => {
