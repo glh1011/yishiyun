@@ -10,8 +10,8 @@ Page({
     userName: '',
     userSex: '',
     userBirth: '',
-    userHeight: '',
-    userWeight: '',
+    userHeight: 0,
+    userWeight: 0,
     userSportIndex: ''
   },
 
@@ -70,6 +70,13 @@ Page({
     } else if (allValue.sex == false) {
       allValue.sex = '0'
     }
+    if (allValue.hight == "") {
+      allValue.hight = 0;
+    }
+    if (allValue.weight == "") {
+      allValue.weight = 0;
+    }
+    console.log(typeof (allValue.hight));
     utils.perfectInfo(allValue).then(res=>{
       if(res.data.code == 200){
         console.log(res);

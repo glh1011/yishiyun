@@ -39,9 +39,22 @@ Component({
     logout: function() {
       utils.logout().then(res=>{
         if (res.data.code === 200){
-          wx.redirectTo({
-            url: '/pages/login/login',
-          })
+          wx.showToast({
+            title: "已退出，跳转中",
+            icon: 'success',
+            duration: 2000,
+            mask: true,
+            success: function () {
+              setTimeout(function () {
+                wx.redirectTo({
+                  url: '/pages/login/login',
+                })
+              }, 1000) //延迟时间
+            },
+          });
+          // wx.redirectTo({
+          //   url: '/pages/login/login',
+          // })
         } else {
           utils.showToastWindow("退出登录失败", "none");
         }
