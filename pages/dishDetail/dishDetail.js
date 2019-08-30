@@ -99,7 +99,8 @@ Page({
  
   hideModal: function () {
     this.setData({
-      showModal: false
+      showModal: false,
+      commentContent: ''
     });
   },
  
