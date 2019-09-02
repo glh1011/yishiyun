@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 10,
 			"list": [
 				{
 					"id": 0,
@@ -118,6 +118,13 @@
 					"id": -1,
 					"name": "我的评价",
 					"pathName": "pages/user/myComment/myComment",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "生物认证",
+					"pathName": "pages/user/soterAuthentication/soterAuthentication",
 					"scene": null
 				}
 			]

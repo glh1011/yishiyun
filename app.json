@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/login/login",
     "pages/nutritionSummary/nutritionSummary",
     "pages/home/todayNutrition/todayNutrition",
     "pages/home/purchaseHistory/purchaseHistory",
-    "pages/index/index",
     "pages/menu/menu",
     "pages/register/register",
     "pages/home/home/home",
