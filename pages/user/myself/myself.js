@@ -1,4 +1,5 @@
 import utils from "../../../utils/util.js";
+import auth from "../../../utils/auth.js";
 
 Component({
   options: {
@@ -12,7 +13,19 @@ Component({
   },
 
   attached: function (options) {
-    this.getData();
+    auth.checkHasLogined().then(isLogined => {
+      console.log(isLogined);
+      if (isLogined) {
+        this.setData({
+          hasLogin: true
+        })
+        this.getData();
+      } else {
+        this.setData({
+          hasLogin: false
+        })
+      }
+    })
   },
 
   methods: {

@@ -1,5 +1,5 @@
 <scroll-view scroll-y class="scrollPage" style="background: #eee">
-  <navigator class="bg-cyan" url="/pages/user/modifyUserInfo/modifyUserInfo" hover-class="none">
+  <navigator wx:if="{{hasLogin===true}}" class="bg-cyan" url="/pages/user/modifyUserInfo/modifyUserInfo" hover-class="none">
     <view class=" cf">
       <view class="fl">
         <view class="flex align-center">
@@ -13,6 +13,18 @@
     </view>
   </navigator>
 
+  <navigator wx:if="{{hasLogin===false}}" class="bg-cyan" url="/pages/login/login" hover-class="none">
+    <view class=" cf">
+      <view class="fl">
+        <view class="flex align-center">
+          <view class="userinfo-avatar">
+          </view>
+          <view class="userinfo-name">点击登录/注册</view>
+        </view>
+      </view>
+      <view class="fr"><view class="cuIcon-right right-icon"></view></view>
+    </view>
+  </navigator>
 
   <view class="grid col-2 margin-bottom text-center">
     <view class="bg-cyan padding-bottom text-xl font-family-reset">{{monetarySum}}元</view>
