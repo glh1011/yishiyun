@@ -75,8 +75,10 @@ Page({
           otherNutritionAdvise: responseData.otherNutritionAdvise.calorieAdvise,
           otherNutritionReal: responseData.otherNutritionAdvise.calorieReal
         })
-      } else {
+      } else if(res.data.code == 202) {
         this.setDefaultDiagram(res.data.msg);
+      } else {
+        this.setDefaultDiagram("获取营养分析失败");
       }
     }).catch(res => {
       console.log("获取营养分析失败",res);

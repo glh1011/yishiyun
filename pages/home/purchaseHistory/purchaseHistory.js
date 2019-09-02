@@ -154,6 +154,12 @@ Page({
         })
         let msg = "当日" + res.data.msg;
         utils.showToastWindow(msg, 'none');
+      } else {
+        this.setData({
+          hasPurchaseRecord: false,
+          expenseDetail: []
+        })
+        utils.showToastWindow("获取日消费记录失败", 'none');
       }
       wx.hideLoading();
     }).catch(res => {
