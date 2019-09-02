@@ -66,6 +66,7 @@ function getWeek(res) {
   var m = time.getMonth() + 1;
   var d = time.getDate();
   var dateStr = y + '-' + m + '-' + d;
+  console.log("日一二三四五六".charAt(new Date(dateStr.replace(/\-/g, '/')).getDay()));
   return "日一二三四五六".charAt(new Date(dateStr.replace(/\-/g, '/')).getDay());
   // return "日一二三四五六".charAt(new Date(y + '-' + m + '-' + d).getDay());
 }
@@ -82,7 +83,6 @@ function getWeekNumber(res) {
   return "0123456".charAt(new Date(dateStr.replace(/\-/g, '/')).getDay());
   // return "0123456".charAt(new Date(y + '-' + m + '-' + d).getDay());
 }
-
 module.exports = {  //把方法共享，让引用的地方可以调用
   getWeekDayList: getWeekDayList,
 }

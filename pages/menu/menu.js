@@ -11,7 +11,10 @@ Component({
     TabArray: ['全部', '早饭', '午饭', '晚饭'],
     currentNavtab: 0,
     CustomBar: app.globalData.CustomBar,
-    loadingMore: true, //loading中
+    loadingMore: false, //loading中
+    breakloadingMore:false,//breakloadingMore中
+    lunchloadingMore:false,
+    dinnerloadingMore:false,
     loadingMoreHidden: false,
     isEnd: false, //全部到底啦
     breakFastIsEnd:false,//早餐到底啦
@@ -88,7 +91,7 @@ Component({
       }
       console.log('notEnd,continue...');
       that.setData({
-        loadingMore: true
+        dinnerloadingMore: true
       })
       var pageSize = 5;
       var dinnerFoodShow = that.data.dinnerFoodShow;
@@ -105,12 +108,12 @@ Component({
 
         if (dinnerFoodShow.length < that.data.dinnerLists.length) {
           that.setData({
-            loadingMore: false
+            dinnerloadingMore: false
           })
         } else {
           that.setData({
-            loadingMore: false,
-            lunchIsEnd: true
+            dinnerloadingMore: false,
+            dinnerIsEnd: true
           })
         }
         console.log('dinnerFoodShow.length:' + dinnerFoodShow.length, '-=-=-=-=-=-=-=')
@@ -122,8 +125,8 @@ Component({
 
         that.setData({
           dinnerFoodShow: dinnerFoodShow,
-          loadingMore: false,
-          lunchIsEnd: true
+          dinnerloadingMore: false,
+          dinnerIsEnd: true
         })
         console.log('dinnerFoodShow.length:' + dinnerFoodShow.length, '-=-=-=-=-=-=-=')
       }
@@ -137,7 +140,7 @@ Component({
       }
       console.log('notEnd,continue...');
       that.setData({
-        loadingMore: true
+        lunchloadingMore: true
       })
       var pageSize = 5;
       var lunchFoodShow = that.data.lunchFoodShow;
@@ -154,11 +157,11 @@ Component({
 
         if (lunchFoodShow.length < that.data.lunchLists.length) {
           that.setData({
-            loadingMore: false
+            lunchloadingMore: false
           })
         } else {
           that.setData({
-            loadingMore: false,
+            lunchloadingMore: false,
             lunchIsEnd: true
           })
         }
@@ -171,11 +174,11 @@ Component({
 
         that.setData({
           lunchFoodShow: lunchFoodShow,
-          loadingMore: false,
+          lunchloadingMore: false,
           lunchIsEnd: true
         })
         console.log('lunchFoodShow.length:' + lunchFoodShow.length, '-=-=-=-=-=-=-=')
-      }
+      } 
     },
     //早餐的下拉加载函数
     getBreakfastShow:function(){
@@ -186,7 +189,7 @@ Component({
       }
       console.log('notEnd,continue...');
       that.setData({
-        loadingMore: true
+        breakloadingMore: true
       })
       var pageSize = 5;
       var breakFoodShow = that.data.breakFoodShow;
@@ -203,11 +206,11 @@ Component({
 
         if (breakFoodShow.length < that.data.breakfastLists.length) {
           that.setData({
-            loadingMore: false
+            breakloadingMore: false
           })
         } else {
           that.setData({
-            loadingMore: false,
+            breakloadingMore: false,
             breakFastIsEnd: true
           })
         }
@@ -220,7 +223,7 @@ Component({
 
         that.setData({
           breakFoodShow: breakFoodShow,
-          loadingMore: false,
+          breakloadingMore: false,
           breakFastIsEnd: true
         })
         console.log('breakFoodShow.length:' + breakFoodShow.length, '-=-=-=-=-=-=-=')
