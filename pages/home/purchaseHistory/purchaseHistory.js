@@ -1,4 +1,5 @@
 import utils from "../../../utils/util.js";
+import auth from "../../../utils/auth.js";
 import uCharts from '../../ucharts/u-charts.min.js';
 
 const monthArr = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
@@ -47,9 +48,10 @@ Page({
     })
 
     _self = this;
-    this.cWidth = wx.getSystemInfoSync().windowWidth-50;
+    this.cWidth = wx.getSystemInfoSync().windowWidth - 50;
     this.cHeight = 500 / 750 * wx.getSystemInfoSync().windowWidth;
     this.getDiagramData();
+    auth.showLoginModal();
   },
 
   //月消费与日消费导航栏切换
@@ -154,6 +156,12 @@ Page({
         })
         let msg = "当日" + res.data.msg;
         utils.showToastWindow(msg, 'none');
+      } else {
+        this.setData({
+          hasPurchaseRecord: false,
+          expenseDetail: []
+        })
+        utils.showToastWindow("获取日消费记录失败", 'none');
       }
       wx.hideLoading();
     }).catch(res => {

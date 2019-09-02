@@ -64,6 +64,6 @@ App({
     allDishesDatas:[],
     breakfastDishesDatas:[],
     lunchDishesDatas:[],
-    dinnerDishesDatas:[]
+    dinnerDishesDatas:[],
   }
 })

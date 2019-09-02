@@ -145,6 +145,10 @@ module.exports = {
   submitComment: (data) => {
     return sendRequest('api/comment/addComment', 'POST', data);
   },
+  //用户点赞菜品
+  likeDish: (data) => {
+    return sendRequest('api/dishes/like', 'POST', data);
+  },
   //用户所有评论获取
   queryUserComment: () => {
     return sendRequest('api/comment/getCommentByUser', 'POST');

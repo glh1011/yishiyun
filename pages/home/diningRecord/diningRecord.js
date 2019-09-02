@@ -1,4 +1,5 @@
 import utils from "../../../utils/util.js";
+import auth from "../../../utils/auth.js";
 
 Page({
   data: {
@@ -18,6 +19,8 @@ Page({
       date: d
     });
     this.displayDiningRecord();
+
+    auth.showLoginModal();
   },
 
   displayDiningRecord: function() {
@@ -34,8 +37,10 @@ Page({
           lunch: responseData.lunch,
           supper: responseData.dinner
         })
-      } else {
+      } else if(res.data.code == 202) {
         this.setDefault(res.data.msg);
+      } else {
+        this.setDefault("获取就餐记录失败");
       }
       wx.hideLoading();
     }).catch(res => {

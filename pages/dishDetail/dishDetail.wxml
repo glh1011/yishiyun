@@ -63,7 +63,11 @@
 
 </scroll-view>
 
-<button class="cu-btn bg-cyan shadow cover-btn" bindtap="showDialogBtn" data-target="bottomModal">
+<button class="cu-btn bg-cyan shadow cover-btn like-btn" bindtap="handlelikeDish" data-target="bottomModal">
+  <text class="cuIcon-like"></text>
+</button>
+
+<button class="cu-btn bg-cyan shadow cover-btn comment-btn" bindtap="showDialogBtn" data-target="bottomModal">
   <text class="cuIcon-comment"></text>
 </button>
 
@@ -73,7 +77,7 @@
     {{commentNum}}
   </view>
   <view class="action">
-    <view class="cuIcon-favor"></view>{{likeNum}}
+    <view class="cuIcon-like"></view>{{likeNum}}
   </view>
 </view>
 

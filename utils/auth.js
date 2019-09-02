@@ -72,7 +72,32 @@ async function wxlogin(){
   });
 }
 
+const showLoginModal = () => {
+  checkHasLogined().then(isLogined => {
+    console.log(isLogined);
+    if (isLogined) {
+    } else {
+      wx.showModal({
+        title: '您还未登录',
+        content: '请先登录再进行操作',
+        confirmText: '立即登录',
+        cancelText: '暂不登录',
+        success(res) {
+          if (res.confirm) {
+            wx.redirectTo({
+              url: '/pages/login/login',
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    }
+  })
+}
+
 module.exports = {
   checkHasLogined: checkHasLogined,
-  wxlogin: wxlogin
+  wxlogin: wxlogin,
+  showLoginModal: showLoginModal
 }
