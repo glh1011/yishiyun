@@ -3,6 +3,8 @@ import uCharts from '../ucharts/u-charts.min.js';
 var util = require("../../utils/time-utils.js")
 var utils = require("../../utils/util.js")
 var canvaColumn = null;
+//获取授权实例
+const AUTH = require('../../utils/auth.js');
 var _self;
 
 Component({
@@ -14,8 +16,8 @@ Component({
     timeBean: {},
     cWidth: '',
     cHeight: '',
-    curWeekArray: [],//这一周的日期
-    standardWeekArray:[],//一周的标准热量
+    curWeekArray: [0,0,0,0,0,0,0],//这一周的日期
+    standardWeekArray:[0,0,0,0,0,0,0],//一周的标准热量
     curWeekNutritionArray:[0,0,0,0,0,0,0],//一周的实际热量
     compare:[],//实际比标准
     compareColor:['green','cyan','red'],//评价中过低、标准、过高对应的颜色
@@ -34,14 +36,22 @@ Component({
     })
     console.log(this.data.timeBean);
     this.selectWeekDay();
-    this.getNutritionSummaryData();
+    AUTH.checkHasLogined().then(isLogined => {
+      console.log(isLogined);
+      if (isLogined) {
+        this.getNutritionSummaryData();
+      } else {
+        console.log("用户还没有登录");
+        this.setDefaultDiagram();
+      }
+    })
+    
   },
   methods: {
     getNutritionSummaryData: function () {
       console.log(this.data.timeBean);
       console.log(this.data.curWeekArray);
       var date = this.data.timeBean.yearMonth+"-"+this.data.curWeekArray[0];
-      
       console.log(date);
       var data = {
         date: date
@@ -94,6 +104,7 @@ Component({
           Column.series[1].data = this.data.standardWeekArray;
           _self.showColumn("canvasColumn", Column);
         }else{
+          console.log("还没有登录");
           this.setDefaultDiagram();
         }
       }, err => {

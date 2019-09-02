@@ -60,7 +60,7 @@ Component({
             success: function () {
               setTimeout(function () {
                 wx.redirectTo({
-                  url: '/pages/login/login',
+                  url: '/pages/index/index',
                 })
               }, 1000) //延迟时间
             },
