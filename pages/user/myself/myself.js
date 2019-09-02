@@ -9,7 +9,8 @@ Component({
   data: {
     monetarySum: 0,
     calorieSum: 0,
-    icNumber: null
+    icNumber: null,
+    hasLogin: false
   },
 
   attached: function (options) {
@@ -39,9 +40,11 @@ Component({
             monetarySum: responseData.monetarySum,
             userName: responseData.userName
           })
+        } else if (res.data.code === 202) {
+          console.log("获取信息出错", res.data.msg);
         } else {
-          console.log("获取信息出错", res);
-          utils.showToastWindow('获取信息出错');
+          console.log("获取信息失败", res);
+          utils.showToastWindow('获取信息失败');
         }
       }).catch(res => {
         console.log("获取信息失败", res);

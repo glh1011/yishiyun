@@ -91,6 +91,23 @@ Page({
     })
   },
 
+  handlelikeDish: function() {
+    let requestData = {
+      dishesId: this.data.dishesId
+    }
+    utils.likeDish(requestData).then(res => {
+      console.log(res.data);
+      if (res.data.code == 200) {
+        this.onShow();
+      } else {
+        utils.showToastWindow("点赞菜品失败")
+      }
+    }).catch(res => {
+      utils.showToastWindow("点赞菜品失败")
+      console.log(res);
+    })
+  },
+
   showDialogBtn: function () {
     this.setData({
       showModal: true

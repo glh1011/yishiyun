@@ -1,4 +1,5 @@
 import utils from "../../../utils/util.js";
+import auth from "../../../utils/auth.js";
 import uCharts from '../../ucharts/u-charts.min.js';
 
 var _self;
@@ -35,6 +36,8 @@ Page({
     this.cWidth = wx.getSystemInfoSync().windowWidth;
     this.cHeight = 500 / 750 * wx.getSystemInfoSync().windowWidth;
     this.getNutritionAnalysis();
+
+    auth.showLoginModal();
   },
 
   getNutritionAnalysis: function () {

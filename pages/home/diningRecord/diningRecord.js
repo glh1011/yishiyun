@@ -1,4 +1,5 @@
 import utils from "../../../utils/util.js";
+import auth from "../../../utils/auth.js";
 
 Page({
   data: {
@@ -18,6 +19,8 @@ Page({
       date: d
     });
     this.displayDiningRecord();
+
+    auth.showLoginModal();
   },
 
   displayDiningRecord: function() {
