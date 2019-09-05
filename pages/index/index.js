@@ -8,6 +8,9 @@ Page({
     PageCur: 'home',
   },
   onLoad(){
+    AUTH.checkHasLogined().then(res=>{
+      app.globalData.indexLoginStatus = res;
+    })
   },
 
   onShow() {
