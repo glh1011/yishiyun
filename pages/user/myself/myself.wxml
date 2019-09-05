@@ -72,10 +72,10 @@
       </view>
     </view>
     <view class="cu-item arrow">
-      <view class="content" bindtap="showPrompt">
+      <navigator class="content" url="/pages/user/faceDetect/faceDetect" hover-class="none">
         <text class="cuIcon-profile text-orange"></text>
         <text class="text-grey">人脸录入</text>
-      </view>
+      </navigator>
     </view>
   </view>
 

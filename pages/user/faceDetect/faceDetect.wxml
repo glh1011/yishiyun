@@ -1,0 +1,68 @@
+<view class="bg-white" style="height:100%;width: 100%">
+  <view class="padding">
+    <view class="cu-steps">
+      <view class="cu-item {{index>=capturedNum?'':'text-cyan'}}" wx:for="{{numList}}" wx:key>
+        <text class="num" data-index="{{index+1}}"></text> {{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <view class="flex padding-lr justify-center">
+    <view class="bg-grey margin-xs radius">
+      <camera device-position="front" flash="off" binderror="error" style="width:550rpx;height:550rpx;"></camera>
+    </view>
+  </view>
+
+  <view wx:if="{{num==0}}">
+    <view class="padding flex flex-direction solid-bottom">
+      <button class="cu-btn lg {{downStatus?'bg-cyan':''}}" disabled="{{!downStatus}}" bindtap="downDetect">下一步</button>
+    </view>
+  </view>
+
+  <view wx:if="{{num==1}}">
+    <view class="padding flex flex-direction solid-bottom">
+      <button class="cu-btn lg {{leftStatus?'bg-cyan':''}}" disabled="{{!leftStatus}}" bindtap="leftDetect">下一步</button>
+    </view>
+  </view>
+
+  <view wx:if="{{num==2}}">
+    <view class="padding flex flex-direction solid-bottom">
+      <button class="cu-btn lg {{rightStatus?'bg-cyan':''}}" disabled="{{!rightStatus}}" bindtap="rightDetect">下一步</button>
+    </view>
+  </view>
+
+  <view wx:if="{{num==3}}">
+    <view class="padding flex flex-direction solid-bottom">
+      <button class="cu-btn lg {{finishStatus?'bg-cyan':''}}" disabled="{{!finishStatus}}" bindtap="finish">完成</button>
+    </view>
+  </view>
+
+	<view class="cu-bar bg-white">
+		<view class="action">
+			采集照片
+		</view>
+		<view class="action">
+			{{capturedNum}}/4
+		</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="grid col-4 grid-square flex-sub">
+			<view wx:if="{{upSrc}}" class="bg-img" bindtap="ViewImage" data-url="{{upSrc}}">
+				<image src='{{upSrc}}' mode='aspectFill'></image>
+			</view>
+      <view wx:if="{{downSrc}}" class="bg-img" bindtap="ViewImage" data-url="{{downSrc}}">
+				<image src='{{downSrc}}' mode='aspectFill'></image>
+			</view>
+      <view wx:if="{{leftSrc}}" class="bg-img" bindtap="ViewImage" data-url="{{leftSrc}}">
+				<image src='{{leftSrc}}' mode='aspectFill'></image>
+			</view>
+      <view wx:if="{{rightSrc}}" class="bg-img" bindtap="ViewImage" data-url="{{rightSrc}}">
+				<image src='{{rightSrc}}' mode='aspectFill'></image>
+			</view>
+			<view class="solids" bindtap="ChooseImage" wx:if="{{!finishStatus}}">
+				<text class="cuIcon-pic"></text>
+			</view>
+		</view>
+	</view>
+
+</view>

@@ -2,6 +2,7 @@
 
 //获取工具类
 const utils = require('/utils/util.js');
+const auth = require('/utils/auth.js');
 
 App({
   onLaunch: function () {
@@ -54,6 +55,7 @@ App({
     }, err => {
 
     })
+    
   },
   // 通过scope来引入wux函数
   wux: (scope) => new wux(scope),
@@ -65,5 +67,6 @@ App({
     breakfastDishesDatas:[],
     lunchDishesDatas:[],
     dinnerDishesDatas:[],
+    indexLoginStatus: false
   }
 })

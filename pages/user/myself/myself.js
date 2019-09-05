@@ -1,6 +1,8 @@
 import utils from "../../../utils/util.js";
 import auth from "../../../utils/auth.js";
 
+const app = getApp()
+
 Component({
   options: {
     addGlobalClass: true,
@@ -10,23 +12,15 @@ Component({
     monetarySum: 0,
     calorieSum: 0,
     icNumber: null,
-    hasLogin: false
   },
 
   attached: function (options) {
-    auth.checkHasLogined().then(isLogined => {
-      console.log(isLogined);
-      if (isLogined) {
-        this.setData({
-          hasLogin: true
-        })
-        this.getData();
-      } else {
-        this.setData({
-          hasLogin: false
-        })
-      }
+    this.setData({
+      hasLogin: app.globalData.indexLoginStatus
     })
+    if(this.data.hasLogin) {
+      this.getData();
+    }
   },
 
   methods: {
@@ -68,9 +62,6 @@ Component({
               }, 1000) //延迟时间
             },
           });
-          // wx.redirectTo({
-          //   url: '/pages/login/login',
-          // })
         } else {
           utils.showToastWindow("退出登录失败", "none");
         }

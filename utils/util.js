@@ -1,5 +1,5 @@
 // const API_BASE_URL = 'https://nocode.goho.co/';
-const API_BASE_URL = 'https://ting.zy819.cn:6050/';
+const API_BASE_URL = 'https://chiyikou.chiyk.cn:6050/';
 
 const formatTime = date => {
   const year = date.getFullYear()
@@ -160,5 +160,9 @@ module.exports = {
   //营养汇总信息获取
   queryNuritionSummary:(data)=>{
     return sendRequest('/api/trophicAnalysis/toByWeek','POST',data);
+  },
+  //识别并添加人脸
+  addFace: (data) => {
+    return sendRequest('api/face/addFace', 'POST', data);
   }
 }
