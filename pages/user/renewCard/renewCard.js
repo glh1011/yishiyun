@@ -1,4 +1,6 @@
 import utils from "../../../utils/util.js";
+import auth from "../../../utils/auth.js";
+
 
 Page({
   data: {
@@ -7,6 +9,7 @@ Page({
   },
 
   onLoad: function (options) {
+    auth.showLoginModal();
     this.getCurrentCard();
   },
 

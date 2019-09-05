@@ -98,6 +98,7 @@ Page({
     utils.likeDish(requestData).then(res => {
       console.log(res.data);
       if (res.data.code == 200) {
+        utils.showToastWindow("点赞成功");
         this.onShow();
       } else {
         utils.showToastWindow("点赞菜品失败")

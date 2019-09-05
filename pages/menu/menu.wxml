@@ -22,8 +22,8 @@
     </view>
   </scroll-view>
 </view>
-<view class="menu-container">
-  <scroll-view scroll-y class="flex" scroll-into-view="indexes-{{listCurID}}" style="height:900rpx;" scroll-with-animation="true" enable-back-to-top="true" bindscrolltolower="getNextFoodShow">
+<!-- <view class="menu-container"> -->
+  <scroll-view scroll-y class="flex menu-scroll-view" scroll-into-view="indexes-{{listCurID}}" style="height:900rpx;" scroll-with-animation="true" enable-back-to-top="true" bindscrolltolower="getNextFoodShow">
     <view class='ctnt0' hidden="{{currentNavtab==0 ? '' : true}}">
       <block wx:for="{{allFoodShow}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
         <view class="food-item flex" data-id="{{item.id}}" bindtap="toDetailsTap">
@@ -62,4 +62,4 @@
     </view>
     
   </scroll-view>
-</view>
+<!-- </view> -->

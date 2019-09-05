@@ -1,5 +1,7 @@
 // const API_BASE_URL = 'https://nocode.goho.co/';
-const API_BASE_URL = 'https://ting.zy819.cn:6050/';
+// const API_BASE_URL = 'https://ting.zy819.cn:6050/';
+
+const API_BASE_URL = 'https://chiyikou.chiyk.cn:6050/';
 
 const formatTime = date => {
   const year = date.getFullYear()

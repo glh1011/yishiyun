@@ -29,9 +29,20 @@ Component({
     lunchLists: [], //午饭菜品
     dinnerLists: [], //晚饭菜品
     pageSize: 1,
-    page: 1000
+    page: 1000,
+    pageHeight: 0//屏幕高度
   },
   attached: function() {
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res.windowHeight)
+        //calc(100rpx + env(safe-area-inset-bottom) / 2);
+        that.setData({
+          pageHeight: ((res.windowHeight - that.data.CustomBar) * (750 / res.windowWidth))
+        })
+      }
+    })
     console.log('menu onload...')
     let list = [];
     for (let i = 0; i < 26; i++) {
