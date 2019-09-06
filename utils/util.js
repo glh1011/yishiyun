@@ -165,5 +165,9 @@ module.exports = {
   //识别并添加人脸
   addFace: (data) => {
     return sendRequest('api/face/addFace', 'POST', data);
+  },
+  //找回密码接口
+  modifyPassword:(data)=>{
+    return sendRequest('/api/user/editPassword','POST',data);
   }
 }

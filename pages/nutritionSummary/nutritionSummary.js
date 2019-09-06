@@ -60,6 +60,9 @@ Component({
         console.log(res);
         var dates = res.data.data.dates;
         var curWeekDateArray = [];
+        if(dates == null){
+          return;
+        }
         for(var i = 0; i < dates.length; i++){
           curWeekDateArray.push(dates[i].split(" ")[0]);
         }

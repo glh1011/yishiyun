@@ -66,6 +66,81 @@ Component({
       this.setData({
         currentNavtab: e.currentTarget.dataset.id,
       })
+      var currentNavtab = e.currentTarget.dataset.id;
+      if (currentNavtab == 0){
+        this.getFoodShow();
+      } else if (currentNavtab == 1){
+        this.getBreakfastShow();
+      } else if (currentNavtab == 2) {
+        this.getLunchShow();
+      } else if (currentNavtab == 3) {
+        this.getDinnerShow();
+      }
+    },
+    /**
+     * 模糊搜索功能
+     */
+    search:function(key){
+      var that = this;
+      var curNavtab = that.data.currentNavtab;
+      var resultData;
+      
+      var tempdataArr = [];//临时数组
+      if(curNavtab == 0){
+        that.setData({
+          isEnd: false
+        })
+        //全部菜单
+        resultData = app.globalData.allDishesDatas;
+        if (key == '') {//用户没有输入，全部显示
+          that.setData({
+            allLists: resultData,
+          })
+          that.getFoodShow();
+          return;
+        }
+        tempdataArr = that.findSubArr(resultData,key);
+        console.log("查询结果:"+tempdataArr.length);
+        if(tempdataArr.length != 0){
+          that.setData({
+            allLists: tempdataArr
+          })
+        }else{
+          that.setData({
+            allLists: []
+          })
+        }
+        that.getFoodShow();
+      }else if(curNavtab == 1){
+        //早餐菜单
+        resultData = that.data.breakfastLists;
+      }else if(curNavtab == 2){
+        //午餐菜单
+        resultData = that.data.lunchLists;
+      }else if(curNavtab == 3){
+        //晚餐菜单
+        resultData = that.data.dinnerLists;
+      }
+
+    },
+    /**
+     * 通过关键字查询结果数组
+     */
+    findSubArr:function(resultData,key){
+      var tempdataArr = [];//临时数组
+      for (let i in resultData) {
+        if (resultData[i].dishName.indexOf(key) >= 0) {//查找关键字
+          tempdataArr.push(resultData[i]);
+        }
+      }
+      return tempdataArr;
+    },
+    /**
+     * 获取搜索输入框的值
+     */
+    wxSearchInput:function(e){
+      console.log(e.detail.value)
+      this.search(e.detail.value);
     },
 
     toDetailsTap: function(e) {
@@ -255,6 +330,7 @@ Component({
       var allFoodShow = that.data.allFoodShow;
       var allFoodLength = allFoodShow.length;
       console.log('allFoodLength:' + allFoodLength);
+      //显示的数据+pageSize，小于数据的总长度
       if (allFoodLength + pageSize <= that.data.allLists.length) {
         for (var i = allFoodLength; i < allFoodLength + pageSize; i++) {
           allFoodShow.push(that.data.allLists[i]);
@@ -276,6 +352,7 @@ Component({
         }
         console.log(allFoodShow.length, '-=-=-=-=-=-=-=')
       } else if (allFoodLength < that.data.allLists.length) {
+        //显示的数据+pagesize可能已经超过总数据了，但是显示数据还小于总数据
         for (var i = allFoodLength; i < that.data.allLists.length; i++) {
           allFoodShow.push(that.data.allLists[i])
         }
@@ -287,6 +364,13 @@ Component({
           isEnd: true
         })
         console.log(allFoodShow.length, '-=-=-=-=-=-=-=')
+      }else{
+        //显示的数据可能大于总数据，因为查询返回的总数据可能为空或者返回的查询总数据小于之前显示的数据
+        that.setData({
+          allFoodShow: that.data.allLists,
+          loadingMore: false,
+          isEnd: true
+        })
       }
     }
   }

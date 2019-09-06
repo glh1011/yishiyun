@@ -30,7 +30,7 @@
         </view>
         <!--注册和忘记密码-->
         <view class="registerAndForget">
-          <navigator class="forgetPassword" hover-class="navigator-hover-class" bindtap="updateing">忘记密码</navigator>
+          <navigator class="forgetPassword" hover-class="navigator-hover-class" bindtap="updateing" url="../forgetPassword/forgetPassword">忘记密码</navigator>
           <button class="register" hover-class="navigator-hover-class" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo1">立即注册</button>
           <!-- <navigator class="register" hover-class="navigator-hover-class" url="../register/register">立即注册</navigator> -->
         </view>

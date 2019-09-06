@@ -8,7 +8,7 @@
   <view class="cu-bar bg-white search">
     <view class="search-form round">
       <text class="cuIcon-search text-cyan"></text>
-      <input type="text" placeholder="输入搜索的关键词" confirm-type="search"></input>
+      <input type="text" placeholder="输入搜索的关键词" confirm-type="search" bindinput="wxSearchInput"></input>
     </view>
     <view class="action">
       <button class="cu-btn bg-gradual-cyan shadow-blur round" bindtap="searchByFoodName">搜索</button>
@@ -34,7 +34,7 @@
     <wxc-loadmore wx:if="{{isEnd}}" is-end="{{isEnd}}" text="到底啦" icon="https://s10.mogucdn.com/mlcdn/c45406/171016_47j96cl3hdhhdf7ajg8hg2kd13gdc_400x400.png"></wxc-loadmore>
     </view>
     <view class='ctnt1' hidden="{{currentNavtab==1 ? '' : true}}">
-      <block wx:for="{{breakfastLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
+      <block wx:for="{{breakFoodShow}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
         <view class="food-item flex" data-id="{{item.id}}" bindtap="toDetailsTap">
           <template is="food-item" data="{{item}}"> </template>
         </view>
@@ -43,7 +43,7 @@
     <wxc-loadmore wx:if="{{breakFastIsEnd}}" is-end="{{isEnd}}" text="到底啦" icon="https://s10.mogucdn.com/mlcdn/c45406/171016_47j96cl3hdhhdf7ajg8hg2kd13gdc_400x400.png"></wxc-loadmore>
     </view>
     <view class='ctnt2' hidden="{{currentNavtab==2 ? '' : true}}">
-      <block wx:for="{{lunchLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
+      <block wx:for="{{lunchFoodShow}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
         <view class="food-item flex" data-id="{{item.id}}" bindtap="toDetailsTap">
           <template is="food-item" data="{{item}}"> </template>
         </view>
@@ -52,7 +52,7 @@
     <wxc-loadmore wx:if="{{lunchIsEnd}}" is-end="{{isEnd}}" text="到底啦" icon="https://s10.mogucdn.com/mlcdn/c45406/171016_47j96cl3hdhhdf7ajg8hg2kd13gdc_400x400.png"></wxc-loadmore>
     </view>
     <view class='ctnt3' hidden="{{currentNavtab==3 ? '' : true}}">
-      <block wx:for="{{dinnerLists}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
+      <block wx:for="{{dinnerFoodShow}}" wx:key="{{index}}" wx:key="id" wx:for-item="item" data-id="{{idx}}">
         <view class="food-item flex" data-id="{{item.id}}" bindtap="toDetailsTap">
           <template is="food-item" data="{{item}}"> </template>
         </view>
