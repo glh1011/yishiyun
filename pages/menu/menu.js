@@ -12,30 +12,30 @@ Component({
     currentNavtab: 0,
     CustomBar: app.globalData.CustomBar,
     loadingMore: false, //loading中
-    breakloadingMore:false,//breakloadingMore中
-    lunchloadingMore:false,
-    dinnerloadingMore:false,
+    breakloadingMore: false, //breakloadingMore中
+    lunchloadingMore: false,
+    dinnerloadingMore: false,
     loadingMoreHidden: false,
     isEnd: false, //全部到底啦
-    breakFastIsEnd:false,//早餐到底啦
-    lunchIsEnd:false,//午餐到底啦
-    dinnerIsEnd:false,//晚餐到底啦
+    breakFastIsEnd: false, //早餐到底啦
+    lunchIsEnd: false, //午餐到底啦
+    dinnerIsEnd: false, //晚餐到底啦
     allLists: [], //全部菜品
     allFoodShow: [], //展示的全部菜品
-    breakFoodShow:[],//展示的早餐菜品
-    lunchFoodShow:[],//展示的午餐菜品
-    dinnerFoodShow:[],//展示的晚餐菜品
+    breakFoodShow: [], //展示的早餐菜品
+    lunchFoodShow: [], //展示的午餐菜品
+    dinnerFoodShow: [], //展示的晚餐菜品
     breakfastLists: [], //早饭菜品
     lunchLists: [], //午饭菜品
     dinnerLists: [], //晚饭菜品
     pageSize: 1,
     page: 1000,
-    pageHeight: 0//屏幕高度
+    pageHeight: 0 //屏幕高度
   },
   attached: function() {
     var that = this;
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         console.log(res.windowHeight)
         //calc(100rpx + env(safe-area-inset-bottom) / 2);
         that.setData({
@@ -67,9 +67,9 @@ Component({
         currentNavtab: e.currentTarget.dataset.id,
       })
       var currentNavtab = e.currentTarget.dataset.id;
-      if (currentNavtab == 0){
+      if (currentNavtab == 0) {
         this.getFoodShow();
-      } else if (currentNavtab == 1){
+      } else if (currentNavtab == 1) {
         this.getBreakfastShow();
       } else if (currentNavtab == 2) {
         this.getLunchShow();
@@ -80,56 +80,108 @@ Component({
     /**
      * 模糊搜索功能
      */
-    search:function(key){
+    searchNew: function(key) {
       var that = this;
-      var curNavtab = that.data.currentNavtab;
-      var resultData;
-      
-      var tempdataArr = [];//临时数组
-      if(curNavtab == 0){
-        that.setData({
-          isEnd: false
-        })
-        //全部菜单
-        resultData = app.globalData.allDishesDatas;
-        if (key == '') {//用户没有输入，全部显示
-          that.setData({
-            allLists: resultData,
-          })
-          that.getFoodShow();
-          return;
-        }
-        tempdataArr = that.findSubArr(resultData,key);
-        console.log("查询结果:"+tempdataArr.length);
-        if(tempdataArr.length != 0){
-          that.setData({
-            allLists: tempdataArr
-          })
-        }else{
-          that.setData({
-            allLists: []
-          })
-        }
-        that.getFoodShow();
-      }else if(curNavtab == 1){
-        //早餐菜单
-        resultData = that.data.breakfastLists;
-      }else if(curNavtab == 2){
-        //午餐菜单
-        resultData = that.data.lunchLists;
-      }else if(curNavtab == 3){
-        //晚餐菜单
-        resultData = that.data.dinnerLists;
-      }
+      var allResultData;
+      var breakfastResultData;
+      var lunchResultData;
+      var dinnerResultData;
+      var tempAllDataArr = [];
+      var tempBreakfastDataArr = [];
+      var tempLunchDataArr = [];
+      var tempDinnerDataArr = [];
+      that.setData({
+        isEnd: false,
+        breakFastIsEnd: false,
+        lunchIsEnd: false,
+        dinnerIsEnd: false
+      })
 
+      allResultData = app.globalData.allDishesDatas;
+      breakfastResultData = app.globalData.breakfastDishesDatas;
+      lunchResultData = app.globalData.lunchDishesDatas;
+      dinnerResultData = app.globalData.dinnerDishesDatas;
+
+      if (key == '') { //用户没有输入，全部显示
+        console.log("用户没有输入");
+        that.setData({
+          allLists: allResultData,
+          allFoodShow:[],
+          breakFoodShow: [], //展示的早餐菜品
+          lunchFoodShow: [], //展示的午餐菜品
+          dinnerFoodShow: [], //展示的晚餐菜品
+          breakfastLists: breakfastResultData,
+          lunchLists: lunchResultData,
+          dinnerLists: dinnerResultData
+        })
+        console.log(that.data.allLists);
+        that.getNextFoodShow();
+        return;
+      }
+      tempAllDataArr = that.findSubArr(allResultData, key);
+      tempBreakfastDataArr = that.findSubArr(breakfastResultData, key);
+      tempLunchDataArr = that.findSubArr(lunchResultData, key);
+      tempDinnerDataArr = that.findSubArr(dinnerResultData, key);
+      that.setData({
+        allLists: tempAllDataArr,
+        breakfastLists: tempBreakfastDataArr,
+        lunchLists: tempLunchDataArr,
+        dinnerLists: tempDinnerDataArr
+      })
+      that.getNextFoodShow();
     },
+    // /**
+    //  * 模糊搜索功能
+    //  */
+    // search:function(key){
+    //   var that = this;
+    //   var curNavtab = that.data.currentNavtab;
+    //   var resultData;
+
+    //   var tempdataArr = [];//临时数组
+    //   if(curNavtab == 0){
+    //     that.setData({
+    //       isEnd: false
+    //     })
+    //     //全部菜单
+    //     resultData = app.globalData.allDishesDatas;
+    //     if (key == '') {//用户没有输入，全部显示
+    //       that.setData({
+    //         allLists: resultData,
+    //       })
+    //       that.getFoodShow();
+    //       return;
+    //     }
+    //     tempdataArr = that.findSubArr(resultData,key);
+    //     console.log("查询结果:"+tempdataArr);
+    //     if(tempdataArr.length != 0){
+    //       that.setData({
+    //         allLists: tempdataArr
+    //       })
+    //     }else{
+    //       that.setData({
+    //         allLists: []
+    //       })
+    //     }
+    //     that.getFoodShow();
+    //   }else if(curNavtab == 1){
+    //     //早餐菜单
+    //     resultData = that.data.breakfastLists;
+    //   }else if(curNavtab == 2){
+    //     //午餐菜单
+    //     resultData = that.data.lunchLists;
+    //   }else if(curNavtab == 3){
+    //     //晚餐菜单
+    //     resultData = that.data.dinnerLists;
+    //   }
+    // },
     /**
      * 通过关键字查询结果数组
      */
-    findSubArr:function(resultData,key){
-      var tempdataArr = [];//临时数组
+    findSubArr: function(resultData, key) {
+      var tempdataArr = []; //临时数组
       for (let i in resultData) {
-        if (resultData[i].dishName.indexOf(key) >= 0) {//查找关键字
+        if (resultData[i].dishName.indexOf(key) >= 0) { //查找关键字
           tempdataArr.push(resultData[i]);
         }
       }
@@ -138,9 +190,10 @@ Component({
     /**
      * 获取搜索输入框的值
      */
-    wxSearchInput:function(e){
+    wxSearchInput: function(e) {
       console.log(e.detail.value)
-      this.search(e.detail.value);
+      this.searchNew(e.detail.value);
+      // this.search(e.detail.value);
     },
 
     toDetailsTap: function(e) {
@@ -149,27 +202,27 @@ Component({
         url: "/pages/dishDetail/dishDetail?dishesId=" + e.currentTarget.dataset.id
       })
     },
-    searchByFoodName:function(){
+    searchByFoodName: function() {
       utils.showToastWindow("待升级", "none");
     },
-    getNextFoodShow:function(){
+    getNextFoodShow: function() {
       var curNav = this.data.currentNavtab;
-      if(curNav == 0){
+      if (curNav == 0) {
         console.log("allfoodshow...")
         this.getFoodShow();
-      }else if(curNav == 1){
+      } else if (curNav == 1) {
         console.log("breakfoodshow...")
         this.getBreakfastShow();
-      }else if(curNav == 2){
+      } else if (curNav == 2) {
         console.log("lunchfoodshow...")
         this.getLunchShow();
-      }else if(curNav == 3){
+      } else if (curNav == 3) {
         console.log("dinnerfoodshow...")
         this.getDinnerShow();
       }
     },
     //晚餐的下拉加载函数
-    getDinnerShow: function () {
+    getDinnerShow: function() {
       var that = this;
       if (that.data.dinnerIsEnd) {
         console.log('dinner is End,return...');
@@ -215,10 +268,17 @@ Component({
           dinnerIsEnd: true
         })
         console.log('dinnerFoodShow.length:' + dinnerFoodShow.length, '-=-=-=-=-=-=-=')
+      } else {
+        //显示的数据可能大于总数据，因为查询返回的总数据可能为空或者返回的查询总数据小于之前显示的数据
+        that.setData({
+          dinnerFoodShow: that.data.dinnerLists,
+          dinnerloadingMore: false,
+          dinnerIsEnd: true
+        })
       }
     },
     //午餐的下拉加载函数
-    getLunchShow: function () {
+    getLunchShow: function() {
       var that = this;
       if (that.data.lunchIsEnd) {
         console.log('lunch is End,return...');
@@ -264,12 +324,19 @@ Component({
           lunchIsEnd: true
         })
         console.log('lunchFoodShow.length:' + lunchFoodShow.length, '-=-=-=-=-=-=-=')
-      } 
+      } else {
+        //显示的数据可能大于总数据，因为查询返回的总数据可能为空或者返回的查询总数据小于之前显示的数据
+        that.setData({
+          lunchFoodShow: that.data.lunchLists,
+          lunchloadingMore: false,
+          lunchIsEnd: true
+        })
+      }
     },
     //早餐的下拉加载函数
-    getBreakfastShow:function(){
+    getBreakfastShow: function() {
       var that = this;
-      if(that.data.breakFastIsEnd){
+      if (that.data.breakFastIsEnd) {
         console.log('breakfast is End,return...');
         return;
       }
@@ -300,7 +367,7 @@ Component({
             breakFastIsEnd: true
           })
         }
-        console.log('breakFoodShow.length:'+breakFoodShow.length, '-=-=-=-=-=-=-=')
+        console.log('breakFoodShow.length:' + breakFoodShow.length, '-=-=-=-=-=-=-=')
       } else if (breakFoodShowLength < that.data.breakfastLists.length) {
         for (var i = breakFoodShowLength; i < that.data.breakfastLists.length; i++) {
           breakFoodShow.push(that.data.breakfastLists[i])
@@ -313,6 +380,13 @@ Component({
           breakFastIsEnd: true
         })
         console.log('breakFoodShow.length:' + breakFoodShow.length, '-=-=-=-=-=-=-=')
+      } else {
+        //显示的数据可能大于总数据，因为查询返回的总数据可能为空或者返回的查询总数据小于之前显示的数据
+        that.setData({
+          breakFoodShow: that.data.breakfastLists,
+          breakloadingMore: false,
+          breakFastIsEnd: true
+        })
       }
     },
 
@@ -364,7 +438,7 @@ Component({
           isEnd: true
         })
         console.log(allFoodShow.length, '-=-=-=-=-=-=-=')
-      }else{
+      } else {
         //显示的数据可能大于总数据，因为查询返回的总数据可能为空或者返回的查询总数据小于之前显示的数据
         that.setData({
           allFoodShow: that.data.allLists,

@@ -48,14 +48,17 @@ App({
     })
     utils.getMenuDatas({}).then(res => {
       console.log(res);
-      this.globalData.allDishesDatas = res.data.data.all;
-      this.globalData.breakfastDishesDatas = res.data.data.breakfast;
-      this.globalData.lunchDishesDatas = res.data.data.lunch;
-      this.globalData.dinnerDishesDatas = res.data.data.dinner;
+      if(res.data.code == 200){
+        this.globalData.allDishesDatas = res.data.data.all;
+        this.globalData.breakfastDishesDatas = res.data.data.breakfast;
+        this.globalData.lunchDishesDatas = res.data.data.lunch;
+        this.globalData.dinnerDishesDatas = res.data.data.dinner;
+      }else{
+        return;
+      }  
     }, err => {
 
     })
-    
   },
   // 通过scope来引入wux函数
   wux: (scope) => new wux(scope),
