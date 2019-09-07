@@ -317,8 +317,14 @@ Page({
           wx.redirectTo({
             url: '/pages/login/login',
           })
-        } else {
+        } else if (res.data.code == 201){
           utils.showToastWindow('用户卡号绑定失败')
+        } else if (res.data.code == 202){
+          utils.showToastWindow('该用户未注册')
+        } else if (res.data.code == 203) {
+          utils.showToastWindow('此卡号已绑定用户')
+        } else if (res.data.code == 204) {
+          utils.showToastWindow('此卡号不存在')
         }
       }, err => {
         console.log(err);

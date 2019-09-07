@@ -52,7 +52,7 @@ async function wxlogin(){
               if (res.data.code == 200) {
                 //将微信用户信息保存在全局变量和本地缓存中
                 console.log(JSON.stringify(res.data.data.userInfo));
-                app.globalData.userInfo = res.data.data.userInfo;
+                // app.globalData.userInfo = res.data.data.userInfo;
                 wx.setStorageSync('userInfo', JSON.stringify(res.data.data.userInfo));
                 //将代表微信用户的唯一userid保存在全局变量和本地缓存中
                 app.globalData.userId = res.data.data.skey;

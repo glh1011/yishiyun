@@ -30,19 +30,43 @@ Component({
     dinnerLists: [], //晚饭菜品
     pageSize: 1,
     page: 1000,
-    pageHeight: 0 //屏幕高度
+    windowHeight: 0, //屏幕高度
+    scrollViewHeight:''
   },
   attached: function() {
     var that = this;
     wx.getSystemInfo({
       success: function(res) {
         console.log(res.windowHeight)
-        //calc(100rpx + env(safe-area-inset-bottom) / 2);
         that.setData({
-          pageHeight: ((res.windowHeight - that.data.CustomBar) * (750 / res.windowWidth))
-        })
+          windowHeight: res.windowHeight
+        });
       }
     })
+
+    // 然后取出navbar和header的高度
+    // 根据文档，先创建一个SelectorQuery对象实例
+    let query = wx.createSelectorQuery().in(this);
+    // 然后逐个取出navbar和header的节点信息
+    // 选择器的语法与jQuery语法相同
+    query.select('.header').boundingClientRect();
+    query.exec((res) => {
+      // 分别取出navbar和header的高度
+      let headerHeight = res[0].height;
+      console.log(headerHeight);
+
+      // 然后就是做个减法
+      let scrollViewHeight = this.data.windowHeight - app.globalData.navbarHeight - headerHeight - app.globalData.CustomBar;
+      console.log(scrollViewHeight);
+
+      // 算出来之后存到data对象里面
+      this.setData({
+        scrollViewHeight: scrollViewHeight
+      });
+      console.log(this.data.scrollViewHeight);
+    });
+    
+
     console.log('menu onload...')
     let list = [];
     for (let i = 0; i < 26; i++) {

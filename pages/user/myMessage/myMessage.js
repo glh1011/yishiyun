@@ -19,4 +19,10 @@ Page({
   onLoad: function (options) {
 
   },
+  tabSelect:function(){
+    var curTab = this.data.TabCur;
+    this.setData({
+      TabCur:!curTab
+    })
+  }
 })

@@ -60,7 +60,7 @@
       </navigator>
     </swiper-item>
     <swiper-item class="swiper-item">
-      <view class="swiper-item">
+      <view class="swiper-item" bindtap="updating">
         <view style="background-image:url({{banner.banner1_url}});" class='swiper-image'>
           <view class="swiper-name">用餐推荐 
             <text class="cuIcon-form text-white"></text>

@@ -70,6 +70,7 @@ App({
     breakfastDishesDatas:[],
     lunchDishesDatas:[],
     dinnerDishesDatas:[],
-    indexLoginStatus: false
+    indexLoginStatus: false,
+    navbarHeight:''
   }
 })

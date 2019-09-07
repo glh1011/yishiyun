@@ -1,11 +1,12 @@
 <image wx:if="{{hasComment == false}}" src="../../../images/noStatus.jpg" style='width:100%;height:600rpx;' mode="aspectFill"></image>
-
 <block wx:if="{{hasComment == true}}" wx:for="{{userComments}}" wx:for-item="item" wx:key>
   <view class="cu-card dynamic no-card solid-bottom comment-card">
     <view class="cu-item shadow">
       <view class="cu-list menu-avatar">
         <view class="cu-item">
-          <view class="cu-avatar round lg"><open-data class='avatar' type="userAvatarUrl"></open-data></view>
+          <view class="cu-avatar round lg">
+            <open-data class='avatar' type="userAvatarUrl"></open-data>
+          </view>
           <view class="content flex-sub">
             <view>{{item.name?item.name:"未设置昵称"}}</view>
             <view class="text-gray text-sm flex justify-between">
@@ -20,14 +21,14 @@
       <view class="grid flex-sub padding-lr padding-bottom {{isCard?'col-3 grid-square':'col-1'}}">
         <view class="cu-list menu-avatar">
           <navigator class="cu-item arrow" url="/pages/dishDetail/dishDetail?dishesId={{item.dishId}}" style="background: #eee">
-          <image class="cu-avatar radius lg" mode="aspectFill" src="{{item.dishImage}}"></image>
-          <view class="content">
-            <view class="text-grey">{{item.dishName}}</view>
-          </view>
-          <view class="action">
-            <view class="cuIcon-right text-gray lg"></view>
-          </view>
-        </navigator>
+            <image class="cu-avatar radius lg" mode="aspectFill" src="{{item.dishImage}}"></image>
+            <view class="content">
+              <view class="text-grey">{{item.dishName}}</view>
+            </view>
+            <view class="action">
+              <view class="cuIcon-right text-gray lg"></view>
+            </view>
+          </navigator>
         </view>
       </view>
     </view>

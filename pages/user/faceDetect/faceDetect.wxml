@@ -9,7 +9,11 @@
 
   <view class="flex padding-lr justify-center">
     <view class="bg-grey margin-xs radius">
-      <camera device-position="front" flash="off" binderror="error" style="width:550rpx;height:550rpx;"></camera>
+      <camera device-position="front" flash="off" binderror="error" style="width:550rpx;height:550rpx;">
+      <cover-view class='cameraGai'>
+        <cover-image src='../../images/C.png' class='cover-image'></cover-image>
+      </cover-view>
+      </camera>
     </view>
   </view>
 

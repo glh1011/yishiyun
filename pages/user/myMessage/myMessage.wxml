@@ -26,6 +26,8 @@
         </view>
       </block>
     </view>
-
+  </view>
+  <view wx:if="{{1==TabCur}}">
+    <image mode="aspectFill" src="../../../images/noStatus.jpg" style="width:100%;height:300px;" role="img"></image>
   </view>
 </scroll-view>

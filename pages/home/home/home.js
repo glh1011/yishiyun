@@ -162,7 +162,9 @@ Component({
         ]
       };
       _self.showRing("intakeCanvas", options, str);
+    },
+    updating:function(){
+      utils.showToastWindow("该功能未开放")
     }
   }
-
  })
