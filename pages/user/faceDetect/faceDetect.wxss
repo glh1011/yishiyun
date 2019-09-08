@@ -1,1 +1,12 @@
-/* pages/user/faceDetect/faceDetect.wxss */
+.controls {
+  position: relative;
+  display: flex;
+}
+.noticeTXT{
+  font-size: 10PX;
+  color: rgb(12, 242, 240);
+  text-align: center
+}
+.mainToast {
+  font-size: 60rpx;
+}

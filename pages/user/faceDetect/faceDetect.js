@@ -1,35 +1,51 @@
 import utils from "../../../utils/util.js";
+import auth from "../../../utils/auth.js";
 
 var app = getApp();
-let imgArr = [];
-let tmpImg = '';
+var timer;
+var errorCounts = 0;
 
 Page({
   data: {
-    upSrc: '',
-    downSrc: '',
-    leftSrc: '',
-    rightSrc: '',
-    capturedNum: 0,
-    numList: [{
-      name: '俯'
-    }, {
-      name: '仰'
-    }, {
-      name: '左'
-    }, {
-      name: '右'
-    },],
-    num: 0,
     direction: 1,
-    downStatus: false,
-    leftStatus: false,
-    rightStatus: false,
-    finishStatus: false
+    stepToast: '正在识别',
+    detailToast: '请将面部位于人脸识别区域中，并稍俯面部',
   },
 
   onLoad() {
+    var sysInfo = wx.getSystemInfoSync()
+    this.setData({
+      windowWidth: sysInfo.windowWidth,
+    })
+    this.checkLogin();
     this.showTip();
+  },
+
+  checkLogin() {
+    auth.checkHasLogined().then(isLogined => {
+      console.log(isLogined);
+      if (isLogined) {
+      } else {
+        wx.showModal({
+          title: '您还未登录',
+          content: '请先登录再进行操作',
+          confirmText: '立即登录',
+          cancelText: '暂不登录',
+          success(res) {
+            if (res.confirm) {
+              wx.redirectTo({
+                url: '/pages/login/login',
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消');
+              wx.navigateBack({
+                delta: 1
+              })
+            }
+          }
+        })
+      }
+    })
   },
 
   showTip() {
@@ -105,20 +121,18 @@ Page({
     })
   },
 
-  ViewImage(e) {
-    console.log(e);
-    wx.previewImage({
-      urls: imgArr,
-      current: e.currentTarget.dataset.url
-    });
-  },
   //拍照
   takePhoto: function () {
+    //如果连续错误15次就退出
+    if(errorCounts >= 15) {
+      wx.navigateBack({
+        delta: 1
+      })
+    }
     var that = this;
     that.ctx.takePhoto({
       quality: 'low',
       success: (res) => {
-        tmpImg = res.tempImagePath;
         this.imgToBase64(res.tempImagePath);
       }
     })
@@ -145,35 +159,35 @@ Page({
     utils.addFace(requestData).then(res => {
       console.log(res);
       if (res.data.code == 200) {
-        imgArr.push(tmpImg)
+        errorCounts = 0;
         if (side == 1) {
           this.setData({
-            upSrc: tmpImg,
-            downStatus: true,
-            capturedNum: 1
+            stepToast: '识别成功',
+            detailToast: '请稍仰面部'
           })
+          this.downDetect();
         } else if (side == 2) {
           this.setData({
-            downSrc: tmpImg,
-            leftStatus: true,
-            capturedNum: 2
+            stepToast: '识别成功',
+            detailToast: '请将面部稍向左转'
           })
+          this.leftDetect();
         } else if (side == 3) {
           this.setData({
-            leftSrc: tmpImg,
-            rightStatus: true,
-            capturedNum: 3
+            stepToast: '识别成功',
+            detailToast: '请将面部稍向右转'
           })
+          this.rightDetect();
         } else if (side == 4) {
           this.setData({
-            rightSrc: tmpImg,
-            finishStatus: true,
-            capturedNum: 4
+            stepToast: '人脸录入完成',
+            detailToast: '后续可在食堂的人脸识别收银设备上，实现刷脸识别身份并进行支付'
           })
         }
         utils.showToastWindow(res.data.msg, "none")
       } else {
         utils.showToastWindow(res.data.msg, "none")
+        errorCounts++;
         that.takePhoto();
       }
     }).catch(res => {
