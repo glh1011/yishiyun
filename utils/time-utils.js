@@ -7,6 +7,7 @@ function getWeekDayList(selectWeek) {
   // 1.获取周一对应得时间
   // 2.用循环七次添加周一到周日对应得周几和几号
   var selectWeekTime = getCurrentTimeStamp() + (selectWeek * 7) * 24 * 60 * 60 * 1000;
+  console.log(getWeekNumber(selectWeekTime));
   var mondayTime = selectWeekTime - (getWeekNumber(selectWeekTime) - 1) * 24 * 60 * 60 * 1000;
   // console.log("mondayTime:"+mondayTime);
   var timeBean = {
@@ -80,8 +81,9 @@ function getWeekNumber(res) {
   var d = time.getDate();
   var dateStr = y+'-'+m+'-'+d;
   // console.log("0123456".charAt(new Date(dateStr.replace(/\-/g, '/')).getDay()));
-  return "0123456".charAt(new Date(dateStr.replace(/\-/g, '/')).getDay());
+  // return "0123456".charAt(new Date(dateStr.replace(/\-/g, '/')).getDay());
   // return "0123456".charAt(new Date(y + '-' + m + '-' + d).getDay());
+  return "7123456".charAt(new Date(dateStr.replace(/\-/g, '/')).getDay());
 }
 module.exports = {  //把方法共享，让引用的地方可以调用
   getWeekDayList: getWeekDayList,
