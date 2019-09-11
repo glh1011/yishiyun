@@ -44,11 +44,12 @@ Component({
         console.log("获取信息失败", res);
         utils.showToastWindow('获取信息失败');
       })
-    },
-    
+    },  
     logout: function() {
       utils.logout().then(res=>{
         if (res.data.code === 200){
+          wx.removeStorageSync("token")
+          wx.removeStorageSync("isFaceDetect");
           wx.showToast({
             title: "已退出，跳转中",
             icon: 'success',

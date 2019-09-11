@@ -24,6 +24,7 @@ async function checkHasLogined() {
   //sessionId已经过期了，返回false
   if (checkTokenRes.data.code == 201) {
     wx.removeStorageSync('sessionId')
+    wx.removeStorageSync('token')
     return false
   }
   return true
@@ -55,8 +56,8 @@ async function wxlogin(){
                 // app.globalData.userInfo = res.data.data.userInfo;
                 wx.setStorageSync('userInfo', JSON.stringify(res.data.data.userInfo));
                 //将代表微信用户的唯一userid保存在全局变量和本地缓存中
-                app.globalData.userId = res.data.data.skey;
-                wx.setStorageSync('userId', res.data.data.skey)
+                // app.globalData.userId = res.data.data.skey;
+                // wx.setStorageSync('userId', res.data.data.skey)
               } else {
                 console.log('res error');
               } 

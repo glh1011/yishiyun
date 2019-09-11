@@ -13,12 +13,36 @@ Page({
   },
 
   onLoad() {
+    var that = this;
     var sysInfo = wx.getSystemInfoSync()
-    this.setData({
+    that.setData({
       windowWidth: sysInfo.windowWidth,
     })
-    this.checkLogin();
-    this.showTip();
+    that.checkLogin();
+    var isFaceDetect = wx.getStorageSync("isFaceDetect");
+    console.log(isFaceDetect);
+    if(isFaceDetect == true){
+      wx.showModal({
+        title: '您已经录入过人脸',
+        content: '请选择是否再次录入',
+        confirmText: '继续录入',
+        cancelText: '暂不录入',
+        success(res) {
+          if (res.confirm) {
+            
+            that.showTip();
+          } else if (res.cancel) {
+            console.log('用户点击取消');
+            wx.navigateBack({
+              delta: 1
+            })
+          }
+        }
+      })
+    }else{
+      // that.checkLogin();
+      that.showTip();
+    } 
   },
 
   checkLogin() {
@@ -183,6 +207,11 @@ Page({
             stepToast: '人脸录入完成',
             detailToast: '后续可在食堂的人脸识别收银设备上，实现刷脸识别身份并进行支付'
           })
+          //录入成功跳转，并将录入成功标识存到缓存
+          wx.navigateBack({
+            delta: 1
+          })
+          wx.setStorageSync("isFaceDetect", true);
         }
         utils.showToastWindow(res.data.msg, "none")
       } else {

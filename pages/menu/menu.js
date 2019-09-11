@@ -11,7 +11,7 @@ Component({
     TabArray: ['全部', '早饭', '午饭', '晚饭'],
     currentNavtab: 0,
     CustomBar: app.globalData.CustomBar,
-    loadingMore: false, //loading中
+    loadingMore: true, //loading中
     breakloadingMore: false, //breakloadingMore中
     lunchloadingMore: false,
     dinnerloadingMore: false,
@@ -37,7 +37,7 @@ Component({
     var that = this;
     wx.getSystemInfo({
       success: function(res) {
-        console.log(res.windowHeight)
+        // console.log(res.windowHeight)
         that.setData({
           windowHeight: res.windowHeight
         });
@@ -53,17 +53,17 @@ Component({
     query.exec((res) => {
       // 分别取出navbar和header的高度
       let headerHeight = res[0].height;
-      console.log(headerHeight);
+      // console.log(headerHeight);
 
       // 然后就是做个减法
       let scrollViewHeight = this.data.windowHeight - app.globalData.navbarHeight - headerHeight - app.globalData.CustomBar;
-      console.log(scrollViewHeight);
+      // console.log(scrollViewHeight);
 
       // 算出来之后存到data对象里面
       this.setData({
         scrollViewHeight: scrollViewHeight
       });
-      console.log(this.data.scrollViewHeight);
+      // console.log(this.data.scrollViewHeight);
     });
     
 
@@ -230,20 +230,27 @@ Component({
       utils.showToastWindow("待升级", "none");
     },
     getNextFoodShow: function() {
-      var curNav = this.data.currentNavtab;
-      if (curNav == 0) {
-        console.log("allfoodshow...")
-        this.getFoodShow();
-      } else if (curNav == 1) {
-        console.log("breakfoodshow...")
-        this.getBreakfastShow();
-      } else if (curNav == 2) {
-        console.log("lunchfoodshow...")
-        this.getLunchShow();
-      } else if (curNav == 3) {
-        console.log("dinnerfoodshow...")
-        this.getDinnerShow();
-      }
+      var that = this;
+      wx.showLoading({
+        title: '正在加载下一页',
+      })
+      var timer = setTimeout(function(){
+        var curNav = that.data.currentNavtab;
+        wx.hideLoading();
+        if (curNav == 0) {
+          console.log("allfoodshow...")
+          that.getFoodShow();
+        } else if (curNav == 1) {
+          console.log("breakfoodshow...")
+          that.getBreakfastShow();
+        } else if (curNav == 2) {
+          console.log("lunchfoodshow...")
+          that.getLunchShow();
+        } else if (curNav == 3) {
+          console.log("dinnerfoodshow...")
+          that.getDinnerShow();
+        }
+      },1000)
     },
     //晚餐的下拉加载函数
     getDinnerShow: function() {
