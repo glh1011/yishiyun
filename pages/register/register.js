@@ -220,9 +220,11 @@ Page({
     //判断手机号格式是否正确,图形验证码是否输入
     if (phone.trim().length != 11 || !/^1[3|4|5|6|7|8|9]\d{9}$/.test(phone)) {
       that.buttonDisabled('手机号格式不对');
-    } else if (imgCode == '' || imgCode == null) {
-      that.buttonDisabled('请输入图形验证码');
-    } else {
+    } 
+    //else if (imgCode == '' || imgCode == null) {
+      //that.buttonDisabled('请输入图形验证码');
+    //} 
+    else {
       that.setData({
         disabled: true
       })
@@ -366,12 +368,13 @@ Page({
   registerSubmit: function(e) {
     var that = this;
     //提交之前先判断图形验证码和短信验证码
-    var picCodeWarn = that.validatePicCode();
+    // var picCodeWarn = that.validatePicCode();
     var msgCodeWarn = that.validateMsgCode();
-    if (picCodeWarn != '图形验证码正确') {
-      utils.showToastWindow(picCodeWarn);
-      return;
-    } else if (msgCodeWarn != '验证正确') {
+    // if (picCodeWarn != '图形验证码正确') {
+      // utils.showToastWindow(picCodeWarn);
+      // return;
+    // } else if (msgCodeWarn != '验证正确') {
+    if (msgCodeWarn != '验证正确') {
       utils.showToastWindow(msgCodeWarn);
       return;
     } else if (that.data.NewChanges == '') {

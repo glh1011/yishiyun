@@ -2,12 +2,12 @@
   "pages": [
     "pages/index/index",
     "pages/forgetPassword/forgetPassword",
+    "pages/register/register",
     "pages/login/login",
     "pages/nutritionSummary/nutritionSummary",
     "pages/home/todayNutrition/todayNutrition",
     "pages/home/purchaseHistory/purchaseHistory",
     "pages/menu/menu",
-    "pages/register/register",
     "pages/home/home/home",
     "pages/home/diningRecord/diningRecord",
     "pages/user/myself/myself",

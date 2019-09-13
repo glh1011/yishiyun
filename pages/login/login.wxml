@@ -12,17 +12,17 @@
         <image class="wave wave-bg" src="../../images/wave.png" mode="aspectFill"></image>
       </view>
       <view class="bd">
-        <view class="account-loginInputView margin-20">
+        <view class="account-loginInputView">
           <view class="icon-view">
             <image class="icon-view-image" src="../../images/username.png"></image>
           </view>
-          <input bindinput="handleInputAccount" name="account" placeholder="请输入账号" placeholder-class="placeholderStyle"></input>
+          <input style="height:50rpx;line-height:50rpx;min-height:50rpx;" bindinput="handleInputAccount" name="account" placeholder="请输入账号" placeholder-class="placeholderStyle"></input>
         </view>
-        <view class="password-loginInputView margin-20">
+        <view class="password-loginInputView">
           <view class="icon-view">
             <image class="icon-view-image" src="../../images/password.png"></image>
           </view>
-          <input bindinput="handleInputPassword" password="true" name="password" placeholder="请输入密码" placeholder-class="placeholderStyle"></input>
+          <input style="height:50rpx;line-height:50rpx;min-height:50rpx;" bindinput="handleInputPassword" password="true" name="password" placeholder="请输入密码" placeholder-class="placeholderStyle"></input>
         </view>
         <!--登录按钮-->
         <view class="loginBtnView">
