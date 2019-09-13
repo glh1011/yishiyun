@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "就餐记录"
+  "navigationBarTitleText": "就餐记录",
+  "usingComponents": {
+    "i-toast": "../../../dist/toast/index"
+  }
 }

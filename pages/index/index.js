@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-const AUTH = require('../../utils/auth')
+const AUTH = require('../../utils/auth');
 
 Page({
   data: {

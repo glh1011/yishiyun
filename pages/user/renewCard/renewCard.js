@@ -1,6 +1,8 @@
 import utils from "../../../utils/util.js";
 import auth from "../../../utils/auth.js";
 
+const app = getApp()
+const { $Toast } = require('../../../dist/base/index');
 
 Page({
   data: {
@@ -53,11 +55,17 @@ Page({
         });
       } else {
         console.log("更新卡号出错", res);
-        utils.showToastWindow(res.data.msg);
+        $Toast({
+          content: res.data.msg,
+          type: 'error'
+        });
       }
     }).catch(res => {
       console.log("更新卡号失败", res);
-      utils.showToastWindow("更新卡号失败");
+      $Toast({
+        content: "更新卡号失败",
+        type: 'error'
+      });
     })
     // } else {
     //   utils.showToastWindow("真实姓名不能为空", "none")
@@ -65,10 +73,24 @@ Page({
   },
 
   //真实姓名清除输入的空格
-  clearSpace: function(e) {
-    this.setData({
-      userName: e.detail.value.replace(/\s*/g, "")
-    })
-    console.log(this.data.userName.length);
+  // clearSpace: function(e) {
+  //   this.setData({
+  //     userName: e.detail.value.replace(/\s*/g, "")
+  //   })
+  //   console.log(this.data.userName.length);
+  // }
+
+  toastShow: function (str, icon) {
+    var _this = this;
+    _this.setData({
+      isShow: true,
+      txt: str,
+      iconClass: icon
+    });
+    setTimeout(function () { //toast消失
+      _this.setData({
+        isShow: false
+      });
+    }, 1500);
   }
 })

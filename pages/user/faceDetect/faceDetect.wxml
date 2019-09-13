@@ -13,3 +13,5 @@
   </camera>
 
 </view>
+
+<i-toast id="toast" />

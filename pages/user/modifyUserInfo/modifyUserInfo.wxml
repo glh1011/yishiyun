@@ -41,3 +41,5 @@
   </view>
 
 </form>
+
+<i-toast id="toast" />

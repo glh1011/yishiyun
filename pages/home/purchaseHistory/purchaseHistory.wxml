@@ -105,3 +105,5 @@
   </view>
 
 </scroll-view>
+
+<i-toast id="toast" />

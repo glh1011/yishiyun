@@ -2,6 +2,7 @@ import utils from "../../../utils/util.js";
 import auth from "../../../utils/auth.js";
 import uCharts from '../../ucharts/u-charts.min.js';
 
+const { $Toast } = require('../../../dist/base/index');
 const monthArr = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 const monthArr1 = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
 const dayArr = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15","16", "17", 
@@ -78,7 +79,11 @@ Page({
 
   //日消费日期切换
   bindDateChange: function (e) {
-    wx.showLoading({ title: '加载中', icon: 'loading' });
+    // wx.showLoading({ title: '加载中', icon: 'loading' });
+    $Toast({
+      content: '加载中',
+      type: 'loading'
+    });
     this.setData({
       date: e.detail.value
     })
@@ -155,22 +160,35 @@ Page({
           expenseDetail: []
         })
         let msg = "当日" + res.data.msg;
-        utils.showToastWindow(msg, 'none');
+        // utils.showToastWindow(msg, 'none');
+        $Toast({
+          content: "当日" + res.data.msg,
+          type: 'warning'
+        });
       } else {
         this.setData({
           hasPurchaseRecord: false,
           expenseDetail: []
         })
-        utils.showToastWindow("获取日消费记录失败", 'none');
+        $Toast({
+          content: "获取日消费记录失败",
+          type: 'error'
+        });
+        // utils.showToastWindow("获取日消费记录失败", 'none');
       }
-      wx.hideLoading();
+      // $Toast.hide();
+      // wx.hideLoading();
     }).catch(res => {
       this.setData({
         hasPurchaseRecord: false,
         expenseDetail: []
       })
       console.log("获取就餐记录失败",res);
-      utils.showToastWindow("获取日消费记录失败");
+      $Toast({
+        content: "获取日消费记录失败",
+        type: 'error'
+      });
+      // utils.showToastWindow("获取日消费记录失败");
     })
   },
 

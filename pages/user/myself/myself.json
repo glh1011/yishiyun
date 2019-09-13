@@ -1,4 +1,7 @@
 {
   "component": true,
-  "navigationStyle": "custom"
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "i-toast": "../../../dist/toast/index"
+  }
 }

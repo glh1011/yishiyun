@@ -99,4 +99,6 @@
       <button class="cu-btn bg-white lg text-cyan" bindtap="onConfirm" data-status="confirm">确定</button> 
     </view>
   </view>
-</view > 
+</view>
+
+<i-toast id="toast" />

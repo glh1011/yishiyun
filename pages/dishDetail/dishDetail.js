@@ -1,5 +1,7 @@
 import utils from "../../utils/util.js";
 
+const { $Toast } = require('../../dist/base/index');
+
 Page({
   data: {
     calorie: 0,
@@ -62,10 +64,14 @@ Page({
           weight: responseData.weight
         })
       }else{
-        wx.showToast({
-          icon: 'none',
-          title: res.data.msg,
-        })
+        // wx.showToast({
+        //   icon: 'none',
+        //   title: res.data.msg,
+        // })
+        $Toast({
+          content: res.data.msg,
+          type: 'warning'
+        });
       }
     }).catch(res=>{
       console.log(res);
@@ -98,13 +104,25 @@ Page({
     utils.likeDish(requestData).then(res => {
       console.log(res.data);
       if (res.data.code == 200) {
-        utils.showToastWindow("点赞成功");
+        // utils.showToastWindow("点赞成功");
+        $Toast({
+          content: '点赞成功',
+          type: 'success'
+        });
         this.onShow();
       } else {
-        utils.showToastWindow("点赞菜品失败")
+        // utils.showToastWindow("点赞菜品失败")
+        $Toast({
+          content: res.data.msg,
+          type: 'error'
+        });
       }
     }).catch(res => {
-      utils.showToastWindow("点赞菜品失败")
+      // utils.showToastWindow("点赞菜品失败")
+      $Toast({
+        content: '点赞失败',
+        type: 'error'
+      });
       console.log(res);
     })
   },
@@ -135,16 +153,26 @@ Page({
     utils.submitComment(requestData).then(res => {
       console.log(res);
       if (res.data.code == 200) {
-        utils.showToastWindow(res.data.msg);
+        // utils.showToastWindow(res.data.msg);
+        $Toast({
+          content: res.data.msg,
+          type: 'success'
+        });
         this.onShow();
-      } else if(res.data.code == 202){
-        utils.showToastWindow(res.data.msg, "none");
-      }else {
-        utils.showToastWindow("评论失败");
+      } else{
+        // utils.showToastWindow(res.data.msg, "none");
+        $Toast({
+          content: res.data.msg,
+          type: 'warning'
+        });
       }
     }).catch(res => {
       console.log(res);
-      utils.showToastWindow('评论失败');
+      // utils.showToastWindow('评论失败');
+      $Toast({
+        content: '评论失败',
+        type: 'error'
+      });
     })
     wx.hideLoading();
     this.hideModal();
