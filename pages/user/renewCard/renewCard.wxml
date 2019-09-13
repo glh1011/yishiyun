@@ -12,3 +12,5 @@
     <button class="cu-btn block lg bg-cyan" form-type="submit">确认修改</button>
   </view>
 </form>
+
+<i-toast id="toast" />

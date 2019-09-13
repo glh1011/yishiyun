@@ -1,5 +1,7 @@
 import utils from "../../../utils/util.js";
 
+const { $Toast } = require('../../../dist/base/index');
+
 Page({
   data: {
     endDate: '',
@@ -73,15 +75,27 @@ Page({
     utils.perfectInfo(allValue).then(res => {
       if (res.data.code == 200) {
         console.log(res);
-        utils.showToastWindow(res.data.msg);
+        // utils.showToastWindow(res.data.msg);
+        $Toast({
+          content: res.data.msg,
+          type: 'success'
+        });
       }
       this.getUserInfo();
     }).catch(res => {
       console.log("修改个人信息失败", res);
+      $Toast({
+        content: '修改个人信息失败',
+        type: 'error'
+      });
     })
   },
 
   showAlert: function () {
-    utils.showToastWindow("此项不可修改", "none")
+    // utils.showToastWindow("此项不可修改", "none")
+    $Toast({
+      content: "此项不可修改",
+      type: 'warning'
+    });
   }
 }) 

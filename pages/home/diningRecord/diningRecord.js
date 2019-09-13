@@ -1,6 +1,8 @@
 import utils from "../../../utils/util.js";
 import auth from "../../../utils/auth.js";
 
+const { $Toast } = require('../../../dist/base/index');
+
 Page({
   data: {
     today: '',
@@ -24,7 +26,11 @@ Page({
   },
 
   displayDiningRecord: function() {
-    wx.showLoading({ title: '加载中', icon: 'loading' });
+    // wx.showLoading({ title: '加载中', icon: 'loading' });
+    $Toast({
+      content: '加载中',
+      type: 'loading'
+    });
     let requestData = {
       date: this.data.date
     }
@@ -39,12 +45,24 @@ Page({
         })
       } else if(res.data.code == 202) {
         this.setDefault(res.data.msg);
+        $Toast({
+          content: res.data.msg,
+          type: 'warning'
+        });
       } else {
         this.setDefault("获取就餐记录失败");
+        $Toast({
+          content: "获取就餐记录失败",
+          type: 'error'
+        });
       }
-      wx.hideLoading();
+      // wx.hideLoading();
     }).catch(res => {
       this.setDefault("获取就餐记录失败");
+      $Toast({
+        content: "获取就餐记录失败",
+        type: 'error'
+      });
       console.log("获取就餐记录失败");
     })
   },
@@ -63,7 +81,7 @@ Page({
       lunch: [],
       supper: []
     })
-    utils.showToastWindow(msg, "none");
+    // utils.showToastWindow(msg, "none");
   }
 
 })

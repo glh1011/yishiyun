@@ -1,5 +1,3 @@
-//app.js
-
 //获取工具类
 const utils = require('/utils/util.js');
 const auth = require('/utils/auth.js');

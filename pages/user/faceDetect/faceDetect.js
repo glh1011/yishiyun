@@ -1,7 +1,8 @@
 import utils from "../../../utils/util.js";
 import auth from "../../../utils/auth.js";
 
-var app = getApp();
+const app = getApp();
+const { $Toast } = require('../../../dist/base/index');
 var timer;
 var errorCounts = 0;
 
@@ -18,7 +19,6 @@ Page({
     that.setData({
       windowWidth: sysInfo.windowWidth,
     })
-    that.checkLogin();
     var isFaceDetect = wx.getStorageSync("isFaceDetect");
     console.log(isFaceDetect);
     if(isFaceDetect == true){
@@ -40,36 +40,12 @@ Page({
         }
       })
     }else{
-      // that.checkLogin();
       that.showTip();
     } 
   },
 
-  checkLogin() {
-    auth.checkHasLogined().then(isLogined => {
-      console.log(isLogined);
-      if (isLogined) {
-      } else {
-        wx.showModal({
-          title: '您还未登录',
-          content: '请先登录再进行操作',
-          confirmText: '立即登录',
-          cancelText: '暂不登录',
-          success(res) {
-            if (res.confirm) {
-              wx.redirectTo({
-                url: '/pages/login/login',
-              })
-            } else if (res.cancel) {
-              console.log('用户点击取消');
-              wx.navigateBack({
-                delta: 1
-              })
-            }
-          }
-        })
-      }
-    })
+  onHide() {
+    errorCounts = 0;
   },
 
   showTip() {
@@ -149,6 +125,7 @@ Page({
   takePhoto: function () {
     //如果连续错误15次就退出
     if(errorCounts >= 15) {
+      errorCounts = -1;
       wx.navigateBack({
         delta: 1
       })
@@ -213,9 +190,15 @@ Page({
           })
           wx.setStorageSync("isFaceDetect", true);
         }
-        utils.showToastWindow(res.data.msg, "none")
+        utils.showToastWindow(res.data.msg, "success")
+        $Toast({
+          content: res.data.msg
+        });
       } else {
         utils.showToastWindow(res.data.msg, "none")
+        $Toast({
+          content: res.data.msg
+        });
         errorCounts++;
         that.takePhoto();
       }
