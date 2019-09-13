@@ -7,6 +7,10 @@ const app = getApp();
 //获取授权实例
 const AUTH = require('../../utils/auth.js');
 
+const {
+  $Toast
+} = require('../../dist/base/index');
+
 Page({
 
   /**
@@ -17,7 +21,8 @@ Page({
     remind: '加载中',
     angle: 0,
     account:'',
-    password:''
+    password:'',
+    loginBtnDisable:false
   },
   updateing:function(){
     utils.showToastWindow("待升级", "none");
@@ -94,13 +99,30 @@ Page({
    */
   login: function () {
     var that = this;
+    that.setData({
+      loginBtnDisable:true
+    })
     var account = that.data.account;
     var password = that.data.password;
     if (account == '' || account == null) {
-      utils.showToastWindow("用户名不能为空!");
+      //utils.showToastWindow("用户名不能为空!");
+      $Toast({
+        content: '用户名不能为空!',
+        type: 'error'
+      });
+      that.setData({
+        loginBtnDisable: false
+      })
       return;
     } else if (password == '' || password == null) {
-      utils.showToastWindow("密码不能为空!");
+      //utils.showToastWindow("密码不能为空!");
+      $Toast({
+        content: '密码不能为空!',
+        type: 'error'
+      });
+      that.setData({
+        loginBtnDisable: false
+      })
       return;
     } else {
       //加载提示框
@@ -116,6 +138,9 @@ Page({
         wx.hideLoading();
         //登录成功
         if(res.data.code == 200){
+          that.setData({
+            loginBtnDisable: false
+          })
           console.log("登录成功!!")
           //后台传过来的登录态标识符token
           var token = res.data.data.token;
@@ -124,9 +149,6 @@ Page({
           app.globalData.token = res.data.data.token;
           wx.setStorageSync('token', token);
           console.log("登录成功的token:"+token);
-          // if (res && res.header && res.header['Set-Cookie']){
-          //   wx.setStorageSync('sessionId', res.header['Set-Cookie']);
-          // }
           wx.setStorageSync('sessionId', sessionId);
           console.log("登录成功的sessionId:" + sessionId);
           //切换到首页
@@ -134,11 +156,25 @@ Page({
             url: '/pages/index/index',
           })
         }else{
-          utils.showToastWindow("账号或者密码错误,请重新输入!");
+          //utils.showToastWindow("账号或者密码错误,请重新输入!");
+          $Toast({
+            content: '账号或者密码错误!',
+            type: 'error'
+          });
+          that.setData({
+            loginBtnDisable: false
+          })
           return;
         }
       }, err => {
-        utils.showToastWindow("登录失败,请稍后重试!");
+        //utils.showToastWindow("登录失败,请稍后重试!");
+        $Toast({
+          content: '登录失败,请稍后重试!!',
+          type: 'error'
+        });
+        that.setData({
+          loginBtnDisable: false
+        })
         return;
       })
     }

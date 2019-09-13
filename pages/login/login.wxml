@@ -26,7 +26,7 @@
         </view>
         <!--登录按钮-->
         <view class="loginBtnView">
-          <button class="loginBtn" hover-class="loginBtn-hover" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">立即登录</button>
+          <button class="loginBtn" hover-class="loginBtn-hover" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo" disabled="{{loginBtnDisable}}">立即登录</button>
         </view>
         <!--注册和忘记密码-->
         <view class="registerAndForget">
@@ -39,3 +39,5 @@
     </view>
   </block>
 </view>
+
+<i-toast id="toast" />

@@ -8,6 +8,10 @@ const app = getApp();
 //获取工具类
 const utils = require('../../utils/util.js');
 
+const {
+  $Toast
+} = require('../../dist/base/index');
+
 Page({
 
   /**
@@ -37,12 +41,12 @@ Page({
     NewChanges: '', //获取输入的登录密码
     NewChangesAgain: '', //获取再次输入的密码
     checkAgree: 0, //默认没有同意服务协议
-    userCity:'',//用户的城市
-    userProvince:'',//用户的省份
-    userArea:'',//用户的区
-    nickName:'',//用户昵称
-    weight:0,//体重默认是0
-    height:0//默认是0
+    userCity: '', //用户的城市
+    userProvince: '', //用户的省份
+    userArea: '', //用户的区
+    nickName: '', //用户昵称
+    weight: 0, //体重默认是0
+    height: 0 //默认是0
   },
 
   SportPickerChange(e) {
@@ -94,7 +98,7 @@ Page({
   /**
    * 获取昵称
    */
-  handleInputNickName:function(e){
+  handleInputNickName: function(e) {
     console.log(e);
     this.setData({
       nickName: e.detail.value
@@ -103,7 +107,7 @@ Page({
   /**
    * 获取体重
    */
-  handleInputWeight: function (e) {
+  handleInputWeight: function(e) {
     console.log(e);
     this.setData({
       weight: e.detail.value
@@ -112,7 +116,7 @@ Page({
   /**
    * 获取身高
    */
-  handleInputHeight: function (e) {
+  handleInputHeight: function(e) {
     console.log(e);
     this.setData({
       height: e.detail.value
@@ -214,15 +218,17 @@ Page({
    */
   doGetCode: function() {
     var that = this;
-
+    that.setData({
+      disabled:true
+    })
     var phone = that.data.phone;
     var imgCode = that.data.CheckCode;
     //判断手机号格式是否正确,图形验证码是否输入
     if (phone.trim().length != 11 || !/^1[3|4|5|6|7|8|9]\d{9}$/.test(phone)) {
-      that.buttonDisabled('手机号格式不对');
-    } 
+      that.buttonDisabled("手机号格式不对");
+    }
     //else if (imgCode == '' || imgCode == null) {
-      //that.buttonDisabled('请输入图形验证码');
+    //that.buttonDisabled('请输入图形验证码');
     //} 
     else {
       that.setData({
@@ -242,15 +248,32 @@ Page({
           zhenzisms.client.sendCode(function(res) {
             console.log(res.data);
             //当手机号正确的时候提示用户短信验证码已经发送
-            utils.showToastWindow('短信验证码已发送');
-            //设置一分钟的倒计时
-            that.data.interval = that.timer();
+            wx.showToast({
+              title: '短信验证码已发送',
+              icon: 'success',
+              duration: 2000,
+              mask: true,
+              success: function() {
+                //设置一分钟的倒计时
+                that.data.interval = that.timer();
+              },
+            });
+            // utils.showToastWindow('短信验证码已发送');
+
           }, phone, '验证码为:{code}', '1', 60 * 5, 6);
         } else {
           console.log('其他状态下的错误')
+          $Toast({
+            content: '获取验证码错误',
+            type: 'error'
+          });
         }
       }, err => {
         console.log(err);
+        $Toast({
+          content: '获取验证码错误',
+          type: 'error'
+        });
       })
     }
   },
@@ -258,7 +281,11 @@ Page({
    * 提示框+按钮不可用函数
    */
   buttonDisabled: function(title) {
-    utils.showToastWindow(title);
+    // utils.showToastWindow(title);
+    $Toast({
+      content: title,
+      type: 'error'
+    });
     this.setData({
       disabled: false
     })
@@ -292,44 +319,123 @@ Page({
   bindIcSubmit: function(e) {
     console.log(e);
     var that = this;
+    that.setData({
+      beginBtnDisabled:true
+    })
     var isCheck = that.data.checkAgree;
     var _telephoneNumber = that.data.phone;
     var _icNumber = e.detail.value.icnumber;
     var _realName = e.detail.value.realname;
-    if (_icNumber == '' || _icNumber==null){
-      utils.showToastWindow('卡号不能为空!');
+    if (_icNumber == '' || _icNumber == null) {
+      // utils.showToastWindow('卡号不能为空!');
+      $Toast({
+        content: '卡号不能为空!',
+        type: 'error'
+      });
+      that.setData({
+        beginBtnDisabled: false
+      })
       return;
-    } else if (_realName == '' || _realName == null){
-      utils.showToastWindow('请填写真实姓名!');
+    } else if (_realName == '' || _realName == null) {
+      // utils.showToastWindow('请填写真实姓名!');
+      $Toast({
+        content: '请填写真实姓名!',
+        type: 'error'
+      });
+      that.setData({
+        beginBtnDisabled: false
+      })
       return;
-    } else if (isCheck == 0){
-      utils.showToastWindow('请先同意使用服务协议!')
+    } else if (isCheck == 0) {
+      //utils.showToastWindow('请先同意使用服务协议!')
+      $Toast({
+        content: '请先同意使用服务协议!',
+        type: 'error'
+      });
+      that.setData({
+        beginBtnDisabled: false
+      })
       return;
-    }else{
+    } else {
       var data = {
         telephoneNumber: _telephoneNumber,
         icNumber: _icNumber,
-        userName:_realName
+        userName: _realName
       }
       utils.bindIcNumber(data).then(res => {
         console.log(res);
         if (res.data.code == 200) {
-          utils.showToastWindow('绑定卡号成功');
-          //跳转登录页面
-          wx.redirectTo({
-            url: '/pages/login/login',
+          //utils.showToastWindow('绑定卡号成功');
+          wx.showToast({
+            title: '绑定卡号成功',
+            icon: 'success',
+            duration: 2000,
+            mask: true,
+            success: function() {
+              that.setData({
+                beginBtnDisabled: false
+              })
+              //跳转登录页面
+              wx.redirectTo({
+                url: '/pages/login/login',
+              })
+            },
+          });
+
+        } else if (res.data.code == 201) {
+          //utils.showToastWindow('用户卡号绑定失败')
+          $Toast({
+            content: '用户卡号绑定失败',
+            type: 'error'
+          });
+          that.setData({
+            beginBtnDisabled: false
           })
-        } else if (res.data.code == 201){
-          utils.showToastWindow('用户卡号绑定失败')
-        } else if (res.data.code == 202){
-          utils.showToastWindow('该用户未注册')
+        } else if (res.data.code == 202) {
+          //utils.showToastWindow('该用户未注册')
+          $Toast({
+            content: '该用户未注册',
+            type: 'error'
+          });
+          that.setData({
+            beginBtnDisabled: false
+          })
         } else if (res.data.code == 203) {
-          utils.showToastWindow('此卡号已绑定用户')
+          //utils.showToastWindow('此卡号已绑定用户')
+          $Toast({
+            content: '此卡号已绑定用户',
+            type: 'error'
+          });
+          that.setData({
+            beginBtnDisabled: false
+          })
         } else if (res.data.code == 204) {
-          utils.showToastWindow('此卡号不存在')
+          //utils.showToastWindow('此卡号不存在')
+          $Toast({
+            content: '此卡号不存在',
+            type: 'error'
+          });
+          that.setData({
+            beginBtnDisabled: false
+          })
+        }else{
+          $Toast({
+            content: '绑定卡号失败',
+            type: 'error'
+          });
+          that.setData({
+            beginBtnDisabled: false
+          })
         }
       }, err => {
         console.log(err);
+        $Toast({
+          content: '绑定卡号失败',
+          type: 'error'
+        });
+        that.setData({
+          beginBtnDisabled: false
+        })
       })
     }
   },
@@ -340,6 +446,9 @@ Page({
   informationSubmit: function(e) {
     console.log(e);
     var that = this;
+    that.setData({
+      saveBtnDisabled:true
+    })
 
     var data = {
       telephoneNumber: that.data.phone,
@@ -353,12 +462,41 @@ Page({
     utils.perfectInfo(data).then(res => {
       console.log(res);
       if (res.data.code == 200) {
-        utils.showToastWindow('完善信息成功');
-        that.numSteps(); //步骤条数字加一
+        //utils.showToastWindow('完善信息成功');
+        
+        wx.showToast({
+          title: '完善信息成功',
+          icon: 'success',
+          duration: 2000,
+          mask: true,
+          success: function() {
+            that.setData({
+              saveBtnDisabled: false
+            })
+            //步骤条数字加一
+            that.numSteps();
+          },
+        });
+
+      } else {
+        $Toast({
+          content: '完善信息失败',
+          type: 'error'
+        });
+        that.setData({
+          saveBtnDisabled: false
+        })
       }
 
     }, err => {
       console.log(err);
+      $Toast({
+        content: '完善信息失败',
+        type: 'error'
+      });
+      that.setData({
+        saveBtnDisabled: false
+      })
     })
 
   },
@@ -367,21 +505,45 @@ Page({
    */
   registerSubmit: function(e) {
     var that = this;
+    that.setData({
+      registerBtnDisabled:true
+    })
     //提交之前先判断图形验证码和短信验证码
     // var picCodeWarn = that.validatePicCode();
     var msgCodeWarn = that.validateMsgCode();
     // if (picCodeWarn != '图形验证码正确') {
-      // utils.showToastWindow(picCodeWarn);
-      // return;
+    // utils.showToastWindow(picCodeWarn);
+    // return;
     // } else if (msgCodeWarn != '验证正确') {
     if (msgCodeWarn != '验证正确') {
-      utils.showToastWindow(msgCodeWarn);
+      //utils.showToastWindow(msgCodeWarn);
+      $Toast({
+        content: msgCodeWarn,
+        type: 'error'
+      });
+      that.setData({
+        registerBtnDisabled: false
+      })
       return;
     } else if (that.data.NewChanges == '') {
-      utils.showToastWindow('请输入密码');
+      //utils.showToastWindow('请输入密码');
+      $Toast({
+        content: '请输入密码',
+        type: 'error'
+      });
+      that.setData({
+        registerBtnDisabled: false
+      })
       return;
     } else if (that.data.NewChanges != that.data.NewChangesAgain) {
-      utils.showToastWindow('两次密码不一致');
+      //utils.showToastWindow('两次密码不一致');
+      $Toast({
+        content: '两次密码不一致',
+        type: 'error'
+      });
+      that.setData({
+        registerBtnDisabled: false
+      })
       return;
     } else {
       var that = this;
@@ -400,10 +562,28 @@ Page({
         if (res.data.code == 200) {
           utils.showToastWindow('注册成功');
           that.numSteps(); //步骤条数字加一
+        } else if (res.data.code == 201) {
+          $Toast({
+            content: '用户已存在',
+            type: 'error'
+          });
+        } else if (res.data.code == 202) {
+          $Toast({
+            content: '用户注册失败',
+            type: 'error'
+          });
+        }else{
+
         }
+        that.setData({
+          registerBtnDisabled: false
+        })
 
       }, err => {
         console.log(err);
+        that.setData({
+          registerBtnDisabled: false
+        })
       })
     }
   },
@@ -420,12 +600,12 @@ Page({
   onLoad: function(options) {
     var that = this;
     wx.getUserInfo({
-      lang:'zh_CN',
-      success:res=>{
+      lang: 'zh_CN',
+      success: res => {
         console.log(res);
         that.setData({
-          userCity:res.userInfo.city,
-          userProvince:res.userInfo.province
+          userCity: res.userInfo.city,
+          userProvince: res.userInfo.province
         })
       }
     })
