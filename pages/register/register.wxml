@@ -114,6 +114,7 @@
       <view class="saveBtnView">
         <button class="save-Btn bg-cyan" hover-class="saveBtn-hover" form-type="submit" disabled='{{saveBtnDisabled}}'>保存</button>
       </view>
+      <text class="skip" bindtap="skipToNext">跳过此步,以后再说</text>
     </form>
   </view>
   <!--绑定卡号表单-->
@@ -140,12 +141,15 @@
       <view class="beginBtnView">
         <button class="begin-Btn bg-cyan" hover-class="beginBtn-hover" form-type="submit" disabled='{{beginBtnDisabled}}'>开始使用</button>
       </view>
-      <checkbox-group bindchange="agreeCheckbox">
+      <view class="checkboxView">
+        <text class="skipToLogin"  bindtap="skipToLogin">跳过此步,以后再说</text>
+      </view>
+      <!-- <checkbox-group bindchange="agreeCheckbox">
         <view class="checkboxView">
           <checkbox class="round cyan" value="agree"></checkbox>
           <text>我已阅读并同意使用服务协议</text>
         </view>
-      </checkbox-group>
+      </checkbox-group> -->
     </form>
   </view>
 </view>

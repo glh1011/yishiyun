@@ -133,6 +133,7 @@ Page({
         telephoneNumber: account,
         password: password
       }
+      console.log(data);
       utils.loginRequest(data).then(res => {
         console.log(res);
         wx.hideLoading();

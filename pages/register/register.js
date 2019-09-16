@@ -501,6 +501,21 @@ Page({
 
   },
   /**
+   * 跳过此步，下次再说
+   */
+  skipToNext:function(){
+    this.numSteps();
+  },
+  /**
+   * 直接跳转登录页面
+   */
+  skipToLogin:function(){
+    //跳转登录页面
+    wx.navigateBack({
+      delta:1
+    })
+  },
+  /**
    * 注册提交事件
    */
   registerSubmit: function(e) {
@@ -557,6 +572,7 @@ Page({
         city: userCity,
         province: userProvince
       }
+      console.log(data);
       utils.registerRequest(data).then(res => {
         console.log(res);
         if (res.data.code == 200) {
@@ -580,7 +596,7 @@ Page({
         })
 
       }, err => {
-        console.log(err);
+        console.log("异常:"+err);
         that.setData({
           registerBtnDisabled: false
         })
