@@ -3,7 +3,7 @@
     <view class="mainToast padding-top-xl padding-lr">
       <text class="text-cyan text-bold">{{stepToast}}</text>
     </view>
-    <view class="padding text-xl">{{detailToast}}</view>
+    <view class="padding text-xxl">{{detailToast}}</view>
   </view>
 
   <camera device-position="front" flash="off" binderror="error" style="width: 100%; height: {{windowWidth}}px">
