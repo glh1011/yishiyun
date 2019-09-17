@@ -2,7 +2,6 @@ import utils from "../../../utils/util.js";
 import auth from "../../../utils/auth.js";
 
 const app = getApp();
-const { $Toast } = require('../../../dist/base/index');
 var timer;
 var errorCounts = 0;
 
@@ -162,43 +161,52 @@ Page({
       if (res.data.code == 200) {
         errorCounts = 0;
         if (side == 1) {
-          this.setData({
-            stepToast: '识别成功',
-            detailToast: '请稍仰面部'
-          })
-          this.downDetect();
+          
+          setTimeout(function () {
+            that.setData({
+              stepToast: '正在识别仰面...',
+              detailToast: '请稍仰面部'
+            })
+            that.downDetect();
+          }, 2500)
         } else if (side == 2) {
-          this.setData({
-            stepToast: '识别成功',
-            detailToast: '请将面部稍向左转'
-          })
-          this.leftDetect();
+          
+          setTimeout(function () {
+            that.setData({
+              stepToast: '正在识别右侧面部...',
+              detailToast: '请将面部稍向左转'
+            })
+            that.leftDetect();
+          }, 2500)
         } else if (side == 3) {
-          this.setData({
-            stepToast: '识别成功',
-            detailToast: '请将面部稍向右转'
-          })
-          this.rightDetect();
+          
+          setTimeout(function () {
+            that.setData({
+              stepToast: '正在识别面部左侧...',
+              detailToast: '请将面部稍向右转'
+            })
+            that.rightDetect();
+          }, 2500)
         } else if (side == 4) {
-          this.setData({
-            stepToast: '人脸录入完成',
+          that.setData({
+            stepToast: '识别成功，人脸录入完成',
             detailToast: '后续可在食堂的人脸识别收银设备上，实现刷脸识别身份并进行支付'
           })
           //录入成功跳转，并将录入成功标识存到缓存
+          setTimeout(function () {
           wx.navigateBack({
             delta: 1
           })
+          }, 3000) //延迟时间
           wx.setStorageSync("isFaceDetect", true);
         }
-        utils.showToastWindow(res.data.msg, "success")
-        $Toast({
-          content: res.data.msg
-        });
+        wx.showToast({
+          title: "录入成功",
+          icon: "success",
+          duration: 3000
+        })
       } else {
         utils.showToastWindow(res.data.msg, "none")
-        $Toast({
-          content: res.data.msg
-        });
         errorCounts++;
         that.takePhoto();
       }
