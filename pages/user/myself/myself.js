@@ -32,7 +32,7 @@ Component({
           this.setData({
             calorieSum: responseData.calorieSum,
             icNumber: responseData.icNumber,
-            monetarySum: responseData.monetarySum,
+            monetarySum: responseData.money,
             userName: responseData.userName
           })
         } else if (res.data.code === 202) {

@@ -49,7 +49,7 @@
       <view class="cu-item">
         <view class="content padding-tb-sm">
           <view style="padding-left: 30rpx; box-sizing:border-box;display: inline-block">
-            匿名用户
+            {{item.userName}}
           </view>
           <view style="float: right; padding-right:30rpx;">
             <view class="text-grey text-sm">{{item.commentTime}}</view>

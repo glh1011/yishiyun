@@ -3,7 +3,7 @@
     <view class=" cf">
       <view class="fl">
         <view class="flex align-center">
-          <view class="userinfo-avatar">
+          <view class="userinfo-avatar" bindtap="toUserInfo">
             <open-data type="userAvatarUrl"></open-data>
           </view>
           <view class="userinfo-name">{{userName?userName:'未设置昵称'}}</view>
@@ -18,6 +18,8 @@
       <view class="fl">
         <view class="flex align-center">
           <view class="userinfo-avatar">
+                  <cover-image src="../../../images/logoImage.jpeg"></cover-image>
+
           </view>
           <view class="userinfo-name">点击登录/注册</view>
         </view>
@@ -29,7 +31,7 @@
   <view class="grid col-2 margin-bottom text-center">
     <view class="bg-cyan padding-bottom text-xl font-family-reset">{{monetarySum}}元</view>
     <view class="bg-cyan padding-bottom text-xl font-family-reset">{{calorieSum}}千卡</view>
-    <view class="bg-cyan padding-bottom text-lg">累计消费</view>
+    <view class="bg-cyan padding-bottom text-lg">余额</view>
     <view class="bg-cyan padding-bottom text-lg">摄入能量</view>
   </view>
 

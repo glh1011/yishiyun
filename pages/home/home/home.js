@@ -76,6 +76,7 @@ Component({
     //获取最近一次就餐记录
     getLatestLog: function(data){
       utils.queryLastEatLog(data).then(res => {
+        console.log(res);
         if (res.data.code == 200) {
           if (res.data.data.length >= 2) {
             this.setData({

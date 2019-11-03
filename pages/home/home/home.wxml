@@ -92,6 +92,11 @@
                 <text>{{item.weight}}克</text>
             </text>
           </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut margin-right-xs">
+                <text>{{item.date}}</text>
+            </text>
+          </view>
         </view>
         <view class="action">
           <view class="cuIcon-right text-gray lg"></view>
